@@ -6,17 +6,17 @@ import { Icon } from "@/components/common/Icon";
 const segments = [
   {
     title: "Indian Investors",
-    body: "HNIs, family offices and institutions seeking transparent real estate exposure with deal-level visibility and disciplined underwriting.",
+    body: "Family offices, ultra-high-net-worth individuals, corporates, institutions, and investment managers seeking curated access to India's real estate opportunities through SEBI-regulated AIFs, managed accounts, and bespoke investment structures.",
     icon: Building2,
   },
   {
     title: "Global Investors",
-    body: "Offshore capital looking for researched access to Indian real estate through SEBI-registered vehicles and aligned local execution.",
+    body: "Global family offices, principal investors, business owners, institutional allocators, and offshore capital—including the Indian diaspora, Middle Eastern, and Asian investors—looking for disciplined exposure to India's real estate markets. We provide end-to-end structuring, FEMA compliance, tax-efficient execution, and ongoing investment management.",
     icon: Globe2,
   },
   {
     title: "Strategic Partners",
-    body: "Developers and operators who value long-term capital partners with operational involvement from diligence through exit.",
+    body: "Developers, asset owners, corporates, co-investors, and institutional partners collaborating with us on club deals, joint ventures, platform investments, and balance-sheet partnerships. We seek long-term relationships built on aligned capital, execution certainty, and shared value creation.",
     icon: Network,
   },
 ];

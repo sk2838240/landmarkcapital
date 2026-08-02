@@ -70,7 +70,7 @@ export function Difference() {
         <SectionHeader
           align="split"
           eyebrow="Principles"
-          title="The Landmark way of working."
+          title="The Landmark Difference"
           description="Six principles that shape every decision — from how we source deals to how we report on them."
           accent="trust"
         />

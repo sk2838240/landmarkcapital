@@ -6,11 +6,13 @@ export function PinnedManifesto() {
       <div className="container-tb max-w-4xl">
         <Reveal>
           <div className="accent-bar-bronze mb-8" />
-          <p className="eyebrow-accent mb-6">Discipline</p>
-          <p className="display-2 text-charcoal text-balance">
-            We do not chase size. We earn{" "}
-            <span className="italic text-slate-blue">outcomes</span> — one carefully structured
-            deal at a time.
+          <p className="eyebrow-accent mb-6">Select. Structure. Deliver.</p>
+          <p className="text-lg lg:text-xl text-charcoal/85 leading-relaxed text-pretty">
+            Landmark Capital originates and structures select real estate opportunities with a
+            singular focus on investor alignment and long-term value creation rather than
+            predefined fund constraints. Each investment is independently underwritten and
+            presented on its own merits, with an emphasis on institutional discipline, robust
+            structuring, and consistent long-term value creation.
           </p>
         </Reveal>
       </div>

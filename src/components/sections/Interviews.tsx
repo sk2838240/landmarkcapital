@@ -7,24 +7,14 @@ import { interviews, type Interview } from "@/data/interviews";
 import { cn } from "@/lib/utils";
 
 /**
- * Leadership Insights — Blackstone-style featured interview with a
- * secondary rail of related conversations.
- *
- * The featured card renders a large 16:9 thumbnail with a play button
- * overlay. On click, if a `videoUrl` is present, it swaps to an
+ * Leadership Insights — featured interview with a large 16:9 thumbnail
+ * and play overlay. On click, if a `videoUrl` is present, it swaps to an
  * inline iframe player; otherwise the play button stays static
  * (placeholder mode for the client design review).
  */
 export function Interviews() {
-  const [featured, setFeatured] = useState<Interview>(interviews[0]);
+  const featured = interviews[0];
   const [playing, setPlaying] = useState(false);
-
-  const others = interviews.filter((i) => i.id !== featured.id);
-
-  const selectFeatured = (item: Interview) => {
-    setFeatured(item);
-    setPlaying(false);
-  };
 
   return (
     <section className="section-pad surface-ivory">
@@ -36,73 +26,31 @@ export function Interviews() {
           description="A recurring series of long-form interviews with Landmark Capital's investment committee — market perspectives, portfolio thinking and the discipline that underwrites every deal."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <FeaturedCard
-                item={featured}
-                playing={playing}
-                onPlay={() => setPlaying(true)}
-              />
-            </Reveal>
+        <div className="max-w-4xl">
+          <Reveal>
+            <FeaturedCard
+              item={featured}
+              playing={playing}
+              onPlay={() => setPlaying(true)}
+            />
+          </Reveal>
 
-            <Reveal delay={0.05}>
-              <div className="mt-8 lg:mt-10">
-                <p className="eyebrow-accent mb-3">{featured.eyebrow}</p>
-                <h3 className="font-display text-2xl md:text-3xl lg:text-4xl text-charcoal text-balance leading-snug">
-                  {featured.title}
-                </h3>
-                <p className="mt-5 text-slate leading-relaxed max-w-2xl">
-                  {featured.description}
-                </p>
-                <div className="mt-6 flex items-center gap-4 text-sm text-slate-blue">
-                  <span className="font-medium text-charcoal">{featured.speaker.name}</span>
-                  <span className="w-1 h-1 rounded-full bg-border" aria-hidden />
-                  <span>{featured.speaker.role}</span>
-                </div>
+          <Reveal delay={0.05}>
+            <div className="mt-8 lg:mt-10">
+              <p className="eyebrow-accent mb-3">{featured.eyebrow}</p>
+              <h3 className="font-display text-2xl md:text-3xl lg:text-4xl text-charcoal text-balance leading-snug">
+                {featured.title}
+              </h3>
+              <p className="mt-5 text-slate leading-relaxed max-w-2xl">
+                {featured.description}
+              </p>
+              <div className="mt-6 flex items-center gap-4 text-sm text-slate-blue">
+                <span className="font-medium text-charcoal">{featured.speaker.name}</span>
+                <span className="w-1 h-1 rounded-full bg-border" aria-hidden />
+                <span>{featured.speaker.role}</span>
               </div>
-            </Reveal>
-          </div>
-
-          <div className="lg:col-span-5">
-            <Reveal delay={0.1}>
-              <p className="eyebrow-trust mb-6">More conversations</p>
-              <ul className="space-y-4 border-t border-border">
-                {others.map((item) => (
-                  <li key={item.id}>
-                    <button
-                      type="button"
-                      onClick={() => selectFeatured(item)}
-                      className="group w-full text-left grid grid-cols-[8rem_1fr] sm:grid-cols-[10rem_1fr] gap-4 sm:gap-5 py-5 border-b border-border transition-colors hover:bg-stone/50"
-                    >
-                      <div className="relative aspect-video rounded-md overflow-hidden bg-stone">
-                        <img
-                          src={item.thumbnail}
-                          alt={item.thumbnailAlt}
-                          loading="lazy"
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center bg-charcoal/25 group-hover:bg-charcoal/40 transition-colors">
-                          <Play className="w-5 h-5 text-white fill-white" aria-hidden />
-                        </div>
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-[0.65rem] uppercase tracking-[0.16em] text-bronze mb-1.5">
-                          {item.eyebrow}
-                        </p>
-                        <p className="font-display text-base md:text-lg text-charcoal leading-snug line-clamp-2 group-hover:text-crimson-500 transition-colors">
-                          {item.title}
-                        </p>
-                        <p className="mt-2 text-xs text-slate-blue">
-                          {item.speaker.name} · {item.duration}
-                        </p>
-                      </div>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -40,8 +40,8 @@ export function TrackRecord() {
         <SectionHeader
           align="split"
           eyebrow="Track record"
-          title="Built for India. Measured in outcomes."
-          description="Since 2013, capital deployed across twelve cities and three asset classes — more than six million square feet underwritten and executed."
+          title="Built for India. By people who know it well."
+          description="Grounded in careful underwriting, aligned execution, and long-term value creation. A record of disciplined real estate investing across select opportunities and market cycles."
           accent="bronze"
         />
 

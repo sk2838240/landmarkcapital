@@ -29,14 +29,13 @@ export function Hero() {
         <Reveal delay={0.05}>
           <div className="accent-bar-bronze mb-6 bg-bronze" />
           <h1 className="display-1 text-white max-w-3xl text-balance">
-            Institutional real estate investing, executed with discipline.
+            Not More Real Estate. Better Real Estate.
           </h1>
         </Reveal>
 
         <Reveal delay={0.1}>
           <p className="mt-6 text-lg lg:text-xl text-white/80 max-w-xl leading-relaxed">
-            Research, governance and aligned execution across select Indian real estate
-            opportunities.
+            Patient capital. Selected deals. Built for India.
           </p>
         </Reveal>
 
