@@ -35,7 +35,7 @@ const asOf = asOfQuarter();
 
 export function TrackRecord() {
   return (
-    <section className="section-pad surface-ivory">
+    <section className="surface-ivory pt-12 md:pt-14 lg:pt-16 pb-[clamp(4.5rem,10vw,8rem)]">
       <div className="container-tb">
         <SectionHeader
           align="split"
@@ -43,9 +43,10 @@ export function TrackRecord() {
           title="Built for India. By people who know it well."
           description="Grounded in careful underwriting, aligned execution, and long-term value creation. A record of disciplined real estate investing across select opportunities and market cycles."
           accent="bronze"
+          className="mb-8 lg:mb-10 [&_.accent-bar-bronze]:mb-3.5 [&_.eyebrow-accent]:mb-4"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-border pt-10 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 border-t border-border pt-7 md:pt-8 mb-4">
           {trackRecord.map((s) => (
             <Reveal key={s.label}>
               <p className="text-xs uppercase tracking-[0.14em] text-slate-blue mb-3">{s.label}</p>

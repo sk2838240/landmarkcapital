@@ -1,11 +1,50 @@
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
 import { Reveal } from "@/components/common/Reveal";
 import { ButtonLink } from "@/components/common/Button";
 import { Logo } from "@/components/common/Logo";
 import { media } from "@/data/media";
+import { cn } from "@/lib/utils";
 
 const trustMarks = ["SEBI-Registered AIF", "Deal-by-Deal", "Pan-India", "Patient Capital"];
 
+const heroPhrases = ["Patient capital.", "Selected deals.", "Built for India."];
+const taglineSentence = heroPhrases.join(" ");
+
+/* Tagline loop: intro (phrases one by one) → single light pass → rest → repeat.
+   The light sweep finishes ~4.1s into the sheen animation; add the rest. */
+const LIGHT_PASS_MS = 4100;
+const REST_MS = 3000;
+const SETTLED_MS = LIGHT_PASS_MS + REST_MS;
+
+const introContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.38, delayChildren: 0.45 } },
+};
+
+const introPhrase: Variants = {
+  hidden: { y: "115%", opacity: 0 },
+  visible: {
+    y: "0%",
+    opacity: 1,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
 export function Hero() {
+  const reduce = useReducedMotion();
+  const [settled, setSettled] = useState(false);
+  // Once the intro finishes, the accent-bar glint and the tagline sheen
+  // mount together so their cycles stay in sync.
+  const lightsOn = reduce || settled;
+
+  // After the light pass + rest, fade the line out and replay the intro.
+  useEffect(() => {
+    if (reduce || !settled) return;
+    const id = window.setTimeout(() => setSettled(false), SETTLED_MS);
+    return () => window.clearTimeout(id);
+  }, [reduce, settled]);
+
   return (
     <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden">
       <div className="absolute inset-0">
@@ -27,19 +66,58 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <div className="accent-bar-bronze mb-6 bg-bronze" />
+          <div className={cn("accent-bar-bronze mb-6", lightsOn ? "accent-bar-glint" : "bg-bronze")} />
           <h1 className="display-1 text-white max-w-3xl text-balance">
             Not More Real Estate. Better Real Estate.
           </h1>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <p className="mt-6 text-lg lg:text-xl text-white/80 max-w-xl leading-relaxed">
-            Patient capital. Selected deals. Built for India.
+        {reduce ? (
+          <p className="mt-6 text-lg lg:text-xl max-w-xl leading-relaxed text-white/80">
+            {taglineSentence}
           </p>
-        </Reveal>
+        ) : (
+          <>
+            <p className="sr-only">{taglineSentence}</p>
+            <AnimatePresence mode="wait">
+              {settled ? (
+                <motion.p
+                  key="settled"
+                  className="tagline-sheen-wrap mt-6 text-lg lg:text-xl max-w-xl leading-relaxed"
+                  initial={false}
+                  exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeOut" } }}
+                  aria-hidden
+                >
+                  <span className="tagline-sheen">{taglineSentence}</span>
+                  <span className="tagline-sheen-bloom">{taglineSentence}</span>
+                </motion.p>
+              ) : (
+                <motion.p
+                  key="intro"
+                  className="mt-6 text-lg lg:text-xl max-w-xl leading-relaxed text-white/[0.72]"
+                  initial="hidden"
+                  animate="visible"
+                  variants={introContainer}
+                  onAnimationComplete={(definition) => {
+                    if (definition === "visible") setSettled(true);
+                  }}
+                  aria-hidden
+                >
+                  {heroPhrases.map((text, i) => (
+                    <span key={text} className="reveal-mask">
+                      <motion.span variants={introPhrase} className="inline-block">
+                        {text}
+                        {i < heroPhrases.length - 1 ? "\u00A0" : ""}
+                      </motion.span>
+                    </span>
+                  ))}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </>
+        )}
 
-        <Reveal delay={0.15}>
+        <Reveal delay={0.2}>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <ButtonLink to="/strategies" variant="primary" size="lg">
               Investment Strategies
