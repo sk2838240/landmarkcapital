@@ -154,17 +154,17 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 border-t border-white/15 bg-gradient-to-r from-charcoal/80 via-charcoal/55 to-charcoal/80 backdrop-blur-md">
-        <div className="container-tb py-4 flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-x-10">
-          {trustMarks.map((mark, i) => (
-            <span key={mark} className="flex items-center gap-x-6 md:gap-x-10">
-              <span className="text-[11px] uppercase tracking-[0.18em] font-medium text-white/80">
+        <div className="container-px py-4">
+          <div className="grid grid-cols-2 md:grid-cols-4">
+            {trustMarks.map((mark) => (
+              <span
+                key={mark}
+                className="py-1 text-center text-[11px] uppercase tracking-[0.18em] font-medium text-white/80 md:border-l md:border-white/15 md:first:border-l-0"
+              >
                 {mark}
               </span>
-              {i < trustMarks.length - 1 && (
-                <span aria-hidden className="hidden md:inline-block h-3 w-px bg-white/20" />
-              )}
-            </span>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

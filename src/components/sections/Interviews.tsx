@@ -67,23 +67,42 @@ function FeaturedCard({
   onPlay: () => void;
 }) {
   const canPlay = Boolean(item.videoUrl);
+  // Self-hosted files (e.g. /aj-video.mp4) play in a native <video>; embed
+  // URLs (YouTube/Vimeo) play in an <iframe>.
+  const isFile = Boolean(item.videoUrl && /\.(mp4|webm|ogg|mov)$/i.test(item.videoUrl));
 
   return (
     <div className="relative aspect-video w-full rounded-[12px] overflow-hidden bg-charcoal shadow-[0_30px_80px_-40px_rgba(36,41,47,0.55)]">
       <AnimatePresence mode="wait">
         {playing && canPlay ? (
-          <motion.iframe
-            key="player"
-            src={item.videoUrl}
-            title={item.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="absolute inset-0 w-full h-full"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          />
+          isFile ? (
+            <motion.video
+              key="player-file"
+              src={item.videoUrl}
+              poster={item.thumbnail}
+              controls
+              autoPlay
+              playsInline
+              className="absolute inset-0 w-full h-full bg-charcoal object-contain"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          ) : (
+            <motion.iframe
+              key="player"
+              src={item.videoUrl}
+              title={item.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          )
         ) : (
           <motion.div
             key={`thumb-${item.id}`}

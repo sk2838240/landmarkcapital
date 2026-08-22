@@ -350,6 +350,52 @@
     }
   }
 
+  /* Greyscale image that fills with colour from the bottom up on hover —
+     like water rising in a glass. Wrapper `.img-fill` holds two identical
+     <img> layers: `.img-fill__base` (greyscale) and `.img-fill__color`. */
+  .img-fill {
+    position: relative;
+  }
+  .img-fill > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .img-fill__base {
+    filter: grayscale(1);
+    transition: filter 0.9s var(--ease-out-quart);
+  }
+  .img-fill__color {
+    position: absolute;
+    inset: 0;
+    /* Visible region collapsed to the bottom edge — colour is hidden. */
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 0.9s var(--ease-out-quart);
+    will-change: clip-path;
+  }
+  .img-fill:hover .img-fill__base,
+  .img-fill:focus-within .img-fill__base {
+    filter: grayscale(0);
+  }
+  .img-fill:hover .img-fill__color,
+  .img-fill:focus-within .img-fill__color {
+    /* Waterline rises to the top — full colour. */
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* Touch / no-hover devices can't trigger the fill — just show colour. */
+  @media (hover: none) {
+    .img-fill__base { filter: none; }
+    .img-fill__color { clip-path: inset(0 0 0 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .img-fill__base,
+    .img-fill__color {
+      transition-duration: 1ms;
+    }
+  }
+
   .prose-institutional p + p {
     margin-top: 1.25rem;
   }

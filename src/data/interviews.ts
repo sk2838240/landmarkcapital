@@ -34,9 +34,9 @@ export const interviews: Interview[] = [
       role: "Founder & Managing Partner",
     },
     duration: "18:42",
-    thumbnail:
-      "https://images.unsplash.com/photo-1573497491765-dccce02b29df?auto=format&fit=crop&w=1600&q=85",
-    thumbnailAlt: "Two executives in conversation in a modern glass-walled office",
+    thumbnail: "/media/aj-video-poster.jpg",
+    thumbnailAlt: "Ashish Joshi speaking during a filmed interview",
+    videoUrl: "/aj-video.mp4",
   },
   {
     id: "warehousing-thesis",

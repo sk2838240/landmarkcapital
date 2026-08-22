@@ -5,7 +5,15 @@ export type NavItem = {
 };
 
 export const nav: NavItem[] = [
-  { label: "About", to: "/about" },
+  {
+    label: "About",
+    to: "/about",
+    children: [
+      { label: "Overview", to: "/about" },
+      { label: "Transactions", to: "/transactions" },
+      { label: "Team", to: "/leadership" },
+    ],
+  },
   {
     label: "Strategies",
     to: "/strategies",
@@ -18,7 +26,6 @@ export const nav: NavItem[] = [
     ],
   },
   { label: "Opportunities", to: "/opportunities" },
-  { label: "Transactions", to: "/transactions" },
   {
     label: "Insights",
     to: "/insights",
@@ -27,6 +34,5 @@ export const nav: NavItem[] = [
       { label: "FAQ", to: "/insights/faq" },
     ],
   },
-  { label: "Leadership", to: "/leadership" },
   { label: "Contact", to: "/contact" },
 ];

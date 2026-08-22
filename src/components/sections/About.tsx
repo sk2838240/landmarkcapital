@@ -36,11 +36,19 @@ export function About() {
               <p className="mt-2 text-[10px] uppercase tracking-[0.18em] text-slate/70 tabular-nums">
                 {asOfQuarter()}
               </p>
-              <div className="mt-10 overflow-hidden rounded-[12px] border border-border aspect-[4/3]">
+              <div className="img-fill mt-10 overflow-hidden rounded-[12px] border border-border aspect-[4/3]">
                 <img
+                  className="img-fill__base"
                   src={media.about.src}
                   alt={media.about.alt}
-                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  className="img-fill__color"
+                  src={media.about.src}
+                  alt=""
+                  aria-hidden="true"
                   loading="lazy"
                   decoding="async"
                 />

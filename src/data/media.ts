@@ -25,13 +25,13 @@ export const media = {
   },
   /**
    * Fund Manager feature (Home → Leadership spotlight).
-   * Self-hosted interview — drop the file at `public/media/ashish-joshi.mp4`.
-   * Until then the poster (existing headshot) shows and the play button is inert.
+   * Self-hosted interview at `public/aj-video.mp4`. Poster is a frame grabbed
+   * from the video itself (00:55), shown until the viewer presses play.
    * To use a YouTube/Vimeo link instead, swap `LeadershipSpotlight` to an <iframe>.
    */
   founder: {
-    poster: "/team/ashish-joshi.jpg",
-    src: "/media/ashish-joshi.mp4",
+    poster: "/media/aj-video-poster.jpg",
+    src: "/aj-video.mp4",
     alt: "Ashish Joshi, Managing Partner & Fund Manager at Landmark Capital",
   },
   /** One visual per Landmark Difference principle — order matches `differences` in Difference.tsx */
