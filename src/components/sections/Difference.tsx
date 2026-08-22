@@ -9,16 +9,16 @@ import { cn } from "@/lib/utils";
 const differences = [
   {
     title: "Alignment Without Conflicts",
-    subtitle: "Our interests and yours sit on the same side of the table.",
+    subtitle: "We ensure our interests and yours sit on the same side of the table.",
     points: [
       "Independent platform, no competing mandates",
-      "Returns from performance, not asset accumulation",
-      "Governance designed to protect investor trust",
+      "Our returns come from performance, not asset accumulation",
+      "No conflicts that quietly cost you trust",
     ],
   },
   {
     title: "Real Estate Only, End to End",
-    subtitle: "Exclusive focus on real estate across the full deal lifecycle.",
+    subtitle: "We focus exclusively on real estate, across the full lifecycle of a deal.",
     points: [
       "Acquisition through exit under one roof",
       "Deep involvement in approvals, execution, and structuring",
@@ -48,7 +48,7 @@ const differences = [
     subtitle: "The edge is choosing the right deals — not doing more of them.",
     points: [
       "High bar for underwriting and selection",
-      "Focus over volume",
+      "Focus over volume, every time",
       "A small, experienced team close to every deal",
     ],
   },
@@ -56,8 +56,8 @@ const differences = [
     title: "Relationships Built to Last",
     subtitle: "Long-term partners, not one-off transactions.",
     points: [
-      "Trust earned over years",
-      "Access built on reputation",
+      "Trust earned over years, not one closing",
+      "Access built on reputation, not marketing",
       "Shared success, measured honestly",
     ],
   },

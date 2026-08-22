@@ -45,14 +45,18 @@ export function WhatWeDo() {
           }
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {pillars.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.04}>
-              <span className="text-xs font-mono text-bronze">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="font-display text-xl text-charcoal mt-3 mb-3">{p.title}</h3>
-              <p className="text-slate leading-relaxed">{p.body}</p>
+            <Reveal key={p.title} delay={i * 0.04} className="h-full">
+              <article className="card-shine group h-full rounded-[12px] border border-border bg-gradient-to-br from-paper to-stone p-7 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-bronze/60 hover:shadow-[0_18px_40px_-24px_rgba(36,41,47,0.35)]">
+                <span className="font-mono text-xs text-bronze">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 mb-3 font-display text-xl text-charcoal transition-colors duration-300 group-hover:text-crimson-500">
+                  {p.title}
+                </h3>
+                <p className="text-slate leading-relaxed">{p.body}</p>
+              </article>
             </Reveal>
           ))}
         </div>

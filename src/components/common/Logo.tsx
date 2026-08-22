@@ -14,7 +14,7 @@ export function Logo({ className, variant = "lockup", onDark: _onDark = false }:
   if (variant === "mark") {
     return (
       <img
-        src="/landmark-logo.png"
+        src="/LANDMARK%20LOGO.jpg"
         alt=""
         aria-hidden
         className={cn("h-8 w-auto select-none", className)}
@@ -25,7 +25,7 @@ export function Logo({ className, variant = "lockup", onDark: _onDark = false }:
 
   return (
     <img
-      src="/landmark-logo.png"
+      src="/LANDMARK%20LOGO.jpg"
       alt="Landmark Capital"
       className={cn("h-9 w-auto select-none lg:h-10", className)}
       draggable={false}

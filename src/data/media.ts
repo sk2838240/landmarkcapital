@@ -23,6 +23,17 @@ export const media = {
     src: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80",
     alt: "Grade-A residential development — the kind of opportunity underwritten deal by deal",
   },
+  /**
+   * Fund Manager feature (Home → Leadership spotlight).
+   * Self-hosted interview — drop the file at `public/media/ashish-joshi.mp4`.
+   * Until then the poster (existing headshot) shows and the play button is inert.
+   * To use a YouTube/Vimeo link instead, swap `LeadershipSpotlight` to an <iframe>.
+   */
+  founder: {
+    poster: "/team/ashish-joshi.jpg",
+    src: "/media/ashish-joshi.mp4",
+    alt: "Ashish Joshi, Managing Partner & Fund Manager at Landmark Capital",
+  },
   /** One visual per Landmark Difference principle — order matches `differences` in Difference.tsx */
   principles: [
     {

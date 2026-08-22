@@ -16,7 +16,9 @@ export function Navbar() {
   const location = useLocation();
   const menuId = useId();
   const isHome = location.pathname === "/";
-  const onDark = isHome && !scrolled && !open;
+  const isAbout = location.pathname.startsWith("/about");
+  const onDarkHero = isHome || isAbout;
+  const onDark = onDarkHero && !scrolled && !open;
 
   /** Hover-capable pointers: open on hover. Touch: toggle on click. Avoids hover→click close race. */
   const canHover = () =>
@@ -93,7 +95,9 @@ export function Navbar() {
           "fixed top-0 left-0 right-0 z-50 overflow-visible transition-all duration-300",
           scrolled || open
             ? "glass border-b border-border"
-            : "bg-transparent"
+            : onDarkHero
+              ? "bg-gradient-to-b from-charcoal/55 via-charcoal/25 to-transparent"
+              : "bg-transparent"
         )}
       >
         <div className="container-tb relative z-50 flex items-center justify-between h-[72px] overflow-visible">

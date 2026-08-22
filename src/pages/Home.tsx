@@ -5,7 +5,7 @@ import { WhatWeDo } from "@/components/sections/WhatWeDo";
 import { Difference } from "@/components/sections/Difference";
 import { TrackRecord } from "@/components/sections/TrackRecord";
 import { WhoWeServe } from "@/components/sections/WhoWeServe";
-import { OurPeoplePreview } from "@/components/sections/OurPeoplePreview";
+import { LeadershipSpotlight } from "@/components/sections/LeadershipSpotlight";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Seo, orgJsonLd } from "@/components/common/Seo";
 
@@ -26,7 +26,7 @@ export default function Home() {
       <Difference />
       <TrackRecord />
       <WhoWeServe />
-      <OurPeoplePreview />
+      <LeadershipSpotlight />
       <ContactCTA />
     </>
   );

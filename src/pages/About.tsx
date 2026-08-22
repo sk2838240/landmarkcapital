@@ -120,7 +120,7 @@ const process = [
 
 export default function About() {
   return (
-    <>
+    <div className="about-page">
       <Seo
         title="About"
         description="A SEBI-registered Alternative Investment Fund manager operating two real estate funds and a deal-by-deal transaction platform across India."
@@ -145,7 +145,7 @@ export default function About() {
       <Process />
 
       <ContactCTA />
-    </>
+    </div>
   );
 }
 
@@ -284,7 +284,7 @@ function AtAGlance() {
 
 function Principles() {
   return (
-    <section className="section-pad surface-stone">
+    <section className="section-pad surface-stone border-t border-border">
       <div className="container-tb">
         <SectionHeader
           align="split"
@@ -349,7 +349,7 @@ function Principles() {
 
 function Capabilities() {
   return (
-    <section className="section-pad surface-ivory">
+    <section className="section-pad surface-ivory border-t border-border">
       <div className="container-tb">
         <SectionHeader
           align="split"

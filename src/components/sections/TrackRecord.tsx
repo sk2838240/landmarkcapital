@@ -41,7 +41,8 @@ export function TrackRecord() {
           align="split"
           eyebrow="Track record"
           title="Built for India. By people who know it well."
-          description="Grounded in careful underwriting, aligned execution, and long-term value creation. A record of disciplined real estate investing across select opportunities and market cycles."
+          description="Grounded in careful underwriting, aligned execution, and long-term value creation. A record of disciplined real estate investing across select opportunities and market cycles.
+The strongest deals are rarely the loudest ones. They come from relationships built over years, and the patience to wait for the right moment.Since 2013, we've worked across twelve Indian cities and three core asset classes, building a portfolio of over six million square feet."
           accent="bronze"
           className="mb-8 lg:mb-10 [&_.accent-bar-bronze]:mb-3.5 [&_.eyebrow-accent]:mb-4"
         />

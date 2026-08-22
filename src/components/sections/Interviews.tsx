@@ -17,7 +17,7 @@ export function Interviews() {
   const [playing, setPlaying] = useState(false);
 
   return (
-    <section className="section-pad surface-ivory">
+    <section className="section-pad surface-ivory border-t border-border">
       <div className="container-tb">
         <SectionHeader
           align="split"

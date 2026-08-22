@@ -302,103 +302,6 @@
     vertical-align: top;
   }
 
-  /* === Hero light pass — one choreographed 7s cycle ===
-     0.0–0.9s  a bronze glint crosses the accent bar
-     1.0–4.1s  a beam of warm light sweeps the tagline, a soft bloom riding it
-     then the composition rests until the next pass. */
-
-  .tagline-sheen-wrap {
-    position: relative;
-    display: block;
-  }
-
-  .tagline-sheen {
-    background-image: linear-gradient(
-      105deg,
-      rgba(255, 255, 255, 0.72) 0%,
-      rgba(255, 255, 255, 0.72) 38%,
-      #ffffff 46%,
-      #ecdcb4 50%,
-      #ffffff 54%,
-      rgba(255, 255, 255, 0.72) 62%,
-      rgba(255, 255, 255, 0.72) 100%
-    );
-    background-size: 250% 100%;
-    background-position: 100% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: tagline-sheen 7s cubic-bezier(0.45, 0, 0.25, 1) 1 both;
-  }
-
-  /* Blurred duplicate clipped to the same glyphs — visible only at the
-     beam's hotspot, so the glow travels with the light. */
-  .tagline-sheen-bloom {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    user-select: none;
-    background-image: linear-gradient(
-      105deg,
-      transparent 0%,
-      transparent 41%,
-      rgba(255, 255, 255, 0.85) 46%,
-      #f3e3bd 50%,
-      rgba(255, 255, 255, 0.85) 54%,
-      transparent 59%,
-      transparent 100%
-    );
-    background-size: 250% 100%;
-    background-position: 100% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: blur(7px);
-    opacity: 0.75;
-    animation: tagline-sheen 7s cubic-bezier(0.45, 0, 0.25, 1) 1 both;
-  }
-
-  @keyframes tagline-sheen {
-    0%, 14% { background-position: 100% 0; }
-    58%, 100% { background-position: 0% 0; }
-  }
-
-  /* Bronze glint that leads the tagline beam. */
-  .accent-bar-glint {
-    background-image: linear-gradient(
-      100deg,
-      var(--color-bronze) 0%,
-      var(--color-bronze) 38%,
-      #f6ead0 50%,
-      var(--color-bronze) 62%,
-      var(--color-bronze) 100%
-    );
-    background-size: 300% 100%;
-    background-position: 100% 0;
-    animation: bar-glint 7s cubic-bezier(0.45, 0, 0.25, 1) 1 both;
-  }
-
-  @keyframes bar-glint {
-    0% { background-position: 100% 0; }
-    13%, 100% { background-position: 0% 0; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .tagline-sheen {
-      animation: none;
-      background-image: none;
-      color: rgba(255, 255, 255, 0.8);
-    }
-    .tagline-sheen-bloom {
-      display: none;
-    }
-    .accent-bar-glint {
-      animation: none;
-      background-image: none;
-      background-color: var(--color-bronze);
-    }
-  }
-
   .glass {
     background: color-mix(in oklab, var(--color-ivory) 90%, transparent);
     backdrop-filter: saturate(140%) blur(14px);
@@ -409,6 +312,42 @@
     background: color-mix(in oklab, var(--color-charcoal) 35%, transparent);
     backdrop-filter: saturate(120%) blur(14px);
     -webkit-backdrop-filter: saturate(120%) blur(14px);
+  }
+
+  /* Specular shine that sweeps across a card on hover.
+     Card needs `position: relative` and `overflow: hidden` (see .card-shine base). */
+  .card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-shine::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.15) 35%,
+      rgba(255, 255, 255, 0.75) 50%,
+      rgba(236, 220, 180, 0.45) 56%,
+      transparent 80%
+    );
+    transform: translateX(-180%) skewX(-18deg);
+    transition: transform 1.8s var(--ease-out-expo);
+  }
+  .card-shine:hover::after,
+  .card-shine:focus-within::after {
+    transform: translateX(320%) skewX(-18deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-shine::after {
+      display: none;
+    }
   }
 
   .prose-institutional p + p {
@@ -513,4 +452,16 @@
     .surface-ivory, .surface-stone { background: #fff !important; }
     * { box-shadow: none !important; }
   }
+}
+
+/* ========================================================================== */
+/*  About page — clean white section canvas (scoped to .about-page only).     */
+/*  Turns the warm stone/ivory section backgrounds white on the About page    */
+/*  without touching the same utilities elsewhere (e.g. ContactCTA on Home).  */
+/*  Unlayered, so it wins over Tailwind's @layer utilities without !important. */
+/*  bg-stone chips / strips are left intact for a whisper of warmth on white.  */
+/* ========================================================================== */
+.about-page .surface-ivory,
+.about-page .surface-stone {
+  background: #fff;
 }

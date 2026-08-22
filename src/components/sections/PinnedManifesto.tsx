@@ -203,23 +203,33 @@ function StepCards() {
       variants={grid}
       className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5 mt-5 lg:-mt-20 lg:px-8 xl:px-12"
     >
-      {steps.map((step) => (
+      {steps.map((step, i) => (
         <motion.article
           key={step.title}
           variants={card}
           whileHover={reduce ? undefined : { y: -6 }}
           transition={reduce ? undefined : { type: "spring", stiffness: 220, damping: 22 }}
           className={cn(
-            "group/card relative h-full bg-paper border border-border rounded-[12px] p-6 lg:p-7",
+            "group/card relative h-full overflow-hidden bg-paper border border-border rounded-[12px] p-6 lg:p-7",
             "hover:border-bronze/50",
             "hover:shadow-[0_28px_60px_-30px_rgba(47,68,88,0.4)]",
             "transition-[border-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
           )}
         >
-          <span
+          <motion.span
             aria-hidden
-            className="absolute left-6 right-6 top-0 h-[2px] bg-bronze origin-left scale-x-0 transition-transform duration-[650ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/card:scale-x-100"
+            className="absolute left-6 right-6 top-0 h-[2px] bg-gradient-to-r from-bronze via-bronze/80 to-bronze origin-left"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={reduce ? { duration: 0 } : { duration: 0.9, ease: EASE, delay: 0.4 + i * 0.12 }}
           />
+
+          <motion.span
+            aria-hidden
+            className="pointer-events-none absolute -bottom-12 -right-12 h-40 w-40 rounded-full bg-bronze/10 blur-2xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-700"
+          />
+
           <div className="flex items-center justify-between mb-5">
             <span className="text-xs font-mono text-bronze tabular-nums">{step.n}</span>
             <span
@@ -241,6 +251,11 @@ function StepCards() {
             {step.title}
           </h3>
           <p className="text-slate leading-relaxed">{step.body}</p>
+
+          <div className="mt-5 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-bronze/70 font-medium opacity-0 group-hover/card:opacity-100 transition-opacity duration-500">
+            <span className="inline-block h-px w-4 bg-bronze/70" />
+            Phase {step.n}
+          </div>
         </motion.article>
       ))}
     </motion.div>

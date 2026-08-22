@@ -27,7 +27,7 @@ export const team: TeamMember[] = [
   },
   {
     id: "ravindra-gupta",
-    name: "Ravindra Gupta",
+    name: "Rajneesh Pathak",
     role: "Director — Legal & Compliance",
     category: "leadership",
     photo: "/team/ravindra-gupta.jpeg",
@@ -42,7 +42,7 @@ export const team: TeamMember[] = [
   },
   {
     id: "tulshiram-patil",
-    name: "Tulshiram Patil",
+    name: "Deepalidevi Pathak",
     role: "Head – Legal",
     category: "team",
     photo: "/team/tulshiram-patil.jpg",
@@ -55,7 +55,7 @@ export const team: TeamMember[] = [
   },
   {
     id: "prashant-deshmukh",
-    name: "Prashant Deshmukh",
+    name: "Ravindra Gupta",
     role: "Head – Land Acquisition & Liasoning",
     category: "team",
     photo: "/team/prashant-deshmukh.png",
@@ -68,7 +68,7 @@ export const team: TeamMember[] = [
   },
   {
     id: "dhrumil-ganna",
-    name: "Dhrumil Ganna",
+    name: "Vikram Mohite",
     role: "Principal – Investment",
     category: "team",
     photo: "/team/dhrumil-ganna.jpg",
@@ -80,7 +80,7 @@ export const team: TeamMember[] = [
   },
   {
     id: "neeta-dwivedi-joshi",
-    name: "Neeta Dwivedi Joshi",
+    name: "Drumil Gana",
     role: "AVP – Investment",
     category: "team",
     photo: "/team/neeta-dwivedi.jpeg",
@@ -96,7 +96,7 @@ export const team: TeamMember[] = [
   },
   {
     id: "gourav-kundalia",
-    name: "Gourav Kundalia",
+    name: "Neeta Joshi",
     role: "Investment Manager",
     category: "team",
     photo: "/team/gourav-kundalia.jpeg",
@@ -111,7 +111,7 @@ export const team: TeamMember[] = [
   },
   {
     id: "mahesh-hegde",
-    name: "Mahesh Hegde",
+    name: "Gourav Kundalia",
     role: "Project Manager",
     category: "team",
     photo: "/team/mahesh-hegde.jpeg",
