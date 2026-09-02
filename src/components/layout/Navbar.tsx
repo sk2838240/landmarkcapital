@@ -145,8 +145,8 @@ export function Navbar() {
                 <div
                   key={item.label}
                   className="relative"
-                  onMouseEnter={() => isAboutMenu && openDropdown(item.label)}
-                  onMouseLeave={() => isAboutMenu && scheduleClose()}
+                  onMouseEnter={() => item.children && openDropdown(item.label)}
+                  onMouseLeave={() => item.children && scheduleClose()}
                 >
                   {item.children ? (
                     <button
