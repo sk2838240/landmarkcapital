@@ -213,7 +213,10 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 6 }}
                         transition={{ duration: 0.28, ease: easings.outExpo }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 z-[60] pt-3 w-[680px]"
+                        className={cn(
+                          "absolute top-full left-1/2 -translate-x-1/2 z-[60] pt-3",
+                          isAboutMenu ? "w-[680px]" : "w-auto min-w-[200px]"
+                        )}
                         onMouseEnter={() => openDropdown(item.label)}
                         onMouseLeave={scheduleClose}
                       >
