@@ -160,8 +160,7 @@ function FoundersNote() {
               <div className="accent-bar-bronze mb-6" />
               <p className="eyebrow-accent mb-3">Founder's Note</p>
               <p className="text-sm text-slate-blue leading-relaxed max-w-xs">
-                A perspective on how the firm has evolved — and what has stayed the same
-                through every market cycle.
+                Three convictions have shaped how we invest.
               </p>
             </Reveal>
           </div>
@@ -169,14 +168,22 @@ function FoundersNote() {
           <div className="lg:col-span-8">
             <Reveal delay={0.05}>
               <p className="font-display text-[clamp(1.6rem,2.4vw,2.15rem)] leading-[1.35] text-charcoal text-pretty">
-                &ldquo;For more than three decades we have practised one craft — real estate
-                — through every cycle of growth and correction. The vehicle has changed from
-                portfolio management to{" "}
+                In India, returns are rarely lost on spreadsheets &mdash; they are lost in
+                execution. Misaligned incentives destroy value, while short-term structures
+                often fund a long-term opportunity.
+                <br />
+                <br />
+                For over 30 years and across every cycle, our convictions have remained
+                constant. The vehicles have evolved from portfolio management to{" "}
                 <span className="text-crimson-500">
-                  SEBI-registered Category&nbsp;II AIFs
+                  SEBI-registered AIFs
                 </span>{" "}
-                and deal-level structures with family offices. The{" "}
-                <em className="italic">discipline</em> has not.&rdquo;
+                to direct family office structures. The thinking hasn&rsquo;t.
+                <br />
+                <br />
+                <strong className="font-bold">
+                  The consistency is the point.
+                </strong>
               </p>
             </Reveal>
 
