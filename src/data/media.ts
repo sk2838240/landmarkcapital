@@ -18,6 +18,21 @@ export const media = {
     src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80",
     alt: "Institutional commercial architecture, glass and stone façade",
   },
+  /** About-nav mega menu imagery — premium dark cards */
+  aboutMenu: {
+    overview: {
+      src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+      alt: "Institutional architecture — the firm at a glance",
+    },
+    transactions: {
+      src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+      alt: "Boardroom table — a record of executed transactions",
+    },
+    team: {
+      src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
+      alt: "Leadership team in conversation",
+    },
+  },
   manifesto: {
     /** The asset itself — a completed development, the subject of selection and structuring */
     src: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80",

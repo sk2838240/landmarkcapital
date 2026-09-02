@@ -4,8 +4,33 @@ import { AnimatePresence, motion } from "framer-motion";
 import { nav } from "@/data/navigation";
 import { Logo } from "@/components/common/Logo";
 import { ButtonLink } from "@/components/common/Button";
+import { media } from "@/data/media";
 import { cn } from "@/lib/utils";
 import { durations, easings, transitions } from "@/lib/motion";
+
+const aboutCards = [
+  {
+    label: "Overview",
+    to: "/about",
+    cta: "Explore →",
+    src: media.aboutMenu.overview.src,
+    alt: media.aboutMenu.overview.alt,
+  },
+  {
+    label: "Transactions",
+    to: "/transactions",
+    cta: "View Transactions →",
+    src: media.aboutMenu.transactions.src,
+    alt: media.aboutMenu.transactions.alt,
+  },
+  {
+    label: "Team",
+    to: "/leadership",
+    cta: "Meet Our Team →",
+    src: media.aboutMenu.team.src,
+    alt: media.aboutMenu.team.alt,
+  },
+];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -20,7 +45,6 @@ export function Navbar() {
   const onDarkHero = isHome || isAbout;
   const onDark = onDarkHero && !scrolled && !open;
 
-  /** Hover-capable pointers: open on hover. Touch: toggle on click. Avoids hover→click close race. */
   const canHover = () =>
     typeof window !== "undefined" &&
     window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -39,7 +63,7 @@ export function Navbar() {
 
   const scheduleClose = () => {
     clearCloseTimer();
-    closeTimer.current = setTimeout(() => setActiveDropdown(null), 120);
+    closeTimer.current = setTimeout(() => setActiveDropdown(null), 150);
   };
 
   const toggleDropdown = (label: string) => {
@@ -68,7 +92,6 @@ export function Navbar() {
 
   useEffect(() => {
     if (!activeDropdown) return;
-
     const onPointerDown = (e: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setActiveDropdown(null);
@@ -77,7 +100,6 @@ export function Navbar() {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setActiveDropdown(null);
     };
-
     document.addEventListener("mousedown", onPointerDown);
     document.addEventListener("keydown", onKeyDown);
     return () => {
@@ -87,6 +109,8 @@ export function Navbar() {
   }, [activeDropdown]);
 
   useEffect(() => () => clearCloseTimer(), []);
+
+  const isAboutDropdownOpen = activeDropdown === "About";
 
   return (
     <>
@@ -115,12 +139,14 @@ export function Navbar() {
               const isSectionActive = location.pathname.startsWith(item.to);
               const dropdownPanelId = `${menuId}-${item.label.replace(/\s+/g, "-")}`;
 
+              const isAboutMenu = item.label === "About";
+
               return (
                 <div
                   key={item.label}
                   className="relative"
-                  onMouseEnter={() => item.children && openDropdown(item.label)}
-                  onMouseLeave={() => item.children && scheduleClose()}
+                  onMouseEnter={() => isAboutMenu && openDropdown(item.label)}
+                  onMouseLeave={() => isAboutMenu && scheduleClose()}
                 >
                   {item.children ? (
                     <button
@@ -140,7 +166,6 @@ export function Navbar() {
                       aria-controls={dropdownPanelId}
                       onClick={() => {
                         if (canHover()) {
-                          // Already open from mouseenter; keep open (don't toggle closed)
                           openDropdown(item.label);
                           return;
                         }
@@ -184,27 +209,72 @@ export function Navbar() {
                         key={dropdownPanelId}
                         id={dropdownPanelId}
                         role="menu"
-                        initial={{ opacity: 0, y: 6 }}
+                        initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 4 }}
-                        transition={{ duration: durations.fast, ease: easings.outExpo }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 z-[60] pt-2 min-w-[220px]"
+                        exit={{ opacity: 0, y: 6 }}
+                        transition={{ duration: 0.28, ease: easings.outExpo }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 z-[60] pt-3 w-[680px]"
                         onMouseEnter={() => openDropdown(item.label)}
                         onMouseLeave={scheduleClose}
                       >
-                        <div className="bg-paper border border-border shadow-md rounded-[10px] p-1.5">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.to}
-                              to={child.to}
-                              role="menuitem"
-                              className="block px-4 py-2.5 text-sm text-charcoal hover:bg-stone hover:text-crimson-500 focus-visible:bg-stone focus-visible:text-crimson-500 rounded-[8px] transition-colors"
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              {child.label}
-                            </Link>
-                          ))}
-                        </div>
+                        {isAboutMenu ? (
+                          <div className="bg-[#1b2531] border border-white/10 rounded-[20px] p-5 shadow-[0_32px_80px_-20px_rgba(0,0,0,0.7)] overflow-hidden">
+                            <div className="grid grid-cols-3 gap-4">
+                              {aboutCards.map((card) => {
+                                const isActive =
+                                  activeDropdown === "About" &&
+                                  location.pathname === card.to;
+                                return (
+                                  <Link
+                                    key={card.label}
+                                    to={card.to}
+                                    role="menuitem"
+                                    className={cn(
+                                      "group relative flex flex-col overflow-hidden rounded-[16px] aspect-[3/4] transition-all duration-300",
+                                      isActive
+                                        ? "ring-2 ring-bronze/70 scale-[1.02]"
+                                        : "hover:ring-2 hover:ring-bronze/40 hover:scale-[1.02]"
+                                    )}
+                                    onClick={() => setActiveDropdown(null)}
+                                  >
+                                    <motion.img
+                                      src={card.src}
+                                      alt={card.alt}
+                                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
+                                    <div
+                                      className="absolute inset-0 bg-gradient-to-t from-[#0d1821]/95 via-[#0d1821]/40 to-transparent"
+                                    />
+                                    <div className="relative z-10 flex flex-col justify-end h-full p-5">
+                                      <p className="text-[10px] uppercase tracking-[0.2em] text-bronze/80 mb-2">
+                                        {card.label}
+                                      </p>
+                                      <span className="text-[13px] font-medium text-white/90 tracking-wide">
+                                        {card.cta}
+                                      </span>
+                                    </div>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="bg-paper border border-border shadow-md rounded-[10px] p-1.5">
+                            {item.children.map((child) => (
+                              <Link
+                                key={child.to}
+                                to={child.to}
+                                role="menuitem"
+                                className="block px-4 py-2.5 text-sm text-charcoal hover:bg-stone hover:text-crimson-500 focus-visible:bg-stone focus-visible:text-crimson-500 rounded-[8px] transition-colors"
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>
