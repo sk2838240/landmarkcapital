@@ -372,7 +372,7 @@ function Capabilities() {
                   <Icon
                     as={c.icon}
                     size={22}
-                    className="text-charcoal group-hover:text-bronze transition-colors duration-500"
+                    className="text-[#B7353A] group-hover:text-[#B7353A] transition-colors duration-500"
                   />
                 </span>
                 <h3 className="mt-6 font-display text-xl lg:text-[1.35rem] text-charcoal text-balance">
