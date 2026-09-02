@@ -18,7 +18,6 @@ import { SectionHeader } from "@/components/common/SectionHeader";
 import { ButtonLink } from "@/components/common/Button";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { Timeline } from "@/components/sections/Timeline";
-import { Interviews } from "@/components/sections/Interviews";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useInView } from "@/hooks/useInView";
@@ -45,13 +44,13 @@ const principles = [
     icon: MapIcon,
   },
   {
-    title: "Digitalization",
-    body: "Technology has created structural shifts across sectors. We participate in the opportunities created as digitalization reshapes the business landscape.",
+    title: "Aligned Structures",
+    body: "Every deal is built around one question: do our interests and yours point in the same direction? If not, the structure changes until they do.",
     icon: Sparkles,
   },
   {
-    title: "Consumption Pattern",
-    body: "Constant observation of consumer taste and consumption patterns — and their impact on existing and emerging real estate asset classes.",
+    title: "Execution Over Analysis",
+    body: "Models don't build projects. People do. We stay on the ground in every approval, every contractor meeting, every decision that determines whether a return is made or missed.",
     icon: LineChart,
   },
 ];
@@ -135,8 +134,6 @@ export default function About() {
       <section id="timeline">
         <Timeline />
       </section>
-
-      <Interviews />
 
       <Principles />
 
