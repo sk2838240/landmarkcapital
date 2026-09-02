@@ -331,11 +331,11 @@ export function PinnedManifesto() {
               viewport={{ once: true, amount: 0.25 }}
               transition={reduce ? { duration: 0 } : { duration: 0.8, ease: EASE, delay: 0.35 }}
             >
-              Landmark Capital originates and structures select real estate opportunities with a
-              singular focus on investor alignment and long-term value creation rather than
-              predefined fund constraints. Each investment is independently underwritten and
-              presented on its own merits, with an emphasis on institutional discipline, robust
-              structuring, and consistent long-term value creation.
+              You choose which deals you back. We make sure each one is worth choosing.
+              Landmark Capital originates and structures real estate investments one transaction at
+              a time. Every deal is independently underwritten and ring-fenced — you see the
+              asset, the structure, and the exit before you invest. Your capital goes exactly
+              where you put it.
             </motion.p>
           </div>
         </div>

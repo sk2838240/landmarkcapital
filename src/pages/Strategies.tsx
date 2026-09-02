@@ -32,11 +32,19 @@ const strategies = [
     to: "/strategies/lvf",
   },
   {
-    title: "Direct SPV Route",
+    title: "Deal-by-Deal",
     status: "Deal-by-deal",
     reg: "Ring-fenced",
     summary:
       "Deal-by-deal participation without blind pools — investors select opportunities aligned to their mandate.",
+    to: "/strategies/deal-by-deal",
+  },
+  {
+    title: "SPV",
+    status: "Tailored",
+    reg: "Custom",
+    summary:
+      "Standalone structures for developers and co-investors seeking aligned capital partners.",
     to: "/strategies/spv",
   },
 ];

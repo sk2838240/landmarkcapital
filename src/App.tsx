@@ -23,6 +23,7 @@ const NotFound = lazy(() => import("@/pages/NotFound"));
 const MultiplierFund = lazy(() => import("@/pages/funds/MultiplierFund"));
 const OpportunityFund = lazy(() => import("@/pages/funds/OpportunityFund"));
 const LVF = lazy(() => import("@/pages/funds/LVF"));
+const DealByDeal = lazy(() => import("@/pages/funds/DealByDeal"));
 const SPV = lazy(() => import("@/pages/funds/SPV"));
 
 const Blogs = lazy(() => import("@/pages/knowledge/Blogs"));
@@ -66,6 +67,7 @@ export default function App() {
               <Route path="/strategies/multiplier" element={<MultiplierFund />} />
               <Route path="/strategies/opportunity" element={<OpportunityFund />} />
               <Route path="/strategies/lvf" element={<LVF />} />
+              <Route path="/strategies/deal-by-deal" element={<DealByDeal />} />
               <Route path="/strategies/spv" element={<SPV />} />
               <Route path="/opportunities" element={<Opportunities />} />
               <Route path="/transactions" element={<Transactions />} />
@@ -84,7 +86,8 @@ export default function App() {
               <Route path="/funds/multiplier" element={<Navigate to="/strategies/multiplier" replace />} />
               <Route path="/funds/opportunity" element={<Navigate to="/strategies/opportunity" replace />} />
               <Route path="/funds/lvf" element={<Navigate to="/strategies/lvf" replace />} />
-              <Route path="/funds/spv" element={<Navigate to="/strategies/spv" replace />} />
+              <Route path="/funds/spv" element={<Navigate to="/strategies/deal-by-deal" replace />} />
+              <Route path="/strategies/spv-old" element={<Navigate to="/strategies/deal-by-deal" replace />} />
               <Route path="/knowledge" element={<Navigate to="/insights" replace />} />
               <Route path="/knowledge/blogs" element={<Navigate to="/insights" replace />} />
               <Route path="/knowledge/blogs/:slug" element={<LegacyBlogRedirect />} />

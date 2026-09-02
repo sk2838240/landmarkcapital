@@ -10,19 +10,19 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const segments = [
   {
     title: "Indian Investors",
-    body: "Family offices, ultra-high-net-worth individuals, corporates, institutions, and investment managers seeking curated access to India's real estate opportunities through SEBI-regulated AIFs, managed accounts, and bespoke investment structures.",
+    body: "Direct access to India's best real estate. For family offices, HNIs, and institutions through SEBI-registered structures and bespoke investment structures.",
     icon: Building2,
     accent: "from-bronze/30 via-bronze/10 to-transparent",
   },
   {
     title: "Global Investors",
-    body: "Global family offices, principal investors, business owners, institutional allocators, and offshore capital—including the Indian diaspora, Middle Eastern, and Asian investors—looking for disciplined exposure to India's real estate markets. We provide end-to-end structuring, FEMA compliance, tax-efficient execution, and ongoing investment management.",
+    body: "India's growth story, without the complexity. For global family offices, diaspora capital, and offshore allocators. We handle structuring, FEMA, and execution end to end.",
     icon: Globe2,
     accent: "from-slate-blue/30 via-slate-blue/10 to-transparent",
   },
   {
     title: "Strategic Partners",
-    body: "Developers, asset owners, corporates, co-investors, and institutional partners collaborating with us on club deals, joint ventures, platform investments, and balance-sheet partnerships. We seek long-term relationships built on aligned capital, execution certainty, and shared value creation.",
+    body: "Aligned capital. Long-term relationships. For developers and asset owners who want a capital partner, not a transactional lender.",
     icon: Network,
     accent: "from-crimson-500/20 via-crimson-500/5 to-transparent",
   },
