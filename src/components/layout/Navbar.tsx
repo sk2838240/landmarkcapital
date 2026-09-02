@@ -247,8 +247,25 @@ export function Navbar() {
                                     <div
                                       className="absolute inset-0 bg-gradient-to-t from-[#0d1821]/95 via-[#0d1821]/40 to-transparent"
                                     />
+                                    <div
+                                      aria-hidden
+                                      className="pointer-events-none absolute -inset-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                      style={{
+                                        background:
+                                          "linear-gradient(120deg, transparent 0%, transparent 30%, rgba(183,53,58,0.55) 45%, rgba(232,90,100,0.7) 50%, rgba(183,53,58,0.55) 55%, transparent 70%, transparent 100%)",
+                                        mixBlendMode: "screen",
+                                      }}
+                                    />
+                                    <div
+                                      aria-hidden
+                                      className="pointer-events-none absolute inset-0 rounded-[16px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                      style={{
+                                        background:
+                                          "radial-gradient(60% 80% at 50% 100%, rgba(183,53,58,0.45) 0%, transparent 70%)",
+                                      }}
+                                    />
                                     <div className="relative z-10 flex flex-col justify-end h-full p-5">
-                                      <p className="text-[10px] uppercase tracking-[0.2em] text-bronze/80 mb-2">
+                                      <p className="text-[10px] uppercase tracking-[0.2em] text-bronze/80 mb-2 transition-colors duration-300 group-hover:text-[#E85A64]">
                                         {card.label}
                                       </p>
                                       <span className="text-[13px] font-medium text-white/90 tracking-wide">
