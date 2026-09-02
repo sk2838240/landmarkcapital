@@ -23,7 +23,6 @@ export function Interviews() {
           align="split"
           eyebrow="Leadership insights"
           title="In conversation with the people behind the platform."
-          description="A recurring series of long-form interviews with Landmark Capital's investment committee — market perspectives, portfolio thinking and the discipline that underwrites every deal."
         />
 
         <div className="max-w-4xl">
