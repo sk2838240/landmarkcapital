@@ -11,18 +11,21 @@ const segments = [
   {
     title: "Indian Investors",
     body: "Direct access to India's best real estate. For family offices, HNIs, and institutions through SEBI-registered structures and bespoke investment structures.",
+    lead: "Direct access to India's best real estate.",
     icon: Building2,
     accent: "from-bronze/30 via-bronze/10 to-transparent",
   },
   {
     title: "Global Investors",
     body: "India's growth story, without the complexity. For global family offices, diaspora capital, and offshore allocators. We handle structuring, FEMA, and execution end to end.",
+    lead: "India's growth story, without the complexity.",
     icon: Globe2,
     accent: "from-slate-blue/30 via-slate-blue/10 to-transparent",
   },
   {
     title: "Strategic Partners",
     body: "Aligned capital. Long-term relationships. For developers and asset owners who want a capital partner, not a transactional lender.",
+    lead: "Aligned capital. Long-term relationships.",
     icon: Network,
     accent: "from-crimson-500/20 via-crimson-500/5 to-transparent",
   },
@@ -100,7 +103,11 @@ function SegmentCard({
       <h3 className="font-display text-2xl text-charcoal mb-4 transition-colors duration-300 group-hover/seg:text-crimson-500">
         {s.title}
       </h3>
-      <p className="text-slate leading-relaxed max-w-[42ch]">{s.body}</p>
+      <p className="text-slate leading-relaxed max-w-[42ch]">
+        <strong className="font-bold">{s.lead}</strong>
+        <br />
+        {s.body.replace(`${s.lead} `, "")}
+      </p>
 
       <div className="mt-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-bronze font-medium">
         <span className="inline-block h-px w-6 bg-bronze transition-all duration-500 group-hover/seg:w-10" />
