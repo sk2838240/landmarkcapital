@@ -34,5 +34,4 @@ export const nav: NavItem[] = [
       { label: "FAQ", to: "/insights/faq" },
     ],
   },
-  { label: "Contact", to: "/contact" },
 ];

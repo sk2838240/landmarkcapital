@@ -26,10 +26,10 @@ export const portfolioStats: Stat[] = [
   },
   {
     label: "Plotting",
-    value: "0.5",
+    value: "2",
     suffix: "M+",
     decimals: 1,
-    numericTarget: 0.5,
+    numericTarget: 2,
     description: "Square feet in land development with exceptional growth potential",
   },
 ];
