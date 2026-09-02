@@ -92,20 +92,15 @@ export function Timeline() {
                   aria-hidden
                 />
 
-                <div className="col-start-2 bg-paper border border-border rounded-[14px] p-7 lg:p-8 flex gap-5 transition-all duration-300">
-                  <div className="timeline-icon shrink-0 w-14 h-14 rounded-full bg-stone grid place-items-center text-crimson-500 transition-colors duration-300 text-2xl">
-                    {item.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-display text-[20px] lg:text-[22px] font-medium leading-snug text-charcoal mb-2.5 transition-colors duration-300">
-                      {item.title}
-                    </h3>
-                    <p className="text-[14px] leading-relaxed text-slate mb-4 max-w-[60ch] transition-colors duration-300">
-                      {item.body}
-                    </p>
-                    <div className="timeline-tag flex items-center gap-2.5 text-[11px] font-bold tracking-[0.15em] uppercase text-bronze transition-colors duration-300 before:content-[''] before:w-5 before:h-0.5 before:bg-bronze before:transition-colors before:duration-300">
-                      {item.tag}
-                    </div>
+                <div className="col-start-2 bg-paper border border-border rounded-[14px] p-7 lg:p-8 transition-all duration-300">
+                  <h3 className="font-display text-[20px] lg:text-[22px] font-medium leading-snug text-charcoal mb-2.5 transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="text-[14px] leading-relaxed text-slate mb-4 max-w-[60ch] transition-colors duration-300">
+                    {item.body}
+                  </p>
+                  <div className="timeline-tag flex items-center gap-2.5 text-[11px] font-bold tracking-[0.15em] uppercase text-bronze transition-colors duration-300 before:content-[''] before:w-5 before:h-0.5 before:bg-bronze before:transition-colors before:duration-300">
+                    {item.tag}
                   </div>
                 </div>
               </article>
@@ -141,7 +136,6 @@ export function Timeline() {
       </div>
 
       <style>{`
-        .timeline-item .timeline-icon { transition: background-color .35s ease, color .35s ease; }
         .timeline-item.is-active > div:first-of-type > span {
           color: var(--color-crimson-500, #9E2B25);
           transform: scale(1.08);
@@ -151,9 +145,6 @@ export function Timeline() {
           width: 15px; height: 15px; left: calc(2.25rem - 7.5px);
           background: var(--color-crimson-500, #9E2B25);
           box-shadow: 0 0 0 5px rgba(158,43,37,0.16);
-        }
-        .timeline-item.is-active .timeline-icon {
-          background: rgba(255,255,255,0.16);
         }
         .timeline-item.is-active > div:last-child {
           background: linear-gradient(135deg,#B23A31,#8E241E);
