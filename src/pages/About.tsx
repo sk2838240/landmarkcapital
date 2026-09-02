@@ -167,7 +167,7 @@ function FoundersNote() {
 
           <div className="lg:col-span-8">
             <Reveal delay={0.05}>
-              <p className="text-[12px] leading-relaxed text-charcoal text-pretty">
+              <p className="text-[16px] leading-relaxed text-charcoal text-pretty">
                 In India, returns are rarely lost on spreadsheets &mdash; they are lost in
                 execution. Misaligned incentives destroy value, while short-term structures
                 often fund a long-term opportunity.
