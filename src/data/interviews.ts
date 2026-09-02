@@ -58,9 +58,9 @@ export const interviews: Interview[] = [
     eyebrow: "Investor letter",
     title: "Risk before velocity: how we underwrite.",
     description:
-      "Rajneesh Pathak on Landmark's underwriting philosophy — why capital preservation guides every decision, and how deal-level SPVs give investors visibility no pooled fund can match.",
+      "Ravindra Gupta on Landmark's underwriting philosophy — why capital preservation guides every decision, and how deal-level SPVs give investors visibility no pooled fund can match.",
     speaker: {
-      name: "Rajneesh Pathak",
+      name: "Ravindra Gupta",
       role: "Partner",
     },
     duration: "15:08",

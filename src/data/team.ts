@@ -27,7 +27,7 @@ export const team: TeamMember[] = [
   },
   {
     id: "ravindra-gupta",
-    name: "Rajneesh Pathak",
+    name: "Ravindra Gupta",
     role: "Director — Legal & Compliance",
     category: "leadership",
     photo: "/team/ravindra-gupta.jpeg",
