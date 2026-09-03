@@ -33,7 +33,7 @@ export function Timeline() {
   }, []);
 
   return (
-    <section className="section-pad surface-stone">
+    <section className="section-pad bg-white">
       <div className="container-tb">
         <div className="grid gap-12 lg:gap-16 lg:flex lg:items-start">
           {/* Left rail — sticky on lg+ */}

@@ -63,7 +63,7 @@ export function ContactCTA() {
   };
 
   return (
-    <section className="section-pad surface-stone border-t border-border relative overflow-hidden">
+    <section className="section-pad border-t border-border relative overflow-hidden" style={{ backgroundColor: "#EFECE7" }}>
       {/* Warm decorative glow */}
       <div
         aria-hidden

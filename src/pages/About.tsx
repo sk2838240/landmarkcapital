@@ -223,7 +223,7 @@ function GlanceFigure({
   return (
     <span
       ref={ref}
-      className="stat-figure font-display text-white text-[clamp(2.75rem,5vw,4.25rem)] leading-none tracking-tight tabular-nums"
+      className="stat-figure font-display text-charcoal text-[clamp(2.75rem,5vw,4.25rem)] leading-none tracking-tight tabular-nums"
     >
       {prefix}
       {value}
@@ -236,28 +236,25 @@ function AtAGlance() {
   return (
     <section
       className="relative section-pad overflow-hidden"
-      style={{
-        background:
-          "radial-gradient(80% 60% at 100% 0%, rgba(179,150,100,0.18) 0%, transparent 55%), linear-gradient(180deg, #14202b 0%, #101820 100%)",
-      }}
+      style={{ backgroundColor: "#EFECE7" }}
     >
       <div className="relative container-tb">
         <div className="grid lg:grid-cols-12 gap-10 items-end mb-14">
           <div className="lg:col-span-6">
             <Reveal>
               <div className="w-10 h-[2px] bg-bronze mb-5" />
-              <p className="text-[11px] uppercase tracking-[0.22em] text-bronze mb-5">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-crimson-500 mb-5">
                 Firm at a glance
               </p>
-              <h2 className="font-display text-white text-[clamp(2rem,3.6vw,3rem)] leading-[1.08] tracking-tight text-balance">
+              <h2 className="font-display text-charcoal text-[clamp(2rem,3.6vw,3rem)] leading-[1.08] tracking-tight text-balance">
                 Three decades. One craft.{" "}
-                <em className="italic text-bronze">Institutional scale.</em>
+                <em className="italic text-crimson-500">Institutional scale.</em>
               </h2>
             </Reveal>
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
             <Reveal delay={0.05}>
-              <p className="text-white/75 leading-relaxed">
+              <p className="text-slate leading-relaxed">
                 Selected metrics from the platform &mdash; a record of disciplined
                 origination, careful underwriting and aligned execution across India.
               </p>
@@ -265,12 +262,12 @@ function AtAGlance() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4 border-t border-white/15 pt-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4 border-t border-border pt-10">
           {glance.map((g, i) => (
             <Reveal key={g.label} delay={i * 0.05}>
-              <div className="pr-4 border-r last:border-r-0 border-white/10">
+              <div className="pr-4 border-r last:border-r-0 border-border">
                 <GlanceFigure target={g.target} prefix={g.prefix} suffix={g.suffix} />
-                <p className="mt-3 text-xs uppercase tracking-[0.16em] text-white/60 max-w-[16ch] leading-relaxed">
+                <p className="mt-3 text-xs uppercase tracking-[0.16em] text-slate-blue max-w-[16ch] leading-relaxed">
                   {g.label}
                 </p>
               </div>
@@ -288,7 +285,7 @@ function AtAGlance() {
 
 function Principles() {
   return (
-    <section className="section-pad surface-stone border-t border-border">
+    <section className="section-pad border-t border-border" style={{ backgroundColor: "#EFECE7" }}>
       <div className="container-tb">
         <SectionHeader
           align="split"
@@ -404,7 +401,7 @@ function Process() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="section-pad surface-stone border-t border-border">
+    <section className="section-pad border-t border-border" style={{ backgroundColor: "#EFECE7" }}>
       <div className="container-tb">
         <SectionHeader
           align="split"

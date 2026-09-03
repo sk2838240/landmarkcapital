@@ -21,14 +21,13 @@ function scrollToHash(e: MouseEvent<HTMLAnchorElement>, hash: string) {
 }
 
 /**
- * Editorial About hero — an elevated interpretation of the client reference.
+ * Editorial About hero — light editorial layout on #EFECE7 surface.
  *
  * Composition:
- *  · Dark midnight surface with layered radial gradients + film grain
+ *  · Light #EFECE7 background
  *  · Row 1 — eyebrow + accent bar + serif display headline + narrative
- *  · Row 2 — three "portal" cards on the left (Overview / Life at Landmark /
- *    Careers) and an editorial "Explore More" rail on the right with
- *    animated arrow links and a Contact Us CTA
+ *  · Row 2 — three "portal" cards on the left and an editorial "Explore More"
+ *    rail on the right with animated arrow links and a Contact Us CTA
  *  · Bottom rule — SEBI / Deal-by-Deal / Pan-India trust marks
  *
  * All cards use a cinematic scrim and a ken-burns micro-zoom on hover.
@@ -87,29 +86,15 @@ export function AboutHero() {
   return (
     <section
       className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-20"
-      style={{
-        background:
-          "radial-gradient(120% 90% at 100% 0%, rgba(179,150,100,0.12) 0%, transparent 55%), " +
-          "radial-gradient(80% 60% at 0% 100%, rgba(47,68,88,0.55) 0%, transparent 60%), " +
-          "linear-gradient(180deg, #1a242e 0%, #14202b 60%, #101820 100%)",
-      }}
+      style={{ backgroundColor: "#EFECE7" }}
     >
-      {/* subtle noise / paper grain */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-        }}
-      />
-      {/* faint bronze corner ornament */}
+      {/* warm light wash for depth */}
       <div
         aria-hidden
         className="pointer-events-none absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(179,150,100,0.22) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(179,150,100,0.18) 0%, transparent 65%)",
         }}
       />
 
@@ -118,7 +103,7 @@ export function AboutHero() {
         <Reveal>
           <div className="flex items-center gap-4 mb-6">
             <span className="w-10 h-[2px] bg-bronze" aria-hidden />
-            <p className="text-[11px] uppercase tracking-[0.22em] text-bronze font-medium">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-crimson-500 font-medium">
               About Landmark
             </p>
           </div>
@@ -127,15 +112,15 @@ export function AboutHero() {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-16 lg:mb-20">
           <div className="lg:col-span-8">
             <Reveal delay={0.05}>
-              <h1 className="font-display font-normal text-white text-balance leading-[1.02] tracking-[-0.03em] text-[clamp(2.5rem,6.4vw,5.25rem)]">
+              <h1 className="font-display font-normal text-charcoal text-balance leading-[1.02] tracking-[-0.03em] text-[clamp(2.5rem,6.4vw,5.25rem)]">
                 Institutional real estate,{" "}
-                <em className="italic text-bronze/95">refined</em> through every cycle.
+                <em className="italic text-crimson-500">refined</em> through every cycle.
               </h1>
             </Reveal>
           </div>
           <div className="lg:col-span-4 lg:pb-2">
             <Reveal delay={0.12}>
-              <p className="text-white/75 leading-relaxed max-w-md text-[15px] lg:text-base">
+              <p className="text-slate leading-relaxed max-w-md text-[15px] lg:text-base">
                 A SEBI-registered Alternative Investment Fund manager operating two real
                 estate funds and a deal-by-deal transaction platform across India — built on
                 three decades of disciplined execution.
@@ -161,19 +146,19 @@ export function AboutHero() {
           <aside className="lg:col-span-4 lg:pl-2">
             <Reveal delay={0.08}>
               <div className="relative">
-                <p className="text-[11px] uppercase tracking-[0.22em] text-bronze/80 mb-3">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-crimson-500 mb-3">
                   Continue
                 </p>
-                <h2 className="font-display text-white text-[clamp(2rem,3.4vw,2.75rem)] leading-[1.05] tracking-tight mb-8">
-                  Explore <em className="italic text-bronze">More</em>
+                <h2 className="font-display text-charcoal text-[clamp(2rem,3.4vw,2.75rem)] leading-[1.05] tracking-tight mb-8">
+                  Explore <em className="italic text-crimson-500">More</em>
                 </h2>
               </div>
             </Reveal>
 
-            <ul className="border-t border-white/12">
+            <ul className="border-t border-border">
               {exploreLinks.map((l, i) => (
                 <Reveal key={l.label} delay={0.12 + i * 0.05}>
-                  <li className="border-b border-white/12">
+                  <li className="border-b border-border">
                     <ExploreLink to={l.to} label={l.label} />
                   </li>
                 </Reveal>
@@ -183,10 +168,10 @@ export function AboutHero() {
             <Reveal delay={0.28}>
               <Link
                 to="/contact"
-                className="group mt-8 inline-flex items-center gap-3 h-12 pl-6 pr-5 rounded-full bg-white text-charcoal font-medium text-[13px] tracking-[0.08em] uppercase transition-all duration-300 hover:bg-bronze hover:text-white shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]"
+                className="group mt-8 inline-flex items-center gap-3 h-12 pl-6 pr-5 rounded-full bg-crimson-500 text-white font-medium text-[13px] tracking-[0.08em] uppercase transition-all duration-300 hover:bg-charcoal shadow-[0_10px_30px_-10px_rgba(183,53,58,0.45)]"
               >
                 Contact Us
-                <span className="grid place-items-center w-7 h-7 rounded-full bg-charcoal text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:bg-white group-hover:text-bronze">
+                <span className="grid place-items-center w-7 h-7 rounded-full bg-white/20 text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:bg-white group-hover:text-crimson-500">
                   <Icon as={ArrowRight} size={14} strokeWidth={1.75} />
                 </span>
               </Link>
@@ -196,12 +181,12 @@ export function AboutHero() {
 
         {/* Bottom — trust marks strip */}
         <Reveal delay={0.3}>
-          <div className="mt-16 lg:mt-20 pt-6 border-t border-white/12">
+          <div className="mt-16 lg:mt-20 pt-6 border-t border-border">
             <div className="flex flex-wrap items-center gap-x-10 gap-y-3">
               {trustMarks.map((mark) => (
                 <span
                   key={mark}
-                  className="text-[11px] uppercase tracking-[0.18em] text-white/60"
+                  className="text-[11px] uppercase tracking-[0.18em] text-slate"
                 >
                   {mark}
                 </span>
@@ -231,8 +216,8 @@ function PortalCard({ portal, reduce }: { portal: Portal; reduce: boolean }) {
       {...wrapperProps}
       className={cn(
         "group relative block aspect-[4/5] overflow-hidden rounded-[14px] bg-charcoal",
-        "ring-1 ring-white/10 transition-all duration-500",
-        "hover:ring-bronze/60 hover:shadow-[0_30px_80px_-40px_rgba(179,150,100,0.55)]",
+        "ring-1 ring-border transition-all duration-500",
+        "hover:ring-crimson-500/50 hover:shadow-[0_30px_80px_-40px_rgba(183,53,58,0.45)]",
       )}
     >
       {/* image with ken-burns zoom */}
@@ -247,19 +232,19 @@ function PortalCard({ portal, reduce }: { portal: Portal; reduce: boolean }) {
         transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
       />
 
-      {/* cinematic scrim */}
+      {/* cinematic scrim — light variant */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(20,26,32,0) 0%, rgba(20,26,32,0.15) 45%, rgba(20,26,32,0.85) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 45%, rgba(0,0,0,0.75) 100%)",
         }}
       />
       {/* top-left index chip */}
-      <div className="absolute top-3.5 left-3.5 flex items-center gap-2 pl-2 pr-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-        <span className="w-1.5 h-1.5 rounded-full bg-bronze" aria-hidden />
-        <span className="text-[10px] font-mono tracking-[0.14em] text-white/85">
+      <div className="absolute top-3.5 left-3.5 flex items-center gap-2 pl-2 pr-3 py-1 rounded-full bg-white/90 backdrop-blur-md border border-white/40">
+        <span className="w-1.5 h-1.5 rounded-full bg-crimson-500" aria-hidden />
+        <span className="text-[10px] font-mono tracking-[0.14em] text-charcoal">
           {portal.index}
         </span>
       </div>
@@ -269,12 +254,12 @@ function PortalCard({ portal, reduce }: { portal: Portal; reduce: boolean }) {
         <h3 className="font-display text-white text-2xl lg:text-[1.75rem] leading-tight text-balance">
           {portal.label}
         </h3>
-        <div className="mt-3 flex items-center gap-2 text-white/90">
+        <div className="mt-3 flex items-center gap-2 text-white">
           <span className="text-[11px] uppercase tracking-[0.16em]">{portal.cta}</span>
           <span
             className={cn(
-              "inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm",
-              "transition-all duration-300 group-hover:bg-bronze group-hover:border-bronze group-hover:translate-x-1",
+              "inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/15 border border-white/30 backdrop-blur-sm",
+              "transition-all duration-300 group-hover:bg-crimson-500 group-hover:border-crimson-500 group-hover:translate-x-1",
             )}
           >
             <Icon as={ArrowUpRight} size={12} strokeWidth={1.75} className="text-white" />
@@ -285,7 +270,7 @@ function PortalCard({ portal, reduce }: { portal: Portal; reduce: boolean }) {
       {/* bottom accent bar reveal on hover */}
       <span
         aria-hidden
-        className="absolute left-5 right-5 bottom-0 h-[2px] bg-bronze origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
+        className="absolute left-5 right-5 bottom-0 h-[2px] bg-crimson-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
       />
     </Wrapper>
   );
@@ -304,17 +289,17 @@ function ExploreLink({ to, label }: { to: string; label: string }) {
   return (
     <Wrapper
       {...wrapperProps}
-      className="group flex items-center justify-between gap-6 py-4 lg:py-[18px] text-white/90 hover:text-white transition-colors"
+      className="group flex items-center justify-between gap-6 py-4 lg:py-[18px] text-charcoal hover:text-crimson-500 transition-colors"
     >
       <span className="font-display text-[1.35rem] lg:text-2xl leading-tight">
         {label}
       </span>
       <span
         aria-hidden
-        className="relative w-9 h-9 shrink-0 rounded-full grid place-items-center border border-white/20 transition-all duration-300 group-hover:border-bronze group-hover:bg-bronze/15"
+        className="relative w-9 h-9 shrink-0 rounded-full grid place-items-center border border-border transition-all duration-300 group-hover:border-crimson-500 group-hover:bg-crimson-500/10"
       >
         <ArrowUpRight
-          className="w-4 h-4 text-white/85 transition-transform duration-300 group-hover:text-bronze group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          className="w-4 h-4 text-charcoal transition-transform duration-300 group-hover:text-crimson-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
           strokeWidth={1.5}
         />
       </span>
