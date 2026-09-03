@@ -125,8 +125,8 @@ export function Navbar() {
         )}
       >
         <div className="container-tb relative z-50 flex items-center justify-between h-[72px] overflow-visible">
-          <Link to="/" className="z-10" aria-label="Landmark Capital home">
-            <Logo onDark={onDark} />
+          <Link to="/" className="z-10 inline-flex items-center rounded-xl bg-white px-3 py-2 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35)] ring-1 ring-black/5" aria-label="Landmark Capital home">
+            <Logo className="h-7 w-auto lg:h-8" />
           </Link>
 
           <nav
