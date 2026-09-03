@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
+import { ServicesStatement } from "@/components/sections/ServicesStatement";
 import { PinnedManifesto } from "@/components/sections/PinnedManifesto";
 import { About } from "@/components/sections/About";
 import { WhatWeDo } from "@/components/sections/WhatWeDo";
@@ -20,6 +21,7 @@ export default function Home() {
         raw
       />
       <Hero />
+      <ServicesStatement />
       <PinnedManifesto />
       <About />
       <WhatWeDo />
