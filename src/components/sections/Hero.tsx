@@ -1,9 +1,11 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/common/Reveal";
 import { ButtonLink } from "@/components/common/Button";
 import { Icon } from "@/components/common/Icon";
 import { media } from "@/data/media";
+import { cn } from "@/lib/utils";
 
 const trustMarks = ["SEBI-Registered AIF", "Deal-by-Deal", "Pan-India", "Patient Capital"];
 
@@ -28,6 +30,21 @@ const taglinePhrase: Variants = {
 
 export function Hero() {
   const reduce = useReducedMotion();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    // Some browsers require an explicit play() call to start muted autoplay.
+    if (!reduce) {
+      v.play().catch(() => {
+        // Autoplay blocked or source missing — fall back to poster image.
+        setVideoFailed(true);
+      });
+    }
+  }, [reduce]);
 
   // CTA entrance: each button's box eases in first, then its label — and the
   // two buttons follow one after another. `custom` sets each element's start delay.
@@ -55,11 +72,33 @@ export function Hero() {
         <img
           src={media.hero.src}
           alt={media.hero.alt}
-          className="h-full w-full object-cover scale-[1.02]"
+          className={cn(
+            "h-full w-full object-cover scale-[1.02] transition-opacity duration-700",
+            videoReady && !videoFailed ? "opacity-0" : "opacity-100"
+          )}
           fetchPriority="high"
           loading="eager"
           decoding="async"
         />
+        {!videoFailed && (
+          <video
+            ref={videoRef}
+            src="/landmark-video.mp4"
+            poster={media.hero.src}
+            muted
+            loop
+            playsInline
+            autoPlay
+            preload="auto"
+            aria-hidden
+            onCanPlay={() => setVideoReady(true)}
+            onError={() => setVideoFailed(true)}
+            className={cn(
+              "absolute inset-0 h-full w-full object-cover scale-[1.02] transition-opacity duration-700",
+              videoReady ? "opacity-100" : "opacity-0"
+            )}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0f1820] via-[#1c2a36]/70 to-[#2f4458]/25" />
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/70 via-charcoal/25 to-transparent" />
         <div className="absolute inset-0 bg-black/15" />
