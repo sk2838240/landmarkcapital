@@ -19,7 +19,7 @@ export function ServicesStatement() {
   const inView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section className="section-pad surface-ivory border-y border-border">
+    <section className="section-pad border-y border-border" style={{ backgroundColor: "#EFECE7" }}>
       <div className="container-tb">
         <div ref={ref} className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left column — main statement */}
