@@ -83,7 +83,7 @@ export function Hero() {
         {!videoFailed && (
           <video
             ref={videoRef}
-            src="/landmark-f-video.mp4"
+            src="/landmark-video.mp4"
             poster={media.hero.src}
             muted
             loop
