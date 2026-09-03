@@ -34,7 +34,7 @@ export const interviews: Interview[] = [
       role: "Founder & Managing Partner",
     },
     duration: "18:42",
-    thumbnail: "/media/aj-video-poster.jpg",
+    thumbnail: "/media/landmark-vid-comp-poster.jpg",
     thumbnailAlt: "Ashish Joshi speaking during a filmed interview",
     videoUrl: "/landmark-vid-comp.mp4",
   },
