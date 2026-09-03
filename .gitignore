@@ -16,6 +16,5 @@ tsconfig.tsbuildinfo
 
 # Large local media (not tracked in git; deploy via CDN/hosting provider)
 public/landmark-video.mp4
-public/landmark-f-video.mp4
 public/aj-video.mp4
 public/aj-video-poster.jpg

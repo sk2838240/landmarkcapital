@@ -36,7 +36,7 @@ export const interviews: Interview[] = [
     duration: "18:42",
     thumbnail: "/media/aj-video-poster.jpg",
     thumbnailAlt: "Ashish Joshi speaking during a filmed interview",
-    videoUrl: "/aj-video.mp4",
+    videoUrl: "/landmark-f-video.mp4",
   },
   {
     id: "warehousing-thesis",
