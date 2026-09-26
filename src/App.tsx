@@ -29,6 +29,7 @@ const SPV = lazy(() => import("@/pages/funds/SPV"));
 const Blogs = lazy(() => import("@/pages/knowledge/Blogs"));
 const BlogDetail = lazy(() => import("@/pages/knowledge/BlogDetail"));
 const FAQ = lazy(() => import("@/pages/knowledge/FAQ"));
+const NewsRoom = lazy(() => import("@/pages/NewsRoom"));
 
 function PageFallback() {
   return (
@@ -73,6 +74,7 @@ export default function App() {
               <Route path="/transactions" element={<Transactions />} />
               <Route path="/transactions/:id" element={<TransactionDetail />} />
               <Route path="/leadership" element={<Leadership />} />
+              <Route path="/newsroom" element={<NewsRoom />} />
               <Route path="/insights" element={<Blogs />} />
               <Route path="/insights/faq" element={<FAQ />} />
               <Route path="/insights/:slug" element={<BlogDetail />} />

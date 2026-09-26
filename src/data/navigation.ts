@@ -12,7 +12,7 @@ export const nav: NavItem[] = [
     to: "/about",
     children: [
       { label: "Overview", to: "/about" },
-      { label: "Transactions", to: "/transactions" },
+      { label: "News Room", to: "/newsroom" },
       { label: "Team", to: "/leadership" },
     ],
   },

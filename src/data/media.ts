@@ -32,6 +32,10 @@ export const media = {
       src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
       alt: "Leadership team in conversation",
     },
+    newsroom: {
+      src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80",
+      alt: "Editorial desk with documents and notes — the Landmark news room",
+    },
   },
   /** Strategies-nav mega menu imagery — premium dark cards */
   strategiesMenu: {

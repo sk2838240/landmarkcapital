@@ -17,11 +17,11 @@ const aboutCards = [
     alt: media.aboutMenu.overview.alt,
   },
   {
-    label: "Transactions",
-    to: "/transactions",
-    cta: "View Transactions →",
-    src: media.aboutMenu.transactions.src,
-    alt: media.aboutMenu.transactions.alt,
+    label: "News Room",
+    to: "/newsroom",
+    cta: "Read Articles →",
+    src: media.aboutMenu.newsroom.src,
+    alt: media.aboutMenu.newsroom.alt,
   },
   {
     label: "Team",

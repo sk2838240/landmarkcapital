@@ -20,6 +20,7 @@ const footerNav: { title: string; links: FooterLinkItem[] }[] = [
     links: [
       { label: "About", to: "/about" },
       { label: "Leadership", to: "/leadership" },
+      { label: "News Room", to: "/newsroom" },
       { label: "Opportunities", to: "/opportunities" },
       { label: "Transactions", to: "/transactions" },
       { label: "Contact", to: "/contact" },
