@@ -4,29 +4,6 @@ import { Logo } from "@/components/common/Logo";
 import { Reveal } from "@/components/common/Reveal";
 import { Icon } from "@/components/common/Icon";
 
-const regulatoryDetails = [
-  { label: "Investment Manager", value: "Landmark Capital Advisors" },
-  { label: "SEBI Reg. — Multiplier Fund", value: "IN/AIF2/21-22/0928" },
-  { label: "SEBI Reg. — Opportunity Fund", value: "IN/AIF2/13-14/0068" },
-  { label: "Category", value: "II Alternative Investment Fund" },
-];
-
-const contactRegulatory = [
-  {
-    label: "Compliance Officer",
-    name: "Ravindra Gupta",
-    email: "compliance@landmarkcapital.in",
-  },
-  {
-    label: "Investor Grievance",
-    name: "Grievance Redressal Cell",
-    email: "grievance@landmarkcapital.in",
-  },
-];
-
-const disclaimer =
-  "This website is intended for informational purposes only and does not constitute an offer or solicitation to invest in any scheme managed by Landmark Capital. Investments in Alternative Investment Funds are subject to market, liquidity and regulatory risks and long lock-in periods. Investors should read the Private Placement Memorandum and Contribution Agreement carefully before making any investment decision. Past performance is not indicative of future results.";
-
 export function Footer() {
   return <HomeFooter />;
 }
@@ -46,6 +23,7 @@ const footerNav: { title: string; links: FooterLinkItem[] }[] = [
       { label: "Opportunities", to: "/opportunities" },
       { label: "Transactions", to: "/transactions" },
       { label: "Contact", to: "/contact" },
+      { label: "SmartODR Portal", href: "https://smartodr.in/login", external: true },
     ],
   },
   {
@@ -205,60 +183,6 @@ function HomeFooter() {
                 </nav>
               ))}
             </div>
-          </div>
-        </Reveal>
-
-        {/* Regulatory panel */}
-        <Reveal>
-          <div className="mt-16 rounded-2xl border border-white/10 bg-white/[0.03] p-8 lg:p-10">
-            <h3 className="eyebrow-accent mb-6">Regulatory information</h3>
-            <dl className="grid grid-cols-1 gap-x-8 gap-y-5 md:grid-cols-2 lg:grid-cols-4">
-              {regulatoryDetails.map((r) => (
-                <div key={r.label}>
-                  <dt className="mb-1.5 text-[10px] uppercase tracking-[0.14em] text-white/50">
-                    {r.label}
-                  </dt>
-                  <dd className="font-mono text-xs leading-relaxed tabular-nums text-white/85">
-                    {r.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-
-            <div className="mt-8 grid grid-cols-1 gap-8 border-t border-white/10 pt-8 md:grid-cols-3">
-              {contactRegulatory.map((c) => (
-                <div key={c.label}>
-                  <p className="mb-1.5 text-[10px] uppercase tracking-[0.14em] text-white/50">
-                    {c.label}
-                  </p>
-                  <p className="text-sm text-white/85">{c.name}</p>
-                  <a
-                    href={`mailto:${c.email}`}
-                    className="text-xs text-white/60 transition-colors hover:text-white"
-                  >
-                    {c.email}
-                  </a>
-                </div>
-              ))}
-              <div>
-                <p className="mb-1.5 text-[10px] uppercase tracking-[0.14em] text-white/50">
-                  Dispute Resolution
-                </p>
-                <p className="text-sm text-white/85">SEBI SmartODR</p>
-                <a
-                  href="https://smartodr.in/login"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-xs text-white/60 transition-colors hover:text-white"
-                >
-                  smartodr.in
-                </a>
-              </div>
-            </div>
-
-            <p className="mt-8 max-w-4xl text-[11px] leading-relaxed text-white/45">
-              {disclaimer}
-            </p>
           </div>
         </Reveal>
 
