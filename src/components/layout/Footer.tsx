@@ -54,8 +54,7 @@ const footerNav: { title: string; links: FooterLinkItem[] }[] = [
       { label: "Multiplier Fund", to: "/strategies/multiplier" },
       { label: "Opportunity Fund", to: "/strategies/opportunity" },
       { label: "LVF", to: "/strategies/lvf" },
-      { label: "Deal-by-Deal", to: "/strategies/deal-by-deal" },
-      { label: "SPV", to: "/strategies/spv" },
+      { label: "Managed Accounts", to: "/strategies/deal-by-deal" },
     ],
   },
   {
