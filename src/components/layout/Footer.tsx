@@ -49,10 +49,15 @@ const footerNav: { title: string; links: FooterLinkItem[] }[] = [
     ],
   },
   {
-    title: "Strategies",
+    title: "Our Funds",
     links: [
       { label: "Multiplier Fund", to: "/strategies/multiplier" },
       { label: "Opportunity Fund", to: "/strategies/opportunity" },
+    ],
+  },
+  {
+    title: "Strategies",
+    links: [
       { label: "LVF", to: "/strategies/lvf" },
       { label: "Managed Accounts", to: "/strategies/deal-by-deal" },
     ],
@@ -184,7 +189,7 @@ function HomeFooter() {
             </div>
 
             {/* Navigation columns */}
-            <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:col-span-7 lg:col-start-6">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:col-span-7 lg:col-start-6">
               {footerNav.map((group) => (
                 <nav key={group.title} aria-label={group.title}>
                   <h3 className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-bronze">

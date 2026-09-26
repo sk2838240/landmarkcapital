@@ -70,12 +70,34 @@ const strategiesCards = [
   },
 ];
 
-const megaMenuCards: Record<
+const ourFundsCards = [
+  {
+    label: "Multiplier Fund",
+    to: "/strategies/multiplier",
+    cta: "View Fund →",
+    src: media.strategiesMenu.multiplier.src,
+    alt: media.strategiesMenu.multiplier.alt,
+  },
+  {
+    label: "Opportunity Fund",
+    to: "/strategies/opportunity",
+    cta: "View Fund →",
+    src: media.strategiesMenu.opportunity.src,
+    alt: media.strategiesMenu.opportunity.alt,
+  },
+];
+
+const megaMenus: Record<
   string,
-  { label: string; to: string; cta: string; src: string; alt: string }[]
+  {
+    panel: string;
+    cols: string;
+    cards: { label: string; to: string; cta: string; src: string; alt: string }[];
+  }
 > = {
-  About: aboutCards,
-  Strategies: strategiesCards,
+  About: { panel: "w-[680px]", cols: "grid-cols-3", cards: aboutCards },
+  "Our Funds": { panel: "w-[480px]", cols: "grid-cols-2", cards: ourFundsCards },
+  Strategies: { panel: "w-[680px]", cols: "grid-cols-3", cards: strategiesCards },
 };
 
 export function Navbar() {
@@ -180,10 +202,12 @@ export function Navbar() {
           >
             {nav.map((item) => {
               const isOpen = activeDropdown === item.label;
-              const isSectionActive = location.pathname.startsWith(item.to);
+              const isSectionActive = item.activePaths
+                ? item.activePaths.includes(location.pathname)
+                : location.pathname.startsWith(item.to);
               const dropdownPanelId = `${menuId}-${item.label.replace(/\s+/g, "-")}`;
 
-              const megaCards = megaMenuCards[item.label];
+              const mega = megaMenus[item.label];
 
               return (
                 <div
@@ -259,15 +283,15 @@ export function Navbar() {
                         transition={{ duration: 0.28, ease: easings.outExpo }}
                         className={cn(
                           "absolute top-full left-1/2 -translate-x-1/2 z-[60] pt-3",
-                          megaCards ? "w-[680px]" : "w-auto min-w-[200px]"
+                          mega ? mega.panel : "w-auto min-w-[200px]"
                         )}
                         onMouseEnter={() => openDropdown(item.label)}
                         onMouseLeave={scheduleClose}
                       >
-                        {megaCards ? (
+                        {mega ? (
                           <div className="bg-[#1b2531] border border-white/10 rounded-[20px] p-5 shadow-[0_32px_80px_-20px_rgba(0,0,0,0.7)] overflow-hidden">
-                            <div className="grid grid-cols-3 gap-4">
-                              {megaCards.map((card) => {
+                            <div className={cn("grid gap-4", mega.cols)}>
+                              {mega.cards.map((card) => {
                                 const isActive =
                                   activeDropdown === item.label &&
                                   location.pathname === card.to;
