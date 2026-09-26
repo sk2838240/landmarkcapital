@@ -32,6 +32,52 @@ const aboutCards = [
   },
 ];
 
+const strategiesCards = [
+  {
+    label: "Overview",
+    to: "/strategies",
+    cta: "Explore →",
+    src: media.strategiesMenu.overview.src,
+    alt: media.strategiesMenu.overview.alt,
+  },
+  {
+    label: "Multiplier Fund",
+    to: "/strategies/multiplier",
+    cta: "View Fund →",
+    src: media.strategiesMenu.multiplier.src,
+    alt: media.strategiesMenu.multiplier.alt,
+  },
+  {
+    label: "Opportunity Fund",
+    to: "/strategies/opportunity",
+    cta: "View Fund →",
+    src: media.strategiesMenu.opportunity.src,
+    alt: media.strategiesMenu.opportunity.alt,
+  },
+  {
+    label: "LVF",
+    to: "/strategies/lvf",
+    cta: "View Fund →",
+    src: media.strategiesMenu.lvf.src,
+    alt: media.strategiesMenu.lvf.alt,
+  },
+  {
+    label: "Managed Accounts",
+    to: "/strategies/deal-by-deal",
+    cta: "View Fund →",
+    src: media.strategiesMenu.managedAccounts.src,
+    alt: media.strategiesMenu.managedAccounts.alt,
+  },
+];
+
+const megaMenuCards: Record<
+  string,
+  { label: string; to: string; cta: string; src: string; alt: string }[]
+> = {
+  About: aboutCards,
+  Strategies: strategiesCards,
+};
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -110,8 +156,6 @@ export function Navbar() {
 
   useEffect(() => () => clearCloseTimer(), []);
 
-  const isAboutDropdownOpen = activeDropdown === "About";
-
   return (
     <>
       <header
@@ -139,7 +183,7 @@ export function Navbar() {
               const isSectionActive = location.pathname.startsWith(item.to);
               const dropdownPanelId = `${menuId}-${item.label.replace(/\s+/g, "-")}`;
 
-              const isAboutMenu = item.label === "About";
+              const megaCards = megaMenuCards[item.label];
 
               return (
                 <div
@@ -215,17 +259,17 @@ export function Navbar() {
                         transition={{ duration: 0.28, ease: easings.outExpo }}
                         className={cn(
                           "absolute top-full left-1/2 -translate-x-1/2 z-[60] pt-3",
-                          isAboutMenu ? "w-[680px]" : "w-auto min-w-[200px]"
+                          megaCards ? "w-[680px]" : "w-auto min-w-[200px]"
                         )}
                         onMouseEnter={() => openDropdown(item.label)}
                         onMouseLeave={scheduleClose}
                       >
-                        {isAboutMenu ? (
+                        {megaCards ? (
                           <div className="bg-[#1b2531] border border-white/10 rounded-[20px] p-5 shadow-[0_32px_80px_-20px_rgba(0,0,0,0.7)] overflow-hidden">
                             <div className="grid grid-cols-3 gap-4">
-                              {aboutCards.map((card) => {
+                              {megaCards.map((card) => {
                                 const isActive =
-                                  activeDropdown === "About" &&
+                                  activeDropdown === item.label &&
                                   location.pathname === card.to;
                                 return (
                                   <Link

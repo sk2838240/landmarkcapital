@@ -33,6 +33,29 @@ export const media = {
       alt: "Leadership team in conversation",
     },
   },
+  /** Strategies-nav mega menu imagery — premium dark cards */
+  strategiesMenu: {
+    overview: {
+      src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1200&q=80",
+      alt: "Urban commercial skyline — the Landmark strategies platform",
+    },
+    multiplier: {
+      src: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
+      alt: "Grade-A residential development — growth capital at work",
+    },
+    opportunity: {
+      src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80",
+      alt: "Symmetrical institutional façade — curated opportunities",
+    },
+    lvf: {
+      src: "https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1200&q=80",
+      alt: "Residential architecture — held from acquisition through exit",
+    },
+    managedAccounts: {
+      src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80",
+      alt: "Daylit glass interior — mandate-aligned, transparent reporting",
+    },
+  },
   manifesto: {
     /** The asset itself — a completed development, the subject of selection and structuring */
     src: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80",
