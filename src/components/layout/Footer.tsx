@@ -56,7 +56,7 @@ const footerNav: { title: string; links: FooterLinkItem[] }[] = [
     ],
   },
   {
-    title: "Strategies",
+    title: "Available Structures",
     links: [
       { label: "LVF", to: "/strategies/lvf" },
       { label: "Managed Accounts", to: "/strategies/deal-by-deal" },

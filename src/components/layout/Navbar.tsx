@@ -41,20 +41,6 @@ const strategiesCards = [
     alt: media.strategiesMenu.overview.alt,
   },
   {
-    label: "Multiplier Fund",
-    to: "/strategies/multiplier",
-    cta: "View Fund →",
-    src: media.strategiesMenu.multiplier.src,
-    alt: media.strategiesMenu.multiplier.alt,
-  },
-  {
-    label: "Opportunity Fund",
-    to: "/strategies/opportunity",
-    cta: "View Fund →",
-    src: media.strategiesMenu.opportunity.src,
-    alt: media.strategiesMenu.opportunity.alt,
-  },
-  {
     label: "LVF",
     to: "/strategies/lvf",
     cta: "View Fund →",
@@ -97,7 +83,7 @@ const megaMenus: Record<
 > = {
   About: { panel: "w-[680px]", cols: "grid-cols-3", cards: aboutCards },
   "Our Funds": { panel: "w-[480px]", cols: "grid-cols-2", cards: ourFundsCards },
-  Strategies: { panel: "w-[680px]", cols: "grid-cols-3", cards: strategiesCards },
+  "Available Structures": { panel: "w-[680px]", cols: "grid-cols-3", cards: strategiesCards },
 };
 
 export function Navbar() {

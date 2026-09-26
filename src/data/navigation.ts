@@ -26,7 +26,7 @@ export const nav: NavItem[] = [
     ],
   },
   {
-    label: "Strategies",
+    label: "Available Structures",
     to: "/strategies",
     activePaths: ["/strategies", "/strategies/lvf", "/strategies/deal-by-deal"],
     children: [
