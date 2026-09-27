@@ -5,10 +5,10 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const services = [
-  { label: "Investment Management", to: "/structures" },
-  { label: "Acquisitions", to: "/opportunities" },
-  { label: "Development Management", to: "/structures" },
-  { label: "Management Services", to: "/about" },
+  { label: "Investment Management", to: "/service/investment-management" },
+  { label: "Special Situation Assets", to: "/service/special-situation-assets" },
+  { label: "Management Services", to: "/service/management-services" },
+  { label: "Development Management", to: "/service/development-management" },
 ];
 
 const EASE = [0.16, 1, 0.3, 1] as const;

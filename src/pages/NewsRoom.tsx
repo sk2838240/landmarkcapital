@@ -15,33 +15,39 @@ function formatDate(iso: string) {
   });
 }
 
+/**
+ * News Room — everything we publish and appear in: blogs, videos and
+ * interviews. Distinct from Research & Insights, which holds reports
+ * and industry data.
+ */
 export default function NewsRoom() {
   return (
     <>
       <Seo
         title="News Room"
-        description="Articles, perspectives and media from Landmark Capital — evidence-led notes on Indian real estate, warehousing, capital markets and regulation."
+        description="Blogs, video interviews and media conversations from Landmark Capital — market commentary and leadership perspectives on Indian real estate."
       />
       <PageHero
         eyebrow="News Room"
-        title="Articles and perspectives from Landmark Capital."
-        subtitle="Everything we publish in one place — research notes, market commentary and conversations with the team."
+        title="Articles, media and conversations."
+        subtitle="Everything we publish and appear in — market commentary, video interviews and leadership perspectives, straight from the news room."
         tone="stone"
       />
 
+      {/* Blogs */}
       <section className="section-pad surface-ivory">
         <div className="container-tb">
           <Reveal>
             <div className="flex items-center gap-4 mb-8">
               <span className="accent-bar" />
-              <h2 className="eyebrow !mb-0">Articles</h2>
+              <h2 className="eyebrow !mb-0">Blogs</h2>
             </div>
           </Reveal>
           <div className="border-t border-border">
             {blogs.map((blog, i) => (
               <Reveal key={blog.slug} delay={Math.min(i * 0.02, 0.2)}>
                 <Link
-                  to={`/insights/${blog.slug}`}
+                  to={`/blog/${blog.slug}`}
                   className="grid grid-cols-1 lg:grid-cols-12 gap-6 group py-10 border-b border-border"
                 >
                   <div className="lg:col-span-2 flex items-start gap-3">
@@ -81,12 +87,13 @@ export default function NewsRoom() {
         </div>
       </section>
 
+      {/* Videos & interviews */}
       <section className="section-pad surface-stone">
         <div className="container-tb">
           <Reveal>
             <div className="flex items-center gap-4 mb-8">
               <span className="accent-bar" />
-              <h2 className="eyebrow !mb-0">In the media</h2>
+              <h2 className="eyebrow !mb-0">Videos & interviews</h2>
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

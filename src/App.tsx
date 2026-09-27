@@ -27,9 +27,11 @@ const DealByDeal = lazy(() => import("@/pages/funds/DealByDeal"));
 const SPV = lazy(() => import("@/pages/funds/SPV"));
 const AIF = lazy(() => import("@/pages/funds/AIF"));
 const Portfolio = lazy(() => import("@/pages/Portfolio"));
+const ServiceDetail = lazy(() => import("@/pages/services/ServiceDetail"));
 
 const Blogs = lazy(() => import("@/pages/knowledge/Blogs"));
 const BlogDetail = lazy(() => import("@/pages/knowledge/BlogDetail"));
+const ReportDetail = lazy(() => import("@/pages/knowledge/ReportDetail"));
 const FAQ = lazy(() => import("@/pages/knowledge/FAQ"));
 const NewsRoom = lazy(() => import("@/pages/NewsRoom"));
 
@@ -46,7 +48,7 @@ function PageFallback() {
 
 function LegacyBlogRedirect() {
   const { slug } = useParams();
-  return <Navigate to={slug ? `/insights/${slug}` : "/insights"} replace />;
+  return <Navigate to={slug ? `/blog/${slug}` : "/newsroom"} replace />;
 }
 
 export default function App() {
@@ -74,6 +76,7 @@ export default function App() {
               <Route path="/structures/managed-accounts" element={<DealByDeal />} />
               <Route path="/structures/spv" element={<SPV />} />
               <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/service/:slug" element={<ServiceDetail />} />
               <Route path="/opportunities" element={<Opportunities />} />
               <Route path="/transactions" element={<Transactions />} />
               <Route path="/transactions/:id" element={<TransactionDetail />} />
@@ -81,7 +84,9 @@ export default function App() {
               <Route path="/newsroom" element={<NewsRoom />} />
               <Route path="/insights" element={<Blogs />} />
               <Route path="/insights/faq" element={<FAQ />} />
-              <Route path="/insights/:slug" element={<BlogDetail />} />
+              <Route path="/blog/:slug" element={<BlogDetail />} />
+              <Route path="/report/:slug" element={<ReportDetail />} />
+              <Route path="/insights/:slug" element={<LegacyBlogRedirect />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/disclaimer" element={<Disclaimer />} />
 

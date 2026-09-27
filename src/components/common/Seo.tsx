@@ -126,6 +126,25 @@ export const financialProductJsonLd = (opts: {
   ...(opts.sebiRegistration && { identifier: opts.sebiRegistration }),
 });
 
+export const serviceJsonLd = (opts: {
+  name: string;
+  description: string;
+  path: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: opts.name,
+  description: opts.description,
+  serviceType: opts.name,
+  provider: {
+    "@type": "FinancialService",
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+  areaServed: "IN",
+  url: `${SITE_URL}${opts.path}`,
+});
+
 export const articleJsonLd = (opts: {
   title: string;
   description: string;

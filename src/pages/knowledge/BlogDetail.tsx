@@ -35,7 +35,7 @@ export default function BlogDetail() {
       <Seo
         title={blog.title}
         description={blog.excerpt}
-        path={`/insights/${slug}`}
+        path={`/blog/${slug}`}
         ogType="article"
         publishedTime={blog.date}
         jsonLd={articleJsonLd({
@@ -43,7 +43,7 @@ export default function BlogDetail() {
           description: blog.excerpt,
           author: blog.author,
           datePublished: blog.date,
-          path: `/insights/${slug}`,
+          path: `/blog/${slug}`,
           image: blog.image,
         })}
       />
@@ -51,11 +51,11 @@ export default function BlogDetail() {
         <div className="container-narrow">
           <Reveal>
             <Link
-              to="/insights"
+              to="/newsroom"
               className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-slate-blue hover:text-crimson-500 transition-colors mb-10"
             >
               <Icon as={ArrowLeft} size={14} />
-              All insights
+              All blogs
             </Link>
           </Reveal>
 
@@ -144,10 +144,10 @@ export default function BlogDetail() {
                 <Icon as={ArrowUpRight} size={16} />
               </Link>
               <Link
-                to="/insights"
+                to="/newsroom"
                 className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.12em] text-slate-blue link-underline"
               >
-                More research
+                All blogs
               </Link>
             </div>
           </Reveal>
@@ -161,7 +161,7 @@ export default function BlogDetail() {
             {otherBlogs.map((b) => (
               <Reveal key={b.slug}>
                 <Link
-                  to={`/insights/${b.slug}`}
+                  to={`/blog/${b.slug}`}
                   className="group block h-full p-6 bg-paper border border-border rounded-[12px] hover:border-bronze/50 transition-colors"
                 >
                   {b.category && (
