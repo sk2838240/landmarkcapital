@@ -11,9 +11,9 @@ const contactItems = [
     label: "Office",
     body: (
       <>
-        63, 6th Floor, Maker Tower &ldquo;F&rdquo;,
+        608-B Wing, Express Zone,
         <br />
-        Cuffe Parade, Mumbai 400 005
+        Western Express Highway, Goregaon (E), Mumbai-400 097
       </>
     ),
   },

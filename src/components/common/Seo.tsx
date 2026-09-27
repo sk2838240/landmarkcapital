@@ -67,15 +67,15 @@ export const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "FinancialService",
   name: SITE_NAME,
-  legalName: "Landmark Capital Advisors",
+  legalName: "Landmark Capital Advisors Pvt Ltd",
   url: SITE_URL,
   logo: `${SITE_URL}/landmark-logo.png`,
   description: DEFAULT_DESCRIPTION,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "63, 6th Floor, Maker Tower \"F\", Cuffe Parade",
+    streetAddress: "608-B Wing, Express Zone, Western Express Highway, Goregaon (E)",
     addressLocality: "Mumbai",
-    postalCode: "400005",
+    postalCode: "400097",
     addressCountry: "IN",
   },
   contactPoint: [

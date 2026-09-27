@@ -121,9 +121,9 @@ function HomeFooter() {
                 <li className="flex items-start gap-3">
                   <Icon as={MapPin} size={16} className="mt-0.5 shrink-0 text-bronze" />
                   <address className="text-sm not-italic leading-relaxed text-white/65">
-                    63, 6th Floor, Maker Tower &ldquo;F&rdquo;,
+                    608-B Wing, Express Zone,
                     <br />
-                    Cuffe Parade, Mumbai 400 005
+                    Western Express Highway, Goregaon (E), Mumbai-400 097
                   </address>
                 </li>
                 <li className="flex items-center gap-3">

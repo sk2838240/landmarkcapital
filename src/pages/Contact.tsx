@@ -92,9 +92,9 @@ export default function Contact() {
                     <div>
                       <p className="text-xs uppercase tracking-[0.14em] text-slate mb-2">Office</p>
                       <address className="text-charcoal leading-relaxed not-italic">
-                        63, 6th Floor, Maker Tower &ldquo;F&rdquo;,
+                        608-B Wing, Express Zone,
                         <br />
-                        Cuffe Parade, Mumbai 400 005
+                        Western Express Highway, Goregaon (E), Mumbai-400 097
                       </address>
                     </div>
                   </div>
