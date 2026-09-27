@@ -31,16 +31,16 @@ const footerNav: { title: string; links: FooterLinkItem[] }[] = [
   {
     title: "Our Funds",
     links: [
-      { label: "Multiplier Fund", to: "/strategies/multiplier" },
-      { label: "Opportunity Fund", to: "/strategies/opportunity" },
+      { label: "Multiplier Fund", to: "/funds/multiplier" },
+      { label: "Opportunity Fund", to: "/funds/opportunity" },
     ],
   },
   {
     title: "Available Structures",
     links: [
-      { label: "AIF", to: "/strategies/aif" },
-      { label: "LVF", to: "/strategies/lvf" },
-      { label: "Managed Accounts", to: "/strategies/deal-by-deal" },
+      { label: "AIF", to: "/structures/aif" },
+      { label: "LVF", to: "/structures/lvf" },
+      { label: "Managed Accounts", to: "/structures/managed-accounts" },
     ],
   },
   {

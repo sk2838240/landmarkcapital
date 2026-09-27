@@ -65,7 +65,7 @@ export default function MultiplierFund() {
             "SEBI Category II Alternative Investment Fund investing in built-to-suit warehousing across India.",
           sebiRegistration: "IN/AIF2/21-22/0928",
           category: "Category II Alternative Investment Fund",
-          path: "/strategies/multiplier",
+          path: "/funds/multiplier",
         })}
       />
       <PageHero

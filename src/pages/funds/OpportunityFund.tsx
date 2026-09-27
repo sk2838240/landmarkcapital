@@ -22,7 +22,7 @@ export default function OpportunityFund() {
             "SEBI Category II Alternative Investment Fund. Closed for subscription — defined portfolio and exit pathway.",
           sebiRegistration: "IN/AIF2/13-14/0068",
           category: "Category II Alternative Investment Fund",
-          path: "/strategies/opportunity",
+          path: "/funds/opportunity",
         })}
       />
       <PageHero

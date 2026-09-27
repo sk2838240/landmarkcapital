@@ -66,13 +66,13 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/strategies" element={<Strategies />} />
-              <Route path="/strategies/multiplier" element={<MultiplierFund />} />
-              <Route path="/strategies/opportunity" element={<OpportunityFund />} />
-              <Route path="/strategies/aif" element={<AIF />} />
-              <Route path="/strategies/lvf" element={<LVF />} />
-              <Route path="/strategies/deal-by-deal" element={<DealByDeal />} />
-              <Route path="/strategies/spv" element={<SPV />} />
+              <Route path="/structures" element={<Strategies />} />
+              <Route path="/funds/multiplier" element={<MultiplierFund />} />
+              <Route path="/funds/opportunity" element={<OpportunityFund />} />
+              <Route path="/structures/aif" element={<AIF />} />
+              <Route path="/structures/lvf" element={<LVF />} />
+              <Route path="/structures/managed-accounts" element={<DealByDeal />} />
+              <Route path="/structures/spv" element={<SPV />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/opportunities" element={<Opportunities />} />
               <Route path="/transactions" element={<Transactions />} />
@@ -88,12 +88,17 @@ export default function App() {
               {/* Legacy redirects */}
               <Route path="/our-business" element={<Navigate to="/about" replace />} />
               <Route path="/our-people" element={<Navigate to="/leadership" replace />} />
-              <Route path="/funds" element={<Navigate to="/strategies" replace />} />
-              <Route path="/funds/multiplier" element={<Navigate to="/strategies/multiplier" replace />} />
-              <Route path="/funds/opportunity" element={<Navigate to="/strategies/opportunity" replace />} />
-              <Route path="/funds/lvf" element={<Navigate to="/strategies/lvf" replace />} />
-              <Route path="/funds/spv" element={<Navigate to="/strategies/deal-by-deal" replace />} />
-              <Route path="/strategies/spv-old" element={<Navigate to="/strategies/deal-by-deal" replace />} />
+              <Route path="/strategies" element={<Navigate to="/structures" replace />} />
+              <Route path="/strategies/multiplier" element={<Navigate to="/funds/multiplier" replace />} />
+              <Route path="/strategies/opportunity" element={<Navigate to="/funds/opportunity" replace />} />
+              <Route path="/strategies/aif" element={<Navigate to="/structures/aif" replace />} />
+              <Route path="/strategies/lvf" element={<Navigate to="/structures/lvf" replace />} />
+              <Route path="/strategies/deal-by-deal" element={<Navigate to="/structures/managed-accounts" replace />} />
+              <Route path="/strategies/spv" element={<Navigate to="/structures/spv" replace />} />
+              <Route path="/strategies/spv-old" element={<Navigate to="/structures/spv" replace />} />
+              <Route path="/funds" element={<Navigate to="/structures" replace />} />
+              <Route path="/funds/lvf" element={<Navigate to="/structures/lvf" replace />} />
+              <Route path="/funds/spv" element={<Navigate to="/structures/spv" replace />} />
               <Route path="/knowledge" element={<Navigate to="/insights" replace />} />
               <Route path="/knowledge/blogs" element={<Navigate to="/insights" replace />} />
               <Route path="/knowledge/blogs/:slug" element={<LegacyBlogRedirect />} />

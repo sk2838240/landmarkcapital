@@ -8,13 +8,13 @@ const funds = [
     title: "Multiplier Fund",
     status: "Open",
     reg: "IN/AIF2/21-22/0928",
-    to: "/strategies/multiplier",
+    to: "/funds/multiplier",
   },
   {
     title: "Opportunity Fund",
     status: "Closed",
     reg: "IN/AIF2/13-14/0068",
-    to: "/strategies/opportunity",
+    to: "/funds/opportunity",
   },
 ];
 

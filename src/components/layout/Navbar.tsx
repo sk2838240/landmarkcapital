@@ -35,21 +35,21 @@ const aboutCards = [
 const strategiesCards = [
   {
     label: "AIF",
-    to: "/strategies/aif",
+    to: "/structures/aif",
     cta: "Explore →",
     src: media.strategiesMenu.aif.src,
     alt: media.strategiesMenu.aif.alt,
   },
   {
     label: "LVF",
-    to: "/strategies/lvf",
+    to: "/structures/lvf",
     cta: "View Fund →",
     src: media.strategiesMenu.lvf.src,
     alt: media.strategiesMenu.lvf.alt,
   },
   {
     label: "Managed Accounts",
-    to: "/strategies/deal-by-deal",
+    to: "/structures/managed-accounts",
     cta: "View Fund →",
     src: media.strategiesMenu.managedAccounts.src,
     alt: media.strategiesMenu.managedAccounts.alt,
@@ -83,14 +83,14 @@ const portfolioCards = [
 const ourFundsCards = [
   {
     label: "Multiplier Fund",
-    to: "/strategies/multiplier",
+    to: "/funds/multiplier",
     cta: "View Fund →",
     src: media.strategiesMenu.multiplier.src,
     alt: media.strategiesMenu.multiplier.alt,
   },
   {
     label: "Opportunity Fund",
-    to: "/strategies/opportunity",
+    to: "/funds/opportunity",
     cta: "View Fund →",
     src: media.strategiesMenu.opportunity.src,
     alt: media.strategiesMenu.opportunity.alt,

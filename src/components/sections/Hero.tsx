@@ -146,7 +146,7 @@ export function Hero() {
               custom={0.3}
             >
               <ButtonLink
-                to="/strategies"
+                to="/structures"
                 variant="primary"
                 size="lg"
                 className="shadow-[0_10px_30px_-12px_rgba(217,79,79,0.55)] hover:shadow-[0_14px_38px_-12px_rgba(217,79,79,0.7)] hover:-translate-y-0.5"

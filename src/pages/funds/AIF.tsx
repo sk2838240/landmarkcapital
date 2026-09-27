@@ -65,7 +65,7 @@ export default function AIF() {
           description:
             "A SEBI-regulated pooled fund for investors backing a defined real estate strategy.",
           category: "Category II Alternative Investment Fund",
-          path: "/strategies/aif",
+          path: "/structures/aif",
         })}
       />
       <PageHero

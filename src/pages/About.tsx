@@ -504,8 +504,8 @@ function Process() {
                   Continue exploring
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <ButtonLink to="/strategies" variant="primary" size="sm">
-                    Strategies
+                  <ButtonLink to="/structures" variant="primary" size="sm">
+                    Available Structures
                   </ButtonLink>
                   <ButtonLink to="/opportunities" variant="secondary" size="sm">
                     Opportunities

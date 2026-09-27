@@ -13,7 +13,7 @@ const strategies = [
     reg: "IN/AIF2/21-22/0928",
     summary:
       "Category II AIF focused on high-quality built-to-suit warehousing in economic hotspots across India.",
-    to: "/strategies/multiplier",
+    to: "/funds/multiplier",
   },
   {
     title: "Opportunity Fund",
@@ -21,7 +21,7 @@ const strategies = [
     reg: "IN/AIF2/13-14/0068",
     summary:
       "The firm’s first SEBI-registered vehicle — closed for subscription, with a defined portfolio and exit pathway.",
-    to: "/strategies/opportunity",
+    to: "/funds/opportunity",
   },
   {
     title: "Large Value Fund (LVF)",
@@ -29,15 +29,15 @@ const strategies = [
     reg: "SEBI Category II",
     summary:
       "Concentrated, conviction-led structures for sophisticated investors meeting LVF eligibility thresholds.",
-    to: "/strategies/lvf",
+    to: "/structures/lvf",
   },
   {
-    title: "Deal-by-Deal",
+    title: "Managed Accounts",
     status: "Deal-by-deal",
     reg: "Ring-fenced",
     summary:
       "Deal-by-deal participation without blind pools — investors select opportunities aligned to their mandate.",
-    to: "/strategies/deal-by-deal",
+    to: "/structures/managed-accounts",
   },
   {
     title: "SPV",
@@ -45,7 +45,7 @@ const strategies = [
     reg: "Custom",
     summary:
       "Standalone structures for developers and co-investors seeking aligned capital partners.",
-    to: "/strategies/spv",
+    to: "/structures/spv",
   },
 ];
 

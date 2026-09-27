@@ -47,7 +47,7 @@ export default function DealByDeal() {
           description:
             "Direct, deal-by-deal participation through a dedicated SPV for each opportunity.",
           category: "Deal-level SPV",
-          path: "/strategies/deal-by-deal",
+          path: "/structures/managed-accounts",
         })}
       />
       <PageHero

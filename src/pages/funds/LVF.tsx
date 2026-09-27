@@ -44,7 +44,7 @@ export default function LVF() {
           description:
             "A Large Value Fund for Accredited Investors — concentrated, institutional-scale commitments with lighter regulatory requirements.",
           category: "Category II Alternative Investment Fund — Large Value Fund",
-          path: "/strategies/lvf",
+          path: "/structures/lvf",
         })}
       />
       <PageHero

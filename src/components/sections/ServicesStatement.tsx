@@ -5,9 +5,9 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const services = [
-  { label: "Investment Management", to: "/strategies" },
+  { label: "Investment Management", to: "/structures" },
   { label: "Acquisitions", to: "/opportunities" },
-  { label: "Development Management", to: "/strategies" },
+  { label: "Development Management", to: "/structures" },
   { label: "Management Services", to: "/about" },
 ];
 

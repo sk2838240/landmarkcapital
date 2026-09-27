@@ -51,7 +51,7 @@ export function Timeline() {
               our platform, published research, and sector-defining perspective.
             </p>
             <Link
-              to="/strategies"
+              to="/structures"
               className="group inline-flex items-center gap-2.5 mt-7 px-5 py-3 border-[1.5px] border-crimson-500 text-crimson-500 text-[13px] font-bold tracking-[0.05em] uppercase transition-colors duration-200 hover:bg-crimson-500 hover:text-white"
             >
               Explore Our Strategies

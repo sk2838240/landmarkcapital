@@ -63,7 +63,7 @@ export function WhatWeDo() {
 
         <Reveal>
           <Link
-            to="/strategies"
+            to="/structures"
             className="inline-block mt-14 text-sm uppercase tracking-[0.1em] text-charcoal link-underline"
           >
             View investment strategies
