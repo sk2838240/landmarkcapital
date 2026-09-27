@@ -26,10 +26,10 @@ export const portfolioStats: Stat[] = [
   },
   {
     label: "Plotting",
-    value: "2",
+    value: "3.5",
     suffix: "M+",
     decimals: 1,
-    numericTarget: 2,
+    numericTarget: 3.5,
     description: "Square feet in land development with exceptional growth potential",
   },
 ];
@@ -45,10 +45,10 @@ export const trackRecord: Stat[] = [
   },
   {
     label: "Investments",
-    value: "₹3,000",
+    value: "₹4,000",
     suffix: "Cr",
     decimals: 0,
-    numericTarget: 3000,
+    numericTarget: 4000,
     description: "Cumulative managed",
   },
   {

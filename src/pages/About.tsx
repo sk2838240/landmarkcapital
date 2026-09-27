@@ -17,7 +17,7 @@ import { Icon } from "@/components/common/Icon";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ButtonLink } from "@/components/common/Button";
 import { AboutHero } from "@/components/sections/AboutHero";
-import { Timeline } from "@/components/sections/Timeline";
+import { FirmOverview } from "@/components/sections/FirmOverview";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useInView } from "@/hooks/useInView";
@@ -28,7 +28,7 @@ import { cn } from "@/lib/utils";
 const glance = [
   { label: "Years of discipline", target: 30, suffix: "+" },
   { label: "Transactions executed", target: 45, suffix: "+" },
-  { label: "Cumulative managed", target: 3000, prefix: "₹", suffix: " Cr" },
+  { label: "Cumulative managed", target: 4000, prefix: "₹", suffix: " Cr" },
   { label: "Major Indian cities", target: 12, suffix: "" },
 ];
 
@@ -131,9 +131,7 @@ export default function About() {
 
       <AtAGlance />
 
-      <section id="timeline">
-        <Timeline />
-      </section>
+      <FirmOverview />
 
       <Principles />
 
