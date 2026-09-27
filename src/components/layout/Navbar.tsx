@@ -34,11 +34,11 @@ const aboutCards = [
 
 const strategiesCards = [
   {
-    label: "Overview",
-    to: "/strategies",
+    label: "AIF",
+    to: "/strategies/aif",
     cta: "Explore →",
-    src: media.strategiesMenu.overview.src,
-    alt: media.strategiesMenu.overview.alt,
+    src: media.strategiesMenu.aif.src,
+    alt: media.strategiesMenu.aif.alt,
   },
   {
     label: "LVF",
@@ -53,6 +53,30 @@ const strategiesCards = [
     cta: "View Fund →",
     src: media.strategiesMenu.managedAccounts.src,
     alt: media.strategiesMenu.managedAccounts.alt,
+  },
+];
+
+const portfolioCards = [
+  {
+    label: "Ambience Parkview",
+    to: "/portfolio",
+    cta: "View Project →",
+    src: media.portfolioMenu[0].src,
+    alt: media.portfolioMenu[0].alt,
+  },
+  {
+    label: "Ambience Courtyard",
+    to: "/portfolio",
+    cta: "View Project →",
+    src: media.portfolioMenu[1].src,
+    alt: media.portfolioMenu[1].alt,
+  },
+  {
+    label: "Villa Development",
+    to: "/portfolio",
+    cta: "View Project →",
+    src: media.portfolioMenu[2].src,
+    alt: media.portfolioMenu[2].alt,
   },
 ];
 
@@ -82,8 +106,9 @@ const megaMenus: Record<
   }
 > = {
   About: { panel: "w-[680px]", cols: "grid-cols-3", cards: aboutCards },
-  "Our Funds": { panel: "w-[480px]", cols: "grid-cols-2", cards: ourFundsCards },
   "Available Structures": { panel: "w-[680px]", cols: "grid-cols-3", cards: strategiesCards },
+  "Current Portfolio": { panel: "w-[680px]", cols: "grid-cols-3", cards: portfolioCards },
+  "Our Funds": { panel: "w-[480px]", cols: "grid-cols-2", cards: ourFundsCards },
 };
 
 export function Navbar() {
@@ -199,10 +224,10 @@ export function Navbar() {
                 <div
                   key={item.label}
                   className="relative"
-                  onMouseEnter={() => item.children && openDropdown(item.label)}
-                  onMouseLeave={() => item.children && scheduleClose()}
+                  onMouseEnter={() => (item.children || mega) && openDropdown(item.label)}
+                  onMouseLeave={() => (item.children || mega) && scheduleClose()}
                 >
-                  {item.children ? (
+                  {item.children || mega ? (
                     <button
                       type="button"
                       className={cn(
@@ -258,7 +283,7 @@ export function Navbar() {
                   )}
 
                   <AnimatePresence>
-                    {item.children && isOpen && (
+                    {(item.children || mega) && isOpen && (
                       <motion.div
                         key={dropdownPanelId}
                         id={dropdownPanelId}
@@ -336,7 +361,7 @@ export function Navbar() {
                           </div>
                         ) : (
                           <div className="bg-paper border border-border shadow-md rounded-[10px] p-1.5">
-                            {item.children.map((child) => (
+                            {item.children?.map((child) => (
                               <Link
                                 key={child.to}
                                 to={child.to}

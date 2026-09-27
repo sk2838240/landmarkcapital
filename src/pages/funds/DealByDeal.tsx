@@ -4,129 +4,74 @@ import { ButtonLink } from "@/components/common/Button";
 import { RiskDisclosure } from "@/components/common/Disclosures";
 import { Seo, financialProductJsonLd } from "@/components/common/Seo";
 
-const why = [
+const keyFeatures = [
   {
-    title: "Deal-Wise Capital & Structuring",
-    body: "No blind pools — capital is deployed per transaction via standalone SPVs, JVs or trusts tailored to each asset.",
+    title: "Named deal",
+    body: "Deal-specific — capital is allocated to one named asset that the investor has already seen and evaluated.",
   },
   {
-    title: "Flexible Commitment Sizes",
-    body: "Invest at scales that suit the mandate — without arbitrary ticket-size floors.",
+    title: "Ring-fenced",
+    body: "Structured through a dedicated SPV for each transaction, ring-fencing that investor's capital and risk from any other deal.",
   },
   {
-    title: "Proactive Origination",
-    body: "Off-market, theme-aligned assets across logistics, industrial and related real estate.",
+    title: "Bespoke terms",
+    body: "Fully bespoke terms — ticket size, tenure, security package, and return structure are negotiated for each deal and each investor.",
   },
   {
-    title: "Defined Liquidity & Exit Planning",
-    body: "Clear hold periods and transparent exit pathways support timely liquidity.",
-  },
-  {
-    title: "Better Risk Appreciation",
-    body: "Investors assess risk deal by deal, rather than through a blind pool.",
-  },
-  {
-    title: "Profit-Sharing Alignment",
-    body: "Zero upfront fees — economics tied to successful outcomes.",
-  },
-  {
-    title: "Hands-On Management",
-    body: "End-to-end diligence plus active asset oversight and value creation.",
-  },
-  {
-    title: "Full Transparency",
-    body: "Deal-level reporting keeps investors informed at every stage.",
-  },
-  {
-    title: "Tactical Agility",
-    body: "Ability to respond to emerging themes with appropriately structured vehicles.",
+    title: "Direct reporting",
+    body: "Direct, asset-level reporting on that specific deal — not consolidated fund-level reporting across a portfolio.",
   },
 ];
 
-const routes = [
-  {
-    title: "LVF (AIF Category II)",
-    chip: "Larger ticket size",
-    body: "Investors commit capital into a SEBI-regulated AIF that invests into project-level SPVs, maintaining regulatory compliance and pass-through status.",
-    bullets: [
-      "SEBI-regulated pathway for accredited investors, UHNIs, multi-family offices and global capital",
-      "Investments made through an SPV",
-      "Equity positions taken by Landmark Capital in each structure",
-      "Large ticket size > ₹25 Cr",
-      "Tenure 3 to 4 years",
-    ],
-  },
-  {
-    title: "AI Only Fund",
-    chip: "Flexible ticket size",
-    body: "AIF exclusively for accredited investors with relaxed norms and flexible private-market structuring.",
-    bullets: [
-      "SEBI-regulated AIF exclusively for accredited investors",
-      "Investments made through SPVs",
-      "Flexible ticket size (no ₹25 Cr LVF minimum)",
-      "Tenure 3 to 4 years",
-      "Suitable for sophisticated HNIs and family offices",
-    ],
-  },
-  {
-    title: "Direct SPV Route",
-    chip: "Customised solutions",
-    body: "Direct allotment of investment instruments in deal-specific SPVs for a more direct investment relationship.",
-    bullets: [
-      "Participation through an SPV created for each deal",
-      "Pre-defined returns, security structure and tenure (3 to 4 years)",
-      "Customised to risk profile and return expectations",
-    ],
-  },
+const howItWorks = [
+  "Landmark identifies and underwrites the opportunity independently.",
+  "The deal is presented to the investor on its own merits, fully underwritten.",
+  "On commitment, a dedicated SPV is set up (or the investor is allotted into an existing deal-specific SPV).",
+  "Landmark operates the asset through to exit, reporting directly to that SPV's investor(s).",
+];
+
+const constraints = [
+  "No automatic pooling benefit — diversification comes from the investor choosing multiple deals over time, not from a single vehicle.",
+  "Terms vary deal to deal — there is no single standard ticket size, tenure, or return profile across all Managed Account opportunities.",
+  "Best suited to investors who want to evaluate and select individual opportunities themselves, rather than delegate that selection to a fund manager.",
 ];
 
 export default function DealByDeal() {
   return (
     <>
       <Seo
-        title="Deal-by-Deal"
-        description="Deal-by-deal participation without blind pools — investors select opportunities aligned to their mandate through standalone SPVs, JVs and trusts."
+        title="Managed Accounts"
+        description="Direct, deal-by-deal participation — through a dedicated SPV for each opportunity. One named deal, never a blind pool."
         jsonLd={financialProductJsonLd({
-          name: "Landmark Deal-by-Deal",
+          name: "Landmark Managed Accounts",
           description:
-            "Deal-by-deal participation without blind pools — SPV, JV and trust structures tailored to each asset.",
+            "Direct, deal-by-deal participation through a dedicated SPV for each opportunity.",
           category: "Deal-level SPV",
           path: "/strategies/deal-by-deal",
         })}
       />
       <PageHero
-        eyebrow="Deal-by-Deal"
-        title="Deal-by-deal. Never blind pools."
-        subtitle="A client-aligned model that lets sophisticated investors select opportunities matching their risk profile, return expectations, liquidity needs and thematic preferences."
+        eyebrow="Managed Accounts"
+        title="Direct, deal-by-deal participation — through a dedicated SPV for each opportunity."
+        subtitle="A Managed Account is Landmark's direct route, outside the pooled-fund structure entirely. Each opportunity is held in its own dedicated Special Purpose Vehicle (SPV), and the investor commits to that one, specific, pre-identified deal — never a blind pool of future, unnamed opportunities."
       />
 
       <section className="section-pad bg-ivory">
         <div className="container-tb">
           <Reveal>
-            <p className="eyebrow mb-6">Participation routes</p>
+            <p className="eyebrow mb-6">Key features</p>
             <h2 className="display-2 mb-14 text-balance">
-              Choose the structure that fits the mandate.
+              One named deal. Ring-fenced. Bespoke.
             </h2>
           </Reveal>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {routes.map((r, i) => (
-              <Reveal key={r.title} delay={i * 0.05}>
-                <article className="h-full flex flex-col p-8 bg-paper border border-border rounded-[12px]">
-                  <span className="text-[10px] uppercase tracking-[0.16em] text-crimson-500 mb-4">
-                    {r.chip}
-                  </span>
-                  <h3 className="font-display text-2xl text-charcoal mb-4">{r.title}</h3>
-                  <p className="text-sm text-slate leading-relaxed mb-6">{r.body}</p>
-                  <div className="rule mb-6" />
-                  <ul className="space-y-3 mt-auto">
-                    {r.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-3 text-sm text-slate">
-                        <span className="text-crimson-500 mt-1 shrink-0">→</span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 border-t border-border pt-12">
+            {keyFeatures.map((f, i) => (
+              <Reveal key={f.title} delay={i * 0.04}>
+                <span className="text-xs font-mono text-crimson-500">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display text-2xl text-charcoal mt-3 mb-3">{f.title}</h3>
+                <p className="text-slate leading-relaxed max-w-md">{f.body}</p>
               </Reveal>
             ))}
           </div>
@@ -136,24 +81,52 @@ export default function DealByDeal() {
       <section className="section-pad bg-stone">
         <div className="container-tb">
           <Reveal>
-            <p className="eyebrow mb-6">Why deal-by-deal</p>
-            <h2 className="display-2 mb-14 text-balance">Flexible. Transparent. Aligned.</h2>
+            <p className="eyebrow mb-6">How it works</p>
+            <h2 className="display-2 mb-14 text-balance">
+              From origination to exit.
+            </h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 border-t border-border pt-12">
-            {why.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.02}>
-                <p className="text-xs font-mono text-crimson-500 mb-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 border-t border-border pt-12">
+            {howItWorks.map((step, i) => (
+              <Reveal key={step} delay={i * 0.04}>
+                <span className="text-xs font-mono text-crimson-500">
                   {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="font-display text-xl text-charcoal mb-3">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-slate">{item.body}</p>
+                </span>
+                <p className="text-base text-slate leading-relaxed max-w-md mt-3">{step}</p>
               </Reveal>
             ))}
           </div>
-          <div className="mt-12">
-            <ButtonLink to="/contact" variant="primary">
-              Discuss deal-by-deal participation
-            </ButtonLink>
+        </div>
+      </section>
+
+      <section className="section-pad bg-midnight text-white">
+        <div className="container-tb">
+          <div className="grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-5">
+              <Reveal>
+                <p className="eyebrow text-crimson-300 mb-6">Constraints</p>
+                <h2 className="display-2 text-white text-balance">
+                  What to weigh before committing.
+                </h2>
+              </Reveal>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="space-y-0">
+                {constraints.map((c) => (
+                  <Reveal key={c}>
+                    <div className="flex items-start gap-4 py-4 border-t border-white/15">
+                      <span className="text-crimson-300 mt-1">—</span>
+                      <p className="text-base text-white/85">{c}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+              <div className="mt-10">
+                <ButtonLink to="/contact" variant="primary">
+                  Discuss a Managed Account
+                </ButtonLink>
+              </div>
+            </div>
           </div>
         </div>
       </section>

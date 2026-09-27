@@ -21,6 +21,7 @@ const footerNav: { title: string; links: FooterLinkItem[] }[] = [
       { label: "About", to: "/about" },
       { label: "Leadership", to: "/leadership" },
       { label: "News Room", to: "/newsroom" },
+      { label: "Current Portfolio", to: "/portfolio" },
       { label: "Opportunities", to: "/opportunities" },
       { label: "Transactions", to: "/transactions" },
       { label: "Contact", to: "/contact" },
@@ -37,6 +38,7 @@ const footerNav: { title: string; links: FooterLinkItem[] }[] = [
   {
     title: "Available Structures",
     links: [
+      { label: "AIF", to: "/strategies/aif" },
       { label: "LVF", to: "/strategies/lvf" },
       { label: "Managed Accounts", to: "/strategies/deal-by-deal" },
     ],

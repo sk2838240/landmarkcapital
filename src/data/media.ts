@@ -39,6 +39,10 @@ export const media = {
   },
   /** Strategies-nav mega menu imagery — premium dark cards */
   strategiesMenu: {
+    aif: {
+      src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+      alt: "Boardroom table — SEBI-regulated pooled investing in a defined strategy",
+    },
     overview: {
       src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1200&q=80",
       alt: "Urban commercial skyline — the Landmark strategies platform",
@@ -76,6 +80,21 @@ export const media = {
     src: "/aj-video.mp4",
     alt: "Ashish Joshi, Managing Partner & Fund Manager at Landmark Capital",
   },
+  /** Current-Portfolio nav mega menu imagery — project cards from the deck */
+  portfolioMenu: [
+    {
+      src: "/media/portfolio/ambience-parkview.jpg",
+      alt: "Ambience Parkview mixed-use development, Gachibowli, Hyderabad",
+    },
+    {
+      src: "/media/portfolio/ambience-courtyard.jpg",
+      alt: "Ambience Courtyard residential towers, Manikonda, Hyderabad",
+    },
+    {
+      src: "/media/portfolio/sadahalli-villas.jpg",
+      alt: "Villa development, Sadahalli, Bangalore",
+    },
+  ],
   /** One visual per Landmark Difference principle — order matches `differences` in Difference.tsx */
   principles: [
     {

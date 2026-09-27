@@ -17,6 +17,20 @@ export const nav: NavItem[] = [
     ],
   },
   {
+    label: "Available Structures",
+    to: "/strategies/aif",
+    activePaths: ["/strategies", "/strategies/aif", "/strategies/lvf", "/strategies/deal-by-deal"],
+    children: [
+      { label: "AIF", to: "/strategies/aif" },
+      { label: "LVF", to: "/strategies/lvf" },
+      { label: "Managed Accounts", to: "/strategies/deal-by-deal" },
+    ],
+  },
+  {
+    label: "Current Portfolio",
+    to: "/portfolio",
+  },
+  {
     label: "Our Funds",
     to: "/strategies/multiplier",
     activePaths: ["/strategies/multiplier", "/strategies/opportunity"],
@@ -25,17 +39,6 @@ export const nav: NavItem[] = [
       { label: "Opportunity Fund", to: "/strategies/opportunity" },
     ],
   },
-  {
-    label: "Available Structures",
-    to: "/strategies",
-    activePaths: ["/strategies", "/strategies/lvf", "/strategies/deal-by-deal"],
-    children: [
-      { label: "Overview", to: "/strategies" },
-      { label: "LVF", to: "/strategies/lvf" },
-      { label: "Managed Accounts", to: "/strategies/deal-by-deal" },
-    ],
-  },
-  { label: "Opportunities", to: "/opportunities" },
   {
     label: "Insights",
     to: "/insights",

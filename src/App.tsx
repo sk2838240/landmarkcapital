@@ -25,6 +25,8 @@ const OpportunityFund = lazy(() => import("@/pages/funds/OpportunityFund"));
 const LVF = lazy(() => import("@/pages/funds/LVF"));
 const DealByDeal = lazy(() => import("@/pages/funds/DealByDeal"));
 const SPV = lazy(() => import("@/pages/funds/SPV"));
+const AIF = lazy(() => import("@/pages/funds/AIF"));
+const Portfolio = lazy(() => import("@/pages/Portfolio"));
 
 const Blogs = lazy(() => import("@/pages/knowledge/Blogs"));
 const BlogDetail = lazy(() => import("@/pages/knowledge/BlogDetail"));
@@ -67,9 +69,11 @@ export default function App() {
               <Route path="/strategies" element={<Strategies />} />
               <Route path="/strategies/multiplier" element={<MultiplierFund />} />
               <Route path="/strategies/opportunity" element={<OpportunityFund />} />
+              <Route path="/strategies/aif" element={<AIF />} />
               <Route path="/strategies/lvf" element={<LVF />} />
               <Route path="/strategies/deal-by-deal" element={<DealByDeal />} />
               <Route path="/strategies/spv" element={<SPV />} />
+              <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/opportunities" element={<Opportunities />} />
               <Route path="/transactions" element={<Transactions />} />
               <Route path="/transactions/:id" element={<TransactionDetail />} />
