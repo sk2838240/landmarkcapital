@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 
 const SITE_NAME = "Landmark Capital";
-const SITE_URL = "https://www.landmarkcapital.in";
+export const SITE_URL = "https://www.landmarkcapital.in";
 const DEFAULT_DESCRIPTION =
   "Institutional real estate investing backed by research, governance and aligned execution. SEBI-registered Alternative Investment Fund manager operating across warehousing, residential, industrial and plotted development in India.";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
@@ -18,6 +18,10 @@ type Props = {
   /** If true, "Landmark Capital" is not appended to the tab title. */
   raw?: boolean;
   noindex?: boolean;
+  /** Open Graph type — use "article" for blog posts. */
+  ogType?: "website" | "article";
+  /** ISO publish date, rendered as article:published_time when ogType is "article". */
+  publishedTime?: string;
 };
 
 export function Seo({
@@ -28,6 +32,8 @@ export function Seo({
   jsonLd,
   raw = false,
   noindex = false,
+  ogType = "website",
+  publishedTime,
 }: Props) {
   const location = useLocation();
   const canonical = `${SITE_URL}${path ?? location.pathname}`;
@@ -44,8 +50,12 @@ export function Seo({
       <meta name="description" content={description} />
       <link rel="canonical" href={canonical} />
       {noindex && <meta name="robots" content="noindex,nofollow" />}
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={ogType} />
+      {ogType === "article" && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
       <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:locale" content="en_IN" />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />

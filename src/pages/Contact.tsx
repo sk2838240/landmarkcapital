@@ -3,7 +3,7 @@ import { PageHero } from "@/components/common/PageHero";
 import { Reveal } from "@/components/common/Reveal";
 import { Button } from "@/components/common/Button";
 import { Icon } from "@/components/common/Icon";
-import { Seo } from "@/components/common/Seo";
+import { Seo, orgJsonLd } from "@/components/common/Seo";
 import { MapPin, Mail, Phone } from "lucide-react";
 
 type FormState = {
@@ -33,7 +33,8 @@ export default function Contact() {
     <>
       <Seo
         title="Contact"
-        description="Reach out regarding investment opportunities, fund participation, or strategic partnerships. Responses are handled with discretion."
+        description="Talk to Landmark Capital — investor relations, compliance and grievance contacts for our SEBI-registered AIF platform."
+        jsonLd={orgJsonLd}
       />
       <PageHero
         eyebrow="Contact"

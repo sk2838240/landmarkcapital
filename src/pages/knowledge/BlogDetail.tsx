@@ -36,6 +36,8 @@ export default function BlogDetail() {
         title={blog.title}
         description={blog.excerpt}
         path={`/insights/${slug}`}
+        ogType="article"
+        publishedTime={blog.date}
         jsonLd={articleJsonLd({
           title: blog.title,
           description: blog.excerpt,

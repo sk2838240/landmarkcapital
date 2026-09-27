@@ -3,7 +3,7 @@ import { PageHero } from "@/components/common/PageHero";
 import { Reveal } from "@/components/common/Reveal";
 import { RiskDisclosure } from "@/components/common/Disclosures";
 import { Icon } from "@/components/common/Icon";
-import { Seo } from "@/components/common/Seo";
+import { Seo, SITE_URL } from "@/components/common/Seo";
 import { ArrowUpRight } from "lucide-react";
 
 const strategies = [
@@ -49,15 +49,28 @@ const strategies = [
   },
 ];
 
+const structuresJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Landmark Capital — Available Structures",
+  itemListElement: strategies.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: s.title,
+    url: `${SITE_URL}${s.to}`,
+  })),
+};
+
 export default function Strategies() {
   return (
     <>
       <Seo
-        title="Investment Strategies"
+        title="Available Structures"
         description="SEBI-registered funds and deal-by-deal structures — each with defined mandate, reporting and exit discipline."
+        jsonLd={structuresJsonLd}
       />
       <PageHero
-        eyebrow="Investment Strategies"
+        eyebrow="Available Structures"
         title="Vehicles designed for clarity and control."
         subtitle="SEBI-registered funds and deal-by-deal structures — each with defined mandate, reporting, and exit discipline."
         tone="stone"

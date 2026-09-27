@@ -4,7 +4,7 @@ import { PageHero } from "@/components/common/PageHero";
 import { Reveal } from "@/components/common/Reveal";
 import { ButtonLink } from "@/components/common/Button";
 import { RiskDisclosure } from "@/components/common/Disclosures";
-import { Seo } from "@/components/common/Seo";
+import { Seo, financialProductJsonLd } from "@/components/common/Seo";
 import { cn } from "@/lib/utils";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -32,6 +32,13 @@ export default function SPV() {
       <Seo
         title="SPV — Direct Special Purpose Vehicle"
         description="The most direct form of real estate investment we offer — no fund layer, no pooled capital, no shared mandate. Direct SPV participation, ring-fenced to a single transaction."
+        jsonLd={financialProductJsonLd({
+          name: "Landmark SPV — Direct Special Purpose Vehicle",
+          description:
+            "Direct SPV participation, ring-fenced to a single transaction — no fund layer, no pooled capital, no shared mandate.",
+          category: "Deal-level SPV",
+          path: "/structures/spv",
+        })}
       />
 
       <PageHero
