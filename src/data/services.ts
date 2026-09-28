@@ -11,9 +11,9 @@ export type Service = {
   approach: ServiceStep[];
   offerings: ServiceStep[];
   /** Typical situations (Special Situation Assets) */
-  situations?: string[];
+  situations?: string[] | null;
   /** Note rendered after offerings (Management Services) */
-  offeringsNote?: string;
+  offeringsNote?: string | null;
   /** Who it's for */
   audience: string;
 };

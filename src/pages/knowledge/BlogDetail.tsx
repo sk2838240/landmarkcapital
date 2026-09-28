@@ -49,7 +49,7 @@ export default function BlogDetail() {
           author: blog.author,
           datePublished: blog.date,
           path: `/blog/${slug}`,
-          image: blog.image,
+          image: blog.image ?? undefined,
         })}
       />
       <header className="pt-36 lg:pt-44 pb-14 lg:pb-20 border-b border-border surface-stone">

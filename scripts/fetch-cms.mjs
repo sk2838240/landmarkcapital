@@ -1,12 +1,13 @@
 import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 
 /**
  * Fetches published content from Sanity and writes src/generated/cms.json,
  * which the site merges over its bundled static data at build time.
  *
  * Runs automatically via `predev` / `prebuild`. If Sanity is not configured
- * (or the API is unreachable), the baseline file is written unchanged and the
- * site falls back to its static content — nothing breaks.
+ * (or the API is unreachable, or the write fails), the baseline file is
+ * written and the site falls back to its static content — nothing breaks.
  */
 
 // Load root .env (no dotenv dependency) — only fills vars that are unset.
@@ -29,7 +30,37 @@ loadEnv();
 const projectId = process.env.VITE_SANITY_PROJECT_ID;
 const dataset = process.env.VITE_SANITY_DATASET || "production";
 const API_VERSION = "v2024-10-01";
-const OUT = new URL("../src/generated/cms.json", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
+
+function toPath(url) {
+  // fileURLToPath decodes percent-encoding and handles Windows drive letters.
+  return fileURLToPath(url);
+}
+
+const OUT_DIR = toPath(new URL("../src/generated/", import.meta.url));
+const OUT = toPath(new URL("../src/generated/cms.json", import.meta.url));
+
+const baseline = {
+  settings: null,
+  pageSeo: [],
+  redirects: [],
+  blogs: [],
+  reports: [],
+  interviews: [],
+  services: [],
+  portfolio: [],
+  faqs: [],
+  team: { leadership: [], teamMembers: [] },
+  industryData: [],
+};
+
+function writeBaseline() {
+  try {
+    mkdirSync(OUT_DIR, { recursive: true });
+    writeFileSync(OUT, JSON.stringify(baseline, null, 2));
+  } catch {
+    // nothing more we can do — the app import will fail loudly if this ever happens
+  }
+}
 
 const published = `!(_id in path("drafts.**"))`;
 
@@ -56,23 +87,8 @@ async function query(groq) {
 }
 
 async function main() {
-  const baseline = {
-    settings: null,
-    pageSeo: [],
-    redirects: [],
-    blogs: [],
-    reports: [],
-    interviews: [],
-    services: [],
-    portfolio: [],
-    faqs: [],
-    team: { leadership: [], teamMembers: [] },
-    industryData: [],
-  };
-
   if (!projectId || projectId === "your-project-id") {
-    mkdirSync(new URL("../src/generated/", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1"), { recursive: true });
-    writeFileSync(OUT, JSON.stringify(baseline, null, 2));
+    writeBaseline();
     console.log("[cms] Sanity not configured — using bundled static content.");
     return;
   }
@@ -157,6 +173,7 @@ async function main() {
     industryData: results.industryData ?? [],
   };
 
+  mkdirSync(OUT_DIR, { recursive: true });
   writeFileSync(OUT, JSON.stringify(cms, null, 2));
   const counts = Object.entries(cms)
     .filter(([, v]) => Array.isArray(v))
@@ -167,4 +184,5 @@ async function main() {
 
 main().catch((err) => {
   console.warn(`[cms] Falling back to bundled static content: ${err.message}`);
+  writeBaseline();
 });

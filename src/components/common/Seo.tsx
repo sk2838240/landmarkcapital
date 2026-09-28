@@ -18,7 +18,7 @@ type Props = {
   description?: string;
   /** Override canonical path (defaults to current location). */
   path?: string;
-  image?: string;
+  image?: string | null;
   /** JSON-LD structured data. May be a single object or an array. */
   jsonLd?: object | object[];
   /** If true, "Landmark Capital" is not appended to the tab title. */

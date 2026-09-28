@@ -90,7 +90,7 @@ export type PageSeoEntry = {
   description?: string | null;
   ogImage?: string | null;
   canonical?: string | null;
-  noindex?: boolean;
+  noindex?: boolean | null;
 };
 
 export type RedirectEntry = {

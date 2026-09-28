@@ -5,7 +5,7 @@ export type Blog = {
   author: string;
   date: string;
   category?: string;
-  image?: string;
+  image?: string | null;
 };
 
 export const blogs: Blog[] = [
