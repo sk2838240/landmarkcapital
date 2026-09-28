@@ -4,7 +4,7 @@ import { Reveal } from "@/components/common/Reveal";
 import { Icon } from "@/components/common/Icon";
 import { Seo } from "@/components/common/Seo";
 import { ButtonLink } from "@/components/common/Button";
-import { getReport } from "@/data/reports";
+import { getReport } from "@/lib/cmsData";
 import { ArrowLeft, Download } from "lucide-react";
 
 export default function ReportDetail() {

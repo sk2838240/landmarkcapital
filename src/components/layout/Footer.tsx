@@ -3,6 +3,7 @@ import { ArrowUp, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { Reveal } from "@/components/common/Reveal";
 import { Icon } from "@/components/common/Icon";
+import { getSiteSettings } from "@/lib/cmsData";
 
 export function Footer() {
   return <HomeFooter />;
@@ -14,7 +15,7 @@ export function Footer() {
 
 type FooterLinkItem = { label: string; to?: string; href?: string; external?: boolean };
 
-const footerNav: { title: string; links: FooterLinkItem[] }[] = [
+const footerNavStatic: { title: string; links: FooterLinkItem[] }[] = [
   {
     title: "Firm",
     links: [
@@ -54,6 +55,39 @@ const footerNav: { title: string; links: FooterLinkItem[] }[] = [
     ],
   },
 ];
+
+/* CMS-driven footer content — falls back to the built-in defaults */
+const settings = getSiteSettings();
+
+const footerNav = settings?.footerNav?.length ? settings.footerNav : footerNavStatic;
+
+const brandDescription =
+  settings?.brandDescription ??
+  "A SEBI-registered Alternative Investment Fund manager, investing across warehousing, residential, industrial and plotted development across India.";
+
+const addressLines = settings?.address?.length
+  ? settings.address
+  : ["608-B Wing, Express Zone,", "Western Express Highway, Goregaon (E), Mumbai-400 097"];
+
+const phones = settings?.phones?.length
+  ? settings.phones
+  : ["+91 22 6236 6266", "+91 22 6236 6277"];
+
+const emails = settings?.emails?.length ? settings.emails : ["dhananjay@landmarkcapital.in"];
+const primaryEmail = emails[0];
+
+const socials = (
+  settings?.socials?.length
+    ? settings.socials
+    : [
+        { label: "LinkedIn", url: "https://www.linkedin.com/company/landmark-capital-advisors" },
+        { label: "Email", url: "mailto:dhananjay@landmarkcapital.in" },
+      ]
+).map((s) => ({
+  ...s,
+  aria: `${s.label} — Landmark Capital`,
+  icon: s.label.toLowerCase().includes("linkedin") ? Linkedin : Mail,
+}));
 
 const linkClass =
   "inline-block text-sm text-white/60 hover:text-white transition-colors duration-200";
@@ -113,59 +147,63 @@ function HomeFooter() {
                 Institutional discipline. Local execution.
               </p>
               <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/65">
-                A SEBI-registered Alternative Investment Fund manager, investing across
-                warehousing, residential, industrial and plotted development across India.
+                {brandDescription}
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <Icon as={MapPin} size={16} className="mt-0.5 shrink-0 text-bronze" />
                   <address className="text-sm not-italic leading-relaxed text-white/65">
-                    608-B Wing, Express Zone,
-                    <br />
-                    Western Express Highway, Goregaon (E), Mumbai-400 097
+                    {addressLines.map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        {i < addressLines.length - 1 && <br />}
+                      </span>
+                    ))}
                   </address>
                 </li>
                 <li className="flex items-center gap-3">
                   <Icon as={Phone} size={16} className="shrink-0 text-bronze" />
                   <span className="text-sm text-white/65">
-                    <a href="tel:+912262366266" className="transition-colors hover:text-white">
-                      +91 22 6236 6266
-                    </a>
-                    <span className="text-white/30"> / </span>
-                    <a href="tel:+912262366277" className="transition-colors hover:text-white">
-                      6277
-                    </a>
+                    {phones.map((phone, i) => (
+                      <span key={phone}>
+                        {i > 0 && <span className="text-white/30"> / </span>}
+                        <a
+                          href={`tel:${phone.replace(/\s+/g, "")}`}
+                          className="transition-colors hover:text-white"
+                        >
+                          {phone}
+                        </a>
+                      </span>
+                    ))}
                   </span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <Icon as={Mail} size={16} className="shrink-0 text-bronze" />
-                  <a
-                    href="mailto:dhananjay@landmarkcapital.in"
-                    className="break-all text-sm text-white/65 transition-colors hover:text-white"
-                  >
-                    dhananjay@landmarkcapital.in
-                  </a>
-                </li>
+                {primaryEmail && (
+                  <li className="flex items-center gap-3">
+                    <Icon as={Mail} size={16} className="shrink-0 text-bronze" />
+                    <a
+                      href={`mailto:${primaryEmail}`}
+                      className="break-all text-sm text-white/65 transition-colors hover:text-white"
+                    >
+                      {primaryEmail}
+                    </a>
+                  </li>
+                )}
               </ul>
 
               <div className="mt-8 flex items-center gap-3">
-                <a
-                  href="https://www.linkedin.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Landmark Capital on LinkedIn"
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-bronze hover:bg-white/5 hover:text-white"
-                >
-                  <Icon as={Linkedin} size={18} />
-                </a>
-                <a
-                  href="mailto:dhananjay@landmarkcapital.in"
-                  aria-label="Email Landmark Capital"
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-bronze hover:bg-white/5 hover:text-white"
-                >
-                  <Icon as={Mail} size={18} />
-                </a>
+                {socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.url}
+                    target={s.url.startsWith("http") ? "_blank" : undefined}
+                    rel="noreferrer"
+                    aria-label={s.aria}
+                    className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-bronze hover:bg-white/5 hover:text-white"
+                  >
+                    <Icon as={s.icon} size={18} />
+                  </a>
+                ))}
               </div>
             </div>
 

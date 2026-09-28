@@ -3,8 +3,7 @@ import { PageHero } from "@/components/common/PageHero";
 import { Reveal } from "@/components/common/Reveal";
 import { Icon } from "@/components/common/Icon";
 import { Seo } from "@/components/common/Seo";
-import { blogs } from "@/data/blogs";
-import { interviews } from "@/data/interviews";
+import { getBlogs, getInterviews } from "@/lib/cmsData";
 import { ArrowUpRight, Play } from "lucide-react";
 
 function formatDate(iso: string) {
@@ -21,6 +20,9 @@ function formatDate(iso: string) {
  * and industry data.
  */
 export default function NewsRoom() {
+  const blogs = getBlogs();
+  const interviews = getInterviews();
+
   return (
     <>
       <Seo

@@ -15,6 +15,3 @@ export const reports: Report[] = [
   },
 ];
 
-export function getReport(slug: string) {
-  return reports.find((r) => r.slug === slug);
-}

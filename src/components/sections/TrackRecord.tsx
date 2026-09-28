@@ -11,7 +11,7 @@ import {
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { Reveal } from "@/components/common/Reveal";
 import { Icon } from "@/components/common/Icon";
-import { portfolioStats, trackRecord, type Stat } from "@/data/stats";
+import { getPortfolioStats, getTrackRecord, type Stat } from "@/lib/cmsData";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useInView } from "@/hooks/useInView";
 import { asOfQuarter } from "@/lib/format";
@@ -52,7 +52,7 @@ const statIcons: Record<string, LucideIcon> = {
 };
 
 /** Track-record metrics + portfolio metrics, unified into one fact sheet. */
-const mergedStats: Stat[] = [...trackRecord, ...portfolioStats];
+const mergedStats: Stat[] = [...getTrackRecord(), ...getPortfolioStats()];
 
 const asOf = asOfQuarter();
 

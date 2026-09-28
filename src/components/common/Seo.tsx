@@ -1,11 +1,17 @@
+import { createContext, useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
+import type { PageSeoEntry } from "@/lib/cmsData";
 
 const SITE_NAME = "Landmark Capital";
 export const SITE_URL = "https://www.landmarkcapital.in";
 const DEFAULT_DESCRIPTION =
   "Institutional real estate investing backed by research, governance and aligned execution. SEBI-registered Alternative Investment Fund manager operating across warehousing, residential, industrial and plotted development in India.";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+
+/** Page-level SEO overrides (from the Page SEO edit screens in the CMS). */
+const SeoOverridesContext = createContext<Record<string, PageSeoEntry>>({});
+export const SeoOverridesProvider = SeoOverridesContext.Provider;
 
 type Props = {
   title: string;
@@ -22,22 +28,39 @@ type Props = {
   ogType?: "website" | "article";
   /** ISO publish date, rendered as article:published_time when ogType is "article". */
   publishedTime?: string;
+  /**
+   * True when title/description already come from a CMS document's own SEO
+   * fields — page-level overrides from Page SEO docs are then skipped.
+   */
+  fromCms?: boolean;
 };
 
 export function Seo({
   title,
   description = DEFAULT_DESCRIPTION,
   path,
-  image = DEFAULT_OG_IMAGE,
+  image,
   jsonLd,
   raw = false,
   noindex = false,
   ogType = "website",
   publishedTime,
+  fromCms = false,
 }: Props) {
   const location = useLocation();
-  const canonical = `${SITE_URL}${path ?? location.pathname}`;
-  const pageTitle = raw ? title : `${title} — ${SITE_NAME}`;
+  const overrides = useContext(SeoOverridesContext);
+  const canonicalPath = path ?? location.pathname;
+  const pageSeo = fromCms ? undefined : overrides[canonicalPath];
+
+  const canonical = pageSeo?.canonical || `${SITE_URL}${canonicalPath}`;
+  const pageTitle = pageSeo?.title
+    ? pageSeo.title
+    : raw
+      ? title
+      : `${title} — ${SITE_NAME}`;
+  const effectiveDescription = pageSeo?.description ?? description;
+  const effectiveImage = pageSeo?.ogImage ?? image ?? DEFAULT_OG_IMAGE;
+  const effectiveNoindex = noindex || Boolean(pageSeo?.noindex);
   const jsonLdArray = jsonLd
     ? Array.isArray(jsonLd)
       ? jsonLd
@@ -47,9 +70,9 @@ export function Seo({
   return (
     <Helmet>
       <title>{pageTitle}</title>
-      <meta name="description" content={description} />
+      <meta name="description" content={effectiveDescription} />
       <link rel="canonical" href={canonical} />
-      {noindex && <meta name="robots" content="noindex,nofollow" />}
+      {effectiveNoindex && <meta name="robots" content="noindex,nofollow" />}
       <meta property="og:type" content={ogType} />
       {ogType === "article" && publishedTime && (
         <meta property="article:published_time" content={publishedTime} />
@@ -57,13 +80,13 @@ export function Seo({
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="en_IN" />
       <meta property="og:title" content={pageTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:description" content={effectiveDescription} />
       <meta property="og:url" content={canonical} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={effectiveImage} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:description" content={effectiveDescription} />
+      <meta name="twitter:image" content={effectiveImage} />
       {jsonLdArray.map((data, i) => (
         <script key={i} type="application/ld+json">
           {JSON.stringify(data)}

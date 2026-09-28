@@ -3,7 +3,7 @@ import { PageHero } from "@/components/common/PageHero";
 import { Reveal } from "@/components/common/Reveal";
 import { Icon } from "@/components/common/Icon";
 import { Seo } from "@/components/common/Seo";
-import { reports } from "@/data/reports";
+import { getReports, getIndustryData } from "@/lib/cmsData";
 import { ArrowUpRight, Download, ArrowRight } from "lucide-react";
 
 /**
@@ -45,6 +45,9 @@ const industryData = [
 ];
 
 export default function Blogs() {
+  const reports = getReports();
+  const industryData = getIndustryData();
+
   return (
     <>
       <Seo

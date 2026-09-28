@@ -1,9 +1,11 @@
 import { PageHero } from "@/components/common/PageHero";
 import { Reveal } from "@/components/common/Reveal";
 import { Seo } from "@/components/common/Seo";
-import { portfolioProjects } from "@/data/portfolio";
+import { getPortfolioProjects } from "@/lib/cmsData";
 
 export default function Portfolio() {
+  const portfolioProjects = getPortfolioProjects();
+
   return (
     <>
       <Seo

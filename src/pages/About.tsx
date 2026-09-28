@@ -21,16 +21,10 @@ import { FirmOverview } from "@/components/sections/FirmOverview";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useInView } from "@/hooks/useInView";
+import { getAboutGlance } from "@/lib/cmsData";
 import { cn } from "@/lib/utils";
 
 /* ————————————————————————————————————————————— */
-
-const glance = [
-  { label: "Years of discipline", target: 30, suffix: "+" },
-  { label: "Transactions executed", target: 45, suffix: "+" },
-  { label: "Cumulative managed", target: 4000, prefix: "₹", suffix: " Cr" },
-  { label: "Major Indian cities", target: 12, suffix: "" },
-];
 
 const principles = [
   {
@@ -261,10 +255,10 @@ function AtAGlance() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4 border-t border-border pt-10">
-          {glance.map((g, i) => (
+          {getAboutGlance().map((g, i) => (
             <Reveal key={g.label} delay={i * 0.05}>
               <div className="pr-4 border-r last:border-r-0 border-border">
-                <GlanceFigure target={g.target} prefix={g.prefix} suffix={g.suffix} />
+                <GlanceFigure target={g.numericTarget} prefix={g.prefix} suffix={g.suffix} />
                 <p className="mt-3 text-xs uppercase tracking-[0.16em] text-slate-blue max-w-[16ch] leading-relaxed">
                   {g.label}
                 </p>

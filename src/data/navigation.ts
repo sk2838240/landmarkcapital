@@ -4,6 +4,8 @@ export type NavItem = {
   children?: NavItem[];
   /** Exact paths that mark this item active in the navbar; overrides the `to` prefix check */
   activePaths?: string[];
+  /** Mega-menu cards (from the CMS Site Settings); falls back to the built-in card sets */
+  cards?: { label: string; cta?: string; to: string; image: string; alt?: string }[];
 };
 
 export const nav: NavItem[] = [

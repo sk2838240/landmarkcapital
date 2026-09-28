@@ -18,3 +18,6 @@ tsconfig.tsbuildinfo
 public/landmark-video.mp4
 public/aj-video.mp4
 public/aj-video-poster.jpg
+
+# CMS content generated at build time from Sanity
+src/generated/

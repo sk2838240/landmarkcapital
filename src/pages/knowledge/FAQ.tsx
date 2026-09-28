@@ -4,12 +4,13 @@ import { PageHero } from "@/components/common/PageHero";
 import { Reveal } from "@/components/common/Reveal";
 import { Icon } from "@/components/common/Icon";
 import { Seo } from "@/components/common/Seo";
-import { faqs } from "@/data/faq";
+import { getFaqs } from "@/lib/cmsData";
 import { Plus, Minus } from "lucide-react";
 import { durations, easings } from "@/lib/motion";
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
+  const faqs = getFaqs();
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",

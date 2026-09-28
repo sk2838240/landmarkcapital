@@ -1,7 +1,8 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { nav } from "@/data/navigation";
+import { nav as staticNav, type NavItem } from "@/data/navigation";
+import { getSiteSettings } from "@/lib/cmsData";
 import { Logo } from "@/components/common/Logo";
 import { ButtonLink } from "@/components/common/Button";
 import { media } from "@/data/media";
@@ -97,19 +98,29 @@ const ourFundsCards = [
   },
 ];
 
-const megaMenus: Record<
+const megaMenuCards: Record<
   string,
-  {
-    panel: string;
-    cols: string;
-    cards: { label: string; to: string; cta: string; src: string; alt: string }[];
-  }
+  { label: string; to: string; cta: string; src: string; alt: string }[]
 > = {
-  About: { panel: "w-[680px]", cols: "grid-cols-3", cards: aboutCards },
-  "Available Structures": { panel: "w-[680px]", cols: "grid-cols-3", cards: strategiesCards },
-  "Current Portfolio": { panel: "w-[680px]", cols: "grid-cols-3", cards: portfolioCards },
-  "Our Funds": { panel: "w-[480px]", cols: "grid-cols-2", cards: ourFundsCards },
+  About: aboutCards,
+  "Available Structures": strategiesCards,
+  "Current Portfolio": portfolioCards,
+  "Our Funds": ourFundsCards,
 };
+
+/** Panel width/columns keyed by nav item path — stable across label edits in the CMS. */
+const megaLayouts: Record<string, { panel: string; cols: string }> = {
+  "/about": { panel: "w-[680px]", cols: "grid-cols-3" },
+  "/structures/aif": { panel: "w-[680px]", cols: "grid-cols-3" },
+  "/portfolio": { panel: "w-[680px]", cols: "grid-cols-3" },
+  "/funds/multiplier": { panel: "w-[480px]", cols: "grid-cols-2" },
+};
+const megaLayoutDefault = { panel: "w-[680px]", cols: "grid-cols-3" };
+
+const settings = getSiteSettings();
+const nav: NavItem[] = (
+  settings?.nav && settings.nav.length > 0 ? settings.nav : staticNav
+) as NavItem[];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -218,16 +229,25 @@ export function Navbar() {
                 : location.pathname.startsWith(item.to);
               const dropdownPanelId = `${menuId}-${item.label.replace(/\s+/g, "-")}`;
 
-              const mega = megaMenus[item.label];
+              const cards = item.cards
+                ? item.cards.map((c) => ({
+                    label: c.label,
+                    cta: c.cta ?? "Explore →",
+                    to: c.to,
+                    src: c.image,
+                    alt: c.alt ?? c.label,
+                  }))
+                : megaMenuCards[item.label];
+              const layout = megaLayouts[item.to] ?? megaLayoutDefault;
 
               return (
                 <div
                   key={item.label}
                   className="relative"
-                  onMouseEnter={() => (item.children || mega) && openDropdown(item.label)}
-                  onMouseLeave={() => (item.children || mega) && scheduleClose()}
+                  onMouseEnter={() => (item.children || cards) && openDropdown(item.label)}
+                  onMouseLeave={() => (item.children || cards) && scheduleClose()}
                 >
-                  {item.children || mega ? (
+                  {item.children || cards ? (
                     <button
                       type="button"
                       className={cn(
@@ -283,7 +303,7 @@ export function Navbar() {
                   )}
 
                   <AnimatePresence>
-                    {(item.children || mega) && isOpen && (
+                    {(item.children || cards) && isOpen && (
                       <motion.div
                         key={dropdownPanelId}
                         id={dropdownPanelId}
@@ -294,15 +314,15 @@ export function Navbar() {
                         transition={{ duration: 0.28, ease: easings.outExpo }}
                         className={cn(
                           "absolute top-full left-1/2 -translate-x-1/2 z-[60] pt-3",
-                          mega ? mega.panel : "w-auto min-w-[200px]"
+                          cards ? layout.panel : "w-auto min-w-[200px]"
                         )}
                         onMouseEnter={() => openDropdown(item.label)}
                         onMouseLeave={scheduleClose}
                       >
-                        {mega ? (
+                        {cards ? (
                           <div className="bg-[#1b2531] border border-white/10 rounded-[20px] p-5 shadow-[0_32px_80px_-20px_rgba(0,0,0,0.7)] overflow-hidden">
-                            <div className={cn("grid gap-4", mega.cols)}>
-                              {mega.cards.map((card) => {
+                            <div className={cn("grid gap-4", layout.cols)}>
+                              {cards.map((card) => {
                                 const isActive =
                                   activeDropdown === item.label &&
                                   location.pathname === card.to;

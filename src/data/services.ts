@@ -228,6 +228,3 @@ export const services: Service[] = [
   },
 ];
 
-export function getService(slug: string) {
-  return services.find((s) => s.slug === slug);
-}

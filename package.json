@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predev": "node scripts/fetch-cms.mjs",
     "build": "tsc -b && vite build",
+    "prebuild": "node scripts/fetch-cms.mjs",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "cms:studio": "cd studio && npm run dev",
+    "cms:import": "tsx scripts/import-seed.ts"
   },
   "dependencies": {
     "@fontsource-variable/ibm-plex-sans": "^5.2.8",
@@ -30,6 +34,7 @@
     "@vitejs/plugin-react": "^4.3.3",
     "tailwindcss": "^4.0.0-beta.7",
     "typescript": "^5.6.3",
-    "vite": "^5.4.11"
+    "vite": "^5.4.11",
+    "tsx": "^4.19.2"
   }
 }

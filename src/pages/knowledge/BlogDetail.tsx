@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { getBlog, blogs } from "@/data/blogs";
+import { getBlogs, getBlog } from "@/lib/cmsData";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/common/Reveal";
 import { Icon } from "@/components/common/Icon";
@@ -24,18 +24,23 @@ export default function BlogDetail() {
   const blog = getBlog(slug);
 
   if (!blog) {
-    return <Navigate to="/insights" replace />;
+    return <Navigate to="/newsroom" replace />;
   }
 
-  const otherBlogs = blogs.filter((b) => b.slug !== slug).slice(0, 3);
+  const allBlogs = getBlogs();
+  const otherBlogs = allBlogs.filter((b) => b.slug !== slug).slice(0, 3);
   const readMins = readingTime(blog.excerpt);
 
   return (
     <article className="bg-ivory">
       <Seo
-        title={blog.title}
-        description={blog.excerpt}
+        title={blog.seo?.metaTitle ?? blog.title}
+        raw={Boolean(blog.seo?.metaTitle)}
+        description={blog.seo?.metaDescription ?? blog.excerpt}
         path={`/blog/${slug}`}
+        image={blog.seo?.ogImage ?? blog.image ?? undefined}
+        noindex={blog.seo?.noindex}
+        fromCms
         ogType="article"
         publishedTime={blog.date}
         jsonLd={articleJsonLd({

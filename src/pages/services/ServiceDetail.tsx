@@ -4,7 +4,7 @@ import { PageHero } from "@/components/common/PageHero";
 import { Reveal } from "@/components/common/Reveal";
 import { ButtonLink } from "@/components/common/Button";
 import { Seo, serviceJsonLd } from "@/components/common/Seo";
-import { getService } from "@/data/services";
+import { getService } from "@/lib/cmsData";
 import { ArrowRight } from "lucide-react";
 
 export default function ServiceDetail() {

@@ -7,6 +7,14 @@ export type Stat = {
   description: string;
 };
 
+export type GlanceStat = {
+  label: string;
+  numericTarget: number;
+  prefix?: string;
+  suffix?: string;
+  description?: string;
+};
+
 export const portfolioStats: Stat[] = [
   {
     label: "Warehousing",
@@ -68,4 +76,12 @@ export const principles = [
   "Consumption Pattern",
   "Patient Capital",
   "Selected Deals",
+];
+
+/** About page — firm at a glance */
+export const aboutGlance: GlanceStat[] = [
+  { label: "Years of discipline", numericTarget: 30, suffix: "+" },
+  { label: "Transactions executed", numericTarget: 45, suffix: "+" },
+  { label: "Cumulative managed", numericTarget: 4000, prefix: "₹", suffix: " Cr" },
+  { label: "Major Indian cities", numericTarget: 12 },
 ];

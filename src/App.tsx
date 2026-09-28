@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import { MotionConfig } from "framer-motion";
 
@@ -8,6 +8,8 @@ import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { useLenis } from "@/hooks/useLenis";
+import { SeoOverridesProvider } from "@/components/common/Seo";
+import { getPageSeoMap, getRedirects } from "@/lib/cmsData";
 
 const Home = lazy(() => import("@/pages/Home"));
 const About = lazy(() => import("@/pages/About"));
@@ -51,14 +53,35 @@ function LegacyBlogRedirect() {
   return <Navigate to={slug ? `/blog/${slug}` : "/newsroom"} replace />;
 }
 
+/** Catch-all — resolves CMS-managed redirects before showing the 404 page. */
+function RedirectHandler() {
+  const params = useParams();
+  const splat = (params["*"] ?? "").replace(/\/+$/, "");
+  const match = getRedirects().find(
+    (r) => r.source.replace(/\/+$/, "") === `/${splat}`
+  );
+  const external = match?.destination.startsWith("http")
+    ? match.destination
+    : null;
+
+  useEffect(() => {
+    if (external) window.location.replace(external);
+  }, [external]);
+
+  if (external) return null;
+  if (match) return <Navigate to={match.destination} replace />;
+  return <NotFound />;
+}
+
 export default function App() {
   useLenis();
 
   return (
     <MotionConfig reducedMotion="user">
-      <a href="#main" className="skip-link">
-        Skip to content
-      </a>
+      <SeoOverridesProvider value={getPageSeoMap()}>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
       <ScrollProgress />
       <Navbar />
       <ScrollToTop />
@@ -109,12 +132,13 @@ export default function App() {
               <Route path="/knowledge/blogs/:slug" element={<LegacyBlogRedirect />} />
               <Route path="/knowledge/faq" element={<Navigate to="/insights/faq" replace />} />
 
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<RedirectHandler />} />
             </Routes>
           </PageTransition>
         </Suspense>
       </main>
       <Footer />
+      </SeoOverridesProvider>
     </MotionConfig>
   );
 }
