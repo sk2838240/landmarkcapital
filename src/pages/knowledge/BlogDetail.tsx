@@ -35,7 +35,6 @@ export default function BlogDetail() {
     <article className="bg-ivory">
       <Seo
         title={blog.seo?.metaTitle ?? blog.title}
-        raw={Boolean(blog.seo?.metaTitle)}
         description={blog.seo?.metaDescription ?? blog.excerpt}
         path={`/blog/${slug}`}
         image={blog.seo?.ogImage ?? blog.image ?? undefined}

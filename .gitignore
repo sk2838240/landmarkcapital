@@ -21,3 +21,6 @@ public/aj-video-poster.jpg
 
 # CMS content generated at build time from Sanity
 src/generated/
+
+# Sanity Studio local session cache
+studio/.sanity/

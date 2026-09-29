@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { randomUUID } from "node:crypto";
 import { blogs } from "@/data/blogs";
 import { reports } from "@/data/reports";
 import { interviews } from "@/data/interviews";
@@ -25,6 +26,13 @@ function loadEnv() {
 }
 
 loadEnv();
+
+/** Sanity OBJECT array items require a unique _key — stamp one on every item.
+ *  Primitive (string/number) array items are stored as plain values and must
+ *  NOT be keyed. */
+function keyed<T extends object>(items: T[]): (T & { _key: string })[] {
+  return items.map((item) => ({ ...item, _key: randomUUID() }));
+}
 
 /**
  * One-time seed import: pushes the bundled static content into Sanity so the
@@ -84,8 +92,8 @@ function serviceDoc(s: (typeof services)[number]): Doc {
     tagline: s.tagline,
     intro: s.intro,
     positioning: s.positioning,
-    approach: s.approach.map((a) => ({ _type: "serviceStep", ...a })),
-    offerings: s.offerings.map((o) => ({ _type: "serviceStep", ...o })),
+    approach: keyed(s.approach.map((a) => ({ _type: "serviceStep", ...a }))),
+    offerings: keyed(s.offerings.map((o) => ({ _type: "serviceStep", ...o }))),
     ...(s.situations ? { situations: s.situations } : {}),
     ...(s.offeringsNote ? { offeringsNote: s.offeringsNote } : {}),
     audience: s.audience,
@@ -104,8 +112,8 @@ function projectDoc(p: (typeof portfolioProjects)[number]): Doc {
     saleableArea: p.saleableArea,
     invested: p.invested,
     status: p.status,
-    highlights: p.highlights,
-    metrics: p.metrics.map((m) => ({ _type: "metricItem", ...m })),
+    highlights: keyed(p.highlights),
+    metrics: keyed(p.metrics.map((m) => ({ _type: "metricItem", ...m }))),
   };
 }
 
@@ -137,26 +145,24 @@ function industryDoc(d: (typeof industryData)[number], i: number): Doc {
   };
 }
 
-function navItemDoc(n: (typeof nav)[number]): Doc {
-  return {
-    _type: "navItem",
-    label: n.label,
-    to: n.to,
-    ...(n.activePaths ? { activePaths: n.activePaths } : {}),
-  };
-}
-
 const settingsDoc: Doc = {
   _type: "siteSettings",
   _id: "siteSettings",
   brandDescription:
     "A SEBI-registered Alternative Investment Fund manager, investing across warehousing, residential, industrial and plotted development across India.",
-  nav: nav.map(navItemDoc),
-  footerNav: [
+  nav: keyed(
+    nav.map((n) => ({
+      _type: "navItem",
+      label: n.label,
+      to: n.to,
+      ...(n.activePaths ? { activePaths: keyed(n.activePaths) } : {}),
+    }))
+  ),
+  footerNav: keyed([
     {
       _type: "footerColumn",
       title: "Firm",
-      links: [
+      links: keyed([
         { _type: "footerLink", label: "About", to: "/about" },
         { _type: "footerLink", label: "Leadership", to: "/leadership" },
         { _type: "footerLink", label: "News Room", to: "/newsroom" },
@@ -165,38 +171,38 @@ const settingsDoc: Doc = {
         { _type: "footerLink", label: "Transactions", to: "/transactions" },
         { _type: "footerLink", label: "Contact", to: "/contact" },
         { _type: "footerLink", label: "SmartODR Portal", to: "https://smartodr.in/login" },
-      ],
+      ]),
     },
     {
       _type: "footerColumn",
       title: "Our Funds",
-      links: [
+      links: keyed([
         { _type: "footerLink", label: "Multiplier Fund", to: "/funds/multiplier" },
         { _type: "footerLink", label: "Opportunity Fund", to: "/funds/opportunity" },
-      ],
+      ]),
     },
     {
       _type: "footerColumn",
       title: "Available Structures",
-      links: [
+      links: keyed([
         { _type: "footerLink", label: "AIF", to: "/structures/aif" },
         { _type: "footerLink", label: "LVF", to: "/structures/lvf" },
         { _type: "footerLink", label: "Managed Accounts", to: "/structures/managed-accounts" },
-      ],
+      ]),
     },
     {
       _type: "footerColumn",
       title: "Insights",
-      links: [
+      links: keyed([
         { _type: "footerLink", label: "Research & Insights", to: "/insights" },
         { _type: "footerLink", label: "FAQ", to: "/insights/faq" },
         { _type: "footerLink", label: "Tax Reckoner", to: "/Tax%20Reckoner.pdf" },
         { _type: "footerLink", label: "SmartODR Portal", to: "https://smartodr.in/login" },
         { _type: "footerLink", label: "Disclaimer", to: "/disclaimer" },
-      ],
+      ]),
     },
-  ],
-  stats: [
+  ]),
+  stats: keyed([
     { _type: "statItem", group: "portfolio", label: "Warehousing", numericTarget: 3.5, decimals: 1, suffix: "M+", description: "Square feet across strategic industrial corridors" },
     { _type: "statItem", group: "portfolio", label: "Residential", numericTarget: 3.8, decimals: 1, suffix: "M+", description: "Square feet in residential projects targeting emerging urban markets" },
     { _type: "statItem", group: "portfolio", label: "Plotting", numericTarget: 3.5, decimals: 1, suffix: "M+", description: "Square feet in land development with exceptional growth potential" },
@@ -207,14 +213,14 @@ const settingsDoc: Doc = {
     { _type: "statItem", group: "about", label: "Transactions executed", numericTarget: 45, decimals: 0, suffix: "+" },
     { _type: "statItem", group: "about", label: "Cumulative managed", numericTarget: 4000, decimals: 0, prefix: "₹", suffix: " Cr" },
     { _type: "statItem", group: "about", label: "Major Indian cities", numericTarget: 12, decimals: 0 },
-  ],
+  ]),
   address: ["608-B Wing, Express Zone,", "Western Express Highway, Goregaon (E), Mumbai-400 097"],
   phones: ["+91 22 6236 6266", "+91 22 6236 6277"],
   emails: ["dhananjay@landmarkcapital.in"],
-  socials: [
+  socials: keyed([
     { _type: "socialLink", label: "LinkedIn", url: "https://www.linkedin.com/company/landmark-capital-advisors" },
     { _type: "socialLink", label: "Email", url: "mailto:dhananjay@landmarkcapital.in" },
-  ],
+  ]),
   robotsTxt: "User-agent: *\nAllow: /\nDisallow: /disclaimer",
 };
 

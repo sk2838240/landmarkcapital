@@ -21,8 +21,6 @@ type Props = {
   image?: string | null;
   /** JSON-LD structured data. May be a single object or an array. */
   jsonLd?: object | object[];
-  /** If true, "Landmark Capital" is not appended to the tab title. */
-  raw?: boolean;
   noindex?: boolean;
   /** Open Graph type — use "article" for blog posts. */
   ogType?: "website" | "article";
@@ -41,7 +39,6 @@ export function Seo({
   path,
   image,
   jsonLd,
-  raw = false,
   noindex = false,
   ogType = "website",
   publishedTime,
@@ -53,11 +50,7 @@ export function Seo({
   const pageSeo = fromCms ? undefined : overrides[canonicalPath];
 
   const canonical = pageSeo?.canonical || `${SITE_URL}${canonicalPath}`;
-  const pageTitle = pageSeo?.title
-    ? pageSeo.title
-    : raw
-      ? title
-      : `${title} — ${SITE_NAME}`;
+  const pageTitle = pageSeo?.title ?? title;
   const effectiveDescription = pageSeo?.description ?? description;
   const effectiveImage = pageSeo?.ogImage ?? image ?? DEFAULT_OG_IMAGE;
   const effectiveNoindex = noindex || Boolean(pageSeo?.noindex);
