@@ -38,7 +38,7 @@ export default function TransactionDetail() {
   return (
     <>
       <Seo
-        title={`${deal.name} — Case Study`}
+        title={`${deal.name}, Case Study`}
         description={cs.thesis}
         path={`/transactions/${id}`}
       />

@@ -7,14 +7,14 @@ import { getReports, getIndustryData } from "@/lib/cmsData";
 import { ArrowUpRight, Download, ArrowRight } from "lucide-react";
 
 /**
- * Research & Insights — reports and industry data. Distinct from the
+ * Research & Insights, reports and industry data. Distinct from the
  * News Room, which holds blogs, videos and interviews.
  */
 
 const industryData = [
   {
     value: "110M+",
-    label: "Demat accounts in India — more than doubled from 40.9 million in March 2020",
+    label: "Demat accounts in India, more than doubled from 40.9 million in March 2020",
     source: "sebi-brokers-investor-money",
     category: "Regulation",
   },
@@ -32,7 +32,7 @@ const industryData = [
   },
   {
     value: "$12,000",
-    label: "Ocean freight for a 40 ft container from China to Europe or North America — up from $2,000",
+    label: "Ocean freight for a 40 ft container from China to Europe or North America, up from $2,000",
     source: "ocean-freight-rate-spike",
     category: "Logistics",
   },
@@ -52,12 +52,12 @@ export default function Blogs() {
     <>
       <Seo
         title="Research & Insights"
-        description="Reports and industry data from Landmark Capital — market statistics, sector outlooks and downloadable reference material on Indian real estate."
+        description="Reports and industry data from Landmark Capital, market statistics, sector outlooks and downloadable reference material on Indian real estate."
       />
       <PageHero
         eyebrow="Research & Insights"
         title="Reports and industry data."
-        subtitle="Market statistics, sector outlooks and downloadable reference material — the numbers behind Indian real estate."
+        subtitle="Market statistics, sector outlooks and downloadable reference material, the numbers behind Indian real estate."
         tone="stone"
       />
 

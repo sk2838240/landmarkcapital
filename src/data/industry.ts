@@ -10,7 +10,7 @@ export type IndustryDataPoint = {
 export const industryData: IndustryDataPoint[] = [
   {
     value: "110M+",
-    label: "Demat accounts in India — more than doubled from 40.9 million in March 2020",
+    label: "Demat accounts in India, more than doubled from 40.9 million in March 2020",
     source: "sebi-brokers-investor-money",
     category: "Regulation",
   },
@@ -28,7 +28,7 @@ export const industryData: IndustryDataPoint[] = [
   },
   {
     value: "$12,000",
-    label: "Ocean freight for a 40 ft container from China to Europe or North America — up from $2,000",
+    label: "Ocean freight for a 40 ft container from China to Europe or North America, up from $2,000",
     source: "ocean-freight-rate-spike",
     category: "Logistics",
   },

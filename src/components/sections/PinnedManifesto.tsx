@@ -29,7 +29,7 @@ const steps: {
   {
     n: "02",
     title: "Structure",
-    body: "Capital is designed around the deal — not forced into a predefined fund template.",
+    body: "Capital is designed around the deal, not forced into a predefined fund template.",
     icon: Layers,
   },
   {
@@ -333,7 +333,7 @@ export function PinnedManifesto() {
             >
               You choose which deals you back. We make sure each one is worth choosing.
               Landmark Capital originates and structures real estate investments one transaction at
-              a time. Every deal is independently underwritten and ring-fenced — you see the
+              a time. Every deal is independently underwritten and ring-fenced, you see the
               asset, the structure, and the exit before you invest. Your capital goes exactly
               where you put it.
             </motion.p>

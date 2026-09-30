@@ -19,7 +19,7 @@ export const faqs: FAQ[] = [
   {
     question: "What is the indicative drawdown schedule?",
     answer:
-      "The indicative drawdown schedule is — at least 40% of the Capital Commitment at the time of execution of the Contribution Agreement, and the balance as per drawdown notices issued by the Investment Manager on an 'as needed' basis.",
+      "The indicative drawdown schedule is: at least 40% of the Capital Commitment at the time of execution of the Contribution Agreement, and the balance as per drawdown notices issued by the Investment Manager on an 'as needed' basis.",
   },
   {
     question: "What shall be the notice time given to investor to make contribution?",

@@ -78,7 +78,7 @@ export const principles = [
   "Selected Deals",
 ];
 
-/** About page — firm at a glance */
+/** About page, firm at a glance */
 export const aboutGlance: GlanceStat[] = [
   { label: "Years of discipline", numericTarget: 30, suffix: "+" },
   { label: "Transactions executed", numericTarget: 45, suffix: "+" },

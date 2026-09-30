@@ -7,7 +7,7 @@ import { Seo, financialProductJsonLd } from "@/components/common/Seo";
 const keyFeatures = [
   {
     title: "Accredited-only",
-    body: "Every investor in the scheme must independently qualify as a SEBI-certified Accredited Investor — no exceptions.",
+    body: "Every investor in the scheme must independently qualify as a SEBI-certified Accredited Investor, no exceptions.",
   },
   {
     title: "Entry ticket",
@@ -15,11 +15,11 @@ const keyFeatures = [
   },
   {
     title: "Lighter compliance",
-    body: "Exempt from the standard PPM template and the mandatory annual PPM audit — fewer compliance formalities.",
+    body: "Exempt from the standard PPM template and the mandatory annual PPM audit, fewer compliance formalities.",
   },
   {
     title: "Concentration",
-    body: "Greater concentration allowed — up to 50% of investable funds can go into a single investee, versus tighter diversification limits for standard AIFs.",
+    body: "Greater concentration allowed, up to 50% of investable funds can go into a single investee, versus tighter diversification limits for standard AIFs.",
   },
   {
     title: "Flexible tenure",
@@ -28,28 +28,28 @@ const keyFeatures = [
 ];
 
 const constraints = [
-  "High entry threshold — not accessible below ₹25 crore per investor.",
-  "Still a pooled, close-ended structure — capital is committed for the fund's tenure, same as a standard AIF.",
-  "Every investor must clear Accredited Investor status before committing — this is not optional or waivable.",
+  "High entry threshold, not accessible below ₹25 crore per investor.",
+  "Still a pooled, close-ended structure, capital is committed for the fund's tenure, same as a standard AIF.",
+  "Every investor must clear Accredited Investor status before committing, this is not optional or waivable.",
 ];
 
 export default function LVF() {
   return (
     <>
       <Seo
-        title="LVF — Large Value Fund for Accredited Investors"
-        description="The largest, most flexible AIF route — built for concentrated, institutional-scale commitments by accredited investors."
+        title="LVF, Large Value Fund for Accredited Investors"
+        description="The largest, most flexible AIF route, built for concentrated, institutional-scale commitments by accredited investors."
         jsonLd={financialProductJsonLd({
           name: "Landmark Large Value Fund",
           description:
-            "A Large Value Fund for Accredited Investors — concentrated, institutional-scale commitments with lighter regulatory requirements.",
-          category: "Category II Alternative Investment Fund — Large Value Fund",
+            "A Large Value Fund for Accredited Investors, concentrated, institutional-scale commitments with lighter regulatory requirements.",
+          category: "Category II Alternative Investment Fund, Large Value Fund",
           path: "/structures/lvf",
         })}
       />
       <PageHero
-        eyebrow="LVF — Large Value Fund for Accredited Investors"
-        title="The largest, most flexible AIF route — built for concentrated, institutional-scale commitments."
+        eyebrow="LVF, Large Value Fund for Accredited Investors"
+        title="The largest, most flexible AIF route, built for concentrated, institutional-scale commitments."
         subtitle="A Large Value Fund (LVF) is a specific SEBI category within Category II AIFs, reserved for schemes where every investor is an Accredited Investor and each commits a large, defined minimum. In exchange for that scale and sophistication, SEBI grants LVFs meaningfully lighter regulatory requirements than a standard AIF."
       />
 
@@ -95,7 +95,7 @@ export default function LVF() {
               <Reveal delay={0.05}>
                 <p className="text-lg leading-relaxed text-white/75 mb-8">
                   Family offices, institutional investors, and UHNIs making large, concentrated
-                  commitments to a specific real estate strategy — investors who want scale and
+                  commitments to a specific real estate strategy, investors who want scale and
                   flexibility, and are equipped to do their own due diligence.
                 </p>
               </Reveal>
@@ -103,7 +103,7 @@ export default function LVF() {
                 {constraints.map((c) => (
                   <Reveal key={c}>
                     <div className="flex items-start gap-4 py-4 border-t border-white/15">
-                      <span className="text-crimson-300 mt-1">—</span>
+                      
                       <p className="text-base text-white/85">{c}</p>
                     </div>
                   </Reveal>

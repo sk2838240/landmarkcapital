@@ -12,12 +12,12 @@ export default function Transactions() {
     <>
       <Seo
         title="Transactions"
-        description="Selected completed exits across warehousing, commercial and residential. Representative transactions — many outcomes remain private by design."
+        description="Selected completed exits across warehousing, commercial and residential. Representative transactions, many outcomes remain private by design."
       />
       <PageHero
         eyebrow="Transactions"
         title="Selected completed exits."
-        subtitle="Representative transactions across warehousing, commercial and residential — many outcomes remain private by design."
+        subtitle="Representative transactions across warehousing, commercial and residential, many outcomes remain private by design."
       />
 
       <section className="section-pad surface-ivory">

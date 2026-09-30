@@ -34,7 +34,7 @@ const principles = [
   },
   {
     title: "Underpenetrated Markets",
-    body: "We seek opportunities that are globally proven but under-penetrated in India — continuously exploring under-served asset classes with structural tailwinds.",
+    body: "We seek opportunities that are globally proven but under-penetrated in India, continuously exploring under-served asset classes with structural tailwinds.",
     icon: MapIcon,
   },
   {
@@ -62,7 +62,7 @@ const capabilities = [
   },
   {
     title: "End-to-End Underwriting",
-    body: "Experience across every cycle of real estate — from underwriting through successful exits.",
+    body: "Experience across every cycle of real estate, from underwriting through successful exits.",
     icon: LineChart,
   },
   {
@@ -92,7 +92,7 @@ const process = [
   {
     step: "02",
     title: "Investor Validation",
-    body: "Every deal is presented with financial, risk and asset clarity — enabling independent evaluation before commitment.",
+    body: "Every deal is presented with financial, risk and asset clarity, enabling independent evaluation before commitment.",
     icon: Handshake,
   },
   {
@@ -104,7 +104,7 @@ const process = [
   {
     step: "04",
     title: "Exit Execution",
-    body: "Defined exit pathways — strategic sale, secondary sale, refinancing or asset monetisation — for timely liquidity.",
+    body: "Defined exit pathways, strategic sale, secondary sale, refinancing or asset monetisation, for timely liquidity.",
     icon: LineChart,
   },
 ];
@@ -139,7 +139,7 @@ export default function About() {
 }
 
 /* ————————————————————————————————————————————— */
-/* Founder's note — editorial pull-quote                 */
+/* Founder's note, editorial pull-quote                 */
 /* ————————————————————————————————————————————— */
 
 function FoundersNote() {
@@ -272,7 +272,7 @@ function AtAGlance() {
 }
 
 /* ————————————————————————————————————————————— */
-/* Investment Principles — numbered hover cards         */
+/* Investment Principles, numbered hover cards         */
 /* ————————————————————————————————————————————— */
 
 function Principles() {
@@ -287,7 +287,7 @@ function Principles() {
               Four lenses applied to <em className="italic">every</em> opportunity.
             </>
           }
-          description="A repeatable, disciplined framework — each principle is a filter, and every deal must earn its way through all four before it enters the pipeline."
+          description="A repeatable, disciplined framework, each principle is a filter, and every deal must earn its way through all four before it enters the pipeline."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
@@ -302,7 +302,7 @@ function Principles() {
               >
                 <div className="flex items-start justify-between gap-6 mb-6">
                   <span className="font-mono text-xs tracking-[0.18em] text-crimson-500">
-                    {String(i + 1).padStart(2, "0")} — Principle
+                    {String(i + 1).padStart(2, "0")} Principle
                   </span>
                   <span className="w-11 h-11 grid place-items-center rounded-full bg-stone group-hover:bg-crimson-500 transition-colors duration-500">
                     <Icon
@@ -337,7 +337,7 @@ function Principles() {
 }
 
 /* ————————————————————————————————————————————— */
-/* Capabilities — icon grid                             */
+/* Capabilities, icon grid                             */
 /* ————————————————————————————————————————————— */
 
 function Capabilities() {
@@ -348,7 +348,7 @@ function Capabilities() {
           align="split"
           eyebrow="Platform capabilities"
           title="What the platform delivers."
-          description="An institutional operating platform — from origination through exit — under a single roof, close to every deal."
+          description="An institutional operating platform, from origination through exit, under a single roof, close to every deal."
           accent="bronze"
         />
 
@@ -386,7 +386,7 @@ function Capabilities() {
 }
 
 /* ————————————————————————————————————————————— */
-/* Process — animated vertical stepper                  */
+/* Process, animated vertical stepper                  */
 /* ————————————————————————————————————————————— */
 
 function Process() {
@@ -403,7 +403,7 @@ function Process() {
               From <em className="italic">thesis</em> to exit.
             </>
           }
-          description="Four disciplined steps that shape every deal — designed to align interest, protect the downside, and deliver liquidity on a defined pathway."
+          description="Four disciplined steps that shape every deal, designed to align interest, protect the downside, and deliver liquidity on a defined pathway."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">

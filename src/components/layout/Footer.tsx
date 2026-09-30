@@ -10,7 +10,7 @@ export function Footer() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Homepage footer — editorial, brand-aligned                                */
+/*  Homepage footer, editorial, brand-aligned                                */
 /* -------------------------------------------------------------------------- */
 
 type FooterLinkItem = { label: string; to?: string; href?: string; external?: boolean };
@@ -56,7 +56,7 @@ const footerNavStatic: { title: string; links: FooterLinkItem[] }[] = [
   },
 ];
 
-/* CMS-driven footer content — falls back to the built-in defaults */
+/* CMS-driven footer content, falls back to the built-in defaults */
 const settings = getSiteSettings();
 
 const footerNav = settings?.footerNav?.length ? settings.footerNav : footerNavStatic;
@@ -85,7 +85,7 @@ const socials = (
       ]
 ).map((s) => ({
   ...s,
-  aria: `${s.label} — Landmark Capital`,
+  aria: `${s.label}, Landmark Capital`,
   icon: s.label.toLowerCase().includes("linkedin") ? Linkedin : Mail,
 }));
 
@@ -123,7 +123,7 @@ function HomeFooter() {
         aria-hidden
         className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bronze/60 to-transparent"
       />
-      {/* Soft warm glow — replaces the old grid texture */}
+      {/* Soft warm glow, replaces the old grid texture */}
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 right-[-8rem] h-[34rem] w-[34rem] rounded-full bg-bronze/10 blur-[130px]"
@@ -257,5 +257,5 @@ function HomeFooter() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Default footer — retained for all non-home pages                          */
+/*  Default footer, retained for all non-home pages                          */
 /* -------------------------------------------------------------------------- */

@@ -40,13 +40,13 @@ export function Hero() {
     // Some browsers require an explicit play() call to start muted autoplay.
     if (!reduce) {
       v.play().catch(() => {
-        // Autoplay blocked or source missing — fall back to poster image.
+        // Autoplay blocked or source missing, fall back to poster image.
         setVideoFailed(true);
       });
     }
   }, [reduce]);
 
-  // CTA entrance: each button's box eases in first, then its label — and the
+  // CTA entrance: each button's box eases in first, then its label, and the
   // two buttons follow one after another. `custom` sets each element's start delay.
   const ctaBox: Variants = {
     hidden: { opacity: reduce ? 1 : 0, y: reduce ? 0 : 12, scale: reduce ? 1 : 0.96 },

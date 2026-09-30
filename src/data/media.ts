@@ -9,24 +9,24 @@
 
 export const media = {
   hero: {
-    /** Institutional skyline — replace with licensed Landmark asset */
+    /** Institutional skyline, replace with licensed Landmark asset */
     src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=2400&q=85",
-    alt: "Urban commercial skyline at dusk — institutional real estate context",
+    alt: "Urban commercial skyline at dusk, institutional real estate context",
   },
   about: {
-    /** Grade-A institutional architecture — replace with licensed Landmark asset */
+    /** Grade-A institutional architecture, replace with licensed Landmark asset */
     src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80",
     alt: "Institutional commercial architecture, glass and stone façade",
   },
-  /** About-nav mega menu imagery — premium dark cards */
+  /** About-nav mega menu imagery, premium dark cards */
   aboutMenu: {
     overview: {
       src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-      alt: "Institutional architecture — the firm at a glance",
+      alt: "Institutional architecture, the firm at a glance",
     },
     transactions: {
       src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
-      alt: "Boardroom table — a record of executed transactions",
+      alt: "Boardroom table, a record of executed transactions",
     },
     team: {
       src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
@@ -34,40 +34,40 @@ export const media = {
     },
     newsroom: {
       src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80",
-      alt: "Editorial desk with documents and notes — the Landmark news room",
+      alt: "Editorial desk with documents and notes, the Landmark news room",
     },
   },
-  /** Strategies-nav mega menu imagery — premium dark cards */
+  /** Strategies-nav mega menu imagery, premium dark cards */
   strategiesMenu: {
     aif: {
       src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
-      alt: "Boardroom table — SEBI-regulated pooled investing in a defined strategy",
+      alt: "Boardroom table, SEBI-regulated pooled investing in a defined strategy",
     },
     overview: {
       src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1200&q=80",
-      alt: "Urban commercial skyline — the Landmark strategies platform",
+      alt: "Urban commercial skyline, the Landmark strategies platform",
     },
     multiplier: {
       src: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
-      alt: "Grade-A residential development — growth capital at work",
+      alt: "Grade-A residential development, growth capital at work",
     },
     opportunity: {
       src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80",
-      alt: "Symmetrical institutional façade — curated opportunities",
+      alt: "Symmetrical institutional façade, curated opportunities",
     },
     lvf: {
       src: "https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1200&q=80",
-      alt: "Residential architecture — held from acquisition through exit",
+      alt: "Residential architecture, held from acquisition through exit",
     },
     managedAccounts: {
       src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80",
-      alt: "Daylit glass interior — mandate-aligned, transparent reporting",
+      alt: "Daylit glass interior, mandate-aligned, transparent reporting",
     },
   },
   manifesto: {
-    /** The asset itself — a completed development, the subject of selection and structuring */
+    /** The asset itself, a completed development, the subject of selection and structuring */
     src: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80",
-    alt: "Grade-A residential development — the kind of opportunity underwritten deal by deal",
+    alt: "Grade-A residential development, the kind of opportunity underwritten deal by deal",
   },
   /**
    * Fund Manager feature (Home → Leadership spotlight).
@@ -80,7 +80,7 @@ export const media = {
     src: "/aj-video.mp4",
     alt: "Ashish Joshi, Managing Partner & Fund Manager at Landmark Capital",
   },
-  /** Current-Portfolio nav mega menu imagery — project cards from the deck */
+  /** Current-Portfolio nav mega menu imagery, project cards from the deck */
   portfolioMenu: [
     {
       src: "/media/portfolio/ambience-parkview.jpg",
@@ -95,31 +95,31 @@ export const media = {
       alt: "Villa development, Sadahalli, Bangalore",
     },
   ],
-  /** One visual per Landmark Difference principle — order matches `differences` in Difference.tsx */
+  /** One visual per Landmark Difference principle, order matches `differences` in Difference.tsx */
   principles: [
     {
       src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1600&q=80",
-      alt: "Symmetrical institutional façade — aligned structure and shared purpose",
+      alt: "Symmetrical institutional façade, aligned structure and shared purpose",
     },
     {
       src: "https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1600&q=80",
-      alt: "Residential architecture — real estate held from acquisition through exit",
+      alt: "Residential architecture, real estate held from acquisition through exit",
     },
     {
       src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80",
-      alt: "Measured construction and structure — risk considered before speed",
+      alt: "Measured construction and structure, risk considered before speed",
     },
     {
       src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80",
-      alt: "Daylit glass interior — reporting with nothing hidden",
+      alt: "Daylit glass interior, reporting with nothing hidden",
     },
     {
       src: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
-      alt: "Quiet, considered interior — fewer rooms, better proportion",
+      alt: "Quiet, considered interior, fewer rooms, better proportion",
     },
     {
       src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
-      alt: "Shared working table — relationships built over time",
+      alt: "Shared working table, relationships built over time",
     },
   ],
 } as const;

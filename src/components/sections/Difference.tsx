@@ -45,7 +45,7 @@ const differences = [
   },
   {
     title: "Fewer, Better Decisions",
-    subtitle: "The edge is choosing the right deals — not doing more of them.",
+    subtitle: "The edge is choosing the right deals, not doing more of them.",
     points: [
       "High bar for underwriting and selection",
       "Focus over volume, every time",
@@ -176,7 +176,7 @@ export function Difference() {
           align="split"
           eyebrow="Principles"
           title="The Landmark Difference"
-          description="Six principles that shape every decision — from how we source deals to how we report on them."
+          description="Six principles that shape every decision, from how we source deals to how we report on them."
           accent="trust"
         />
 

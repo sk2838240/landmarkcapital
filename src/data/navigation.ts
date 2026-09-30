@@ -5,7 +5,7 @@ export type NavItem = {
   /** Exact paths that mark this item active in the navbar; overrides the `to` prefix check */
   activePaths?: string[];
   /** Mega-menu cards (from the CMS Site Settings); falls back to the built-in card sets */
-  cards?: { label: string; cta?: string; to: string; image: string; alt?: string }[];
+  cards?: { label: string; to: string; image: string; alt?: string }[];
 };
 
 export const nav: NavItem[] = [
@@ -14,8 +14,8 @@ export const nav: NavItem[] = [
     to: "/about",
     children: [
       { label: "Overview", to: "/about" },
-      { label: "News Room", to: "/newsroom" },
       { label: "Team", to: "/leadership" },
+      { label: "News Room", to: "/newsroom" },
     ],
   },
   {
@@ -29,10 +29,6 @@ export const nav: NavItem[] = [
     ],
   },
   {
-    label: "Current Portfolio",
-    to: "/portfolio",
-  },
-  {
     label: "Our Funds",
     to: "/funds/multiplier",
     activePaths: ["/funds/multiplier", "/funds/opportunity"],
@@ -40,6 +36,10 @@ export const nav: NavItem[] = [
       { label: "Multiplier Fund", to: "/funds/multiplier" },
       { label: "Opportunity Fund", to: "/funds/opportunity" },
     ],
+  },
+  {
+    label: "Current Portfolio",
+    to: "/portfolio",
   },
   {
     label: "Insights",

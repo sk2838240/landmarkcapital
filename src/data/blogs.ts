@@ -59,7 +59,7 @@ export const blogs: Blog[] = [
     slug: "multimodal-warehousing",
     title: "Multimodal warehousing: How convergence and streamlining can change the game",
     excerpt:
-      "Multimodal warehousing — the movement and storage of cargo from origin to destination by several modes of transport under a single contract — has become hot cake for investment after government focus.",
+      "Multimodal warehousing, the movement and storage of cargo from origin to destination by several modes of transport under a single contract, has become hot cake for investment after government focus.",
     author: "Ashish Joshi",
     date: "2022-04-28",
     category: "Warehousing",
@@ -158,7 +158,7 @@ export const blogs: Blog[] = [
     slug: "global-trade-container-shortage",
     title: "Global Trade Nightmare \u2014 Container Shortage",
     excerpt:
-      "Global shipping companies are facing a very unique challenge – Finding containers to ship goods. China is paying premium to get the containers back to fill them for exports.",
+      "Global shipping companies are facing a very unique challenge, Finding containers to ship goods. China is paying premium to get the containers back to fill them for exports.",
     author: "Ashish Joshi",
     date: "2021-09-09",
     category: "Logistics",

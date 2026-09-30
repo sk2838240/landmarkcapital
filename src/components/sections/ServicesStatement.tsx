@@ -22,7 +22,7 @@ export function ServicesStatement() {
     <section className="section-pad border-y border-border" style={{ backgroundColor: "#EFECE7" }}>
       <div className="container-tb">
         <div ref={ref} className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left column — main statement */}
+          {/* Left column, main statement */}
           <div className="flex flex-col justify-center">
             <motion.span
               aria-hidden
@@ -50,7 +50,7 @@ export function ServicesStatement() {
             </motion.h2>
           </div>
 
-          {/* Right column — service list */}
+          {/* Right column, service list */}
           <div className="flex flex-col">
             {services.map((service, i) => (
               <motion.div

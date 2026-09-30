@@ -87,7 +87,6 @@ export const navItem = defineType({
           type: "object",
           fields: [
             defineField({ name: "label", title: "Label", type: "string", validation: (r) => r.required() }),
-            defineField({ name: "cta", title: "CTA text", type: "string", description: 'e.g. "Explore →"' }),
             defineField({ name: "to", title: "Link", type: "string", validation: (r) => r.required() }),
             defineField({
               name: "image",
@@ -100,6 +99,21 @@ export const navItem = defineType({
         },
       ],
       description: "Turns this nav item into a card-style mega menu on hover.",
+    }),
+    defineField({
+      name: "children",
+      title: "Sub-items",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "label", title: "Label", type: "string", validation: (r) => r.required() }),
+            defineField({ name: "to", title: "Link", type: "string", validation: (r) => r.required() }),
+          ],
+        },
+      ],
+      description: "Sub-items shown in the mobile menu and in plain dropdowns.",
     }),
   ],
 });

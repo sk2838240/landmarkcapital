@@ -10,7 +10,7 @@ export default function Portfolio() {
     <>
       <Seo
         title="Current Portfolio"
-        description="Deals under management — a comprehensive portfolio of strategic real estate investments across India's most promising commercial and residential markets."
+        description="Deals under management, a comprehensive portfolio of strategic real estate investments across India's most promising commercial and residential markets."
       />
       <PageHero
         eyebrow="Current Portfolio"
@@ -66,7 +66,7 @@ export default function Portfolio() {
                   <div className="lg:col-span-7">
                     <h2 className="display-3 text-charcoal text-balance">{project.name}</h2>
                     <p className="mt-2 text-sm text-slate-blue">
-                      {project.location} — {project.type}
+                      {project.location}, {project.type}
                     </p>
 
                     {project.metrics.length > 0 && (

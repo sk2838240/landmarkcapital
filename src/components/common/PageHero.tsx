@@ -39,7 +39,7 @@ export function PageHero({
 
         {subtitle && (
           <Reveal delay={0.1}>
-            <p className="mt-6 text-lg lg:text-xl max-w-2xl leading-relaxed text-slate">
+            <p className="mt-6 text-lg lg:text-xl max-w-2xl leading-relaxed text-slate text-justify">
               {subtitle}
             </p>
           </Reveal>

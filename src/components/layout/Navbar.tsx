@@ -13,23 +13,20 @@ const aboutCards = [
   {
     label: "Overview",
     to: "/about",
-    cta: "Explore →",
     src: media.aboutMenu.overview.src,
     alt: media.aboutMenu.overview.alt,
   },
   {
-    label: "News Room",
-    to: "/newsroom",
-    cta: "Read Articles →",
-    src: media.aboutMenu.newsroom.src,
-    alt: media.aboutMenu.newsroom.alt,
-  },
-  {
     label: "Team",
     to: "/leadership",
-    cta: "Meet Our Team →",
     src: media.aboutMenu.team.src,
     alt: media.aboutMenu.team.alt,
+  },
+  {
+    label: "News Room",
+    to: "/newsroom",
+    src: media.aboutMenu.newsroom.src,
+    alt: media.aboutMenu.newsroom.alt,
   },
 ];
 
@@ -37,21 +34,18 @@ const strategiesCards = [
   {
     label: "AIF",
     to: "/structures/aif",
-    cta: "Explore →",
     src: media.strategiesMenu.aif.src,
     alt: media.strategiesMenu.aif.alt,
   },
   {
     label: "LVF",
     to: "/structures/lvf",
-    cta: "View Fund →",
     src: media.strategiesMenu.lvf.src,
     alt: media.strategiesMenu.lvf.alt,
   },
   {
     label: "Managed Accounts",
     to: "/structures/managed-accounts",
-    cta: "View Fund →",
     src: media.strategiesMenu.managedAccounts.src,
     alt: media.strategiesMenu.managedAccounts.alt,
   },
@@ -61,21 +55,18 @@ const portfolioCards = [
   {
     label: "Ambience Parkview",
     to: "/portfolio",
-    cta: "View Project →",
     src: media.portfolioMenu[0].src,
     alt: media.portfolioMenu[0].alt,
   },
   {
     label: "Ambience Courtyard",
     to: "/portfolio",
-    cta: "View Project →",
     src: media.portfolioMenu[1].src,
     alt: media.portfolioMenu[1].alt,
   },
   {
     label: "Villa Development",
     to: "/portfolio",
-    cta: "View Project →",
     src: media.portfolioMenu[2].src,
     alt: media.portfolioMenu[2].alt,
   },
@@ -85,14 +76,12 @@ const ourFundsCards = [
   {
     label: "Multiplier Fund",
     to: "/funds/multiplier",
-    cta: "View Fund →",
     src: media.strategiesMenu.multiplier.src,
     alt: media.strategiesMenu.multiplier.alt,
   },
   {
     label: "Opportunity Fund",
     to: "/funds/opportunity",
-    cta: "View Fund →",
     src: media.strategiesMenu.opportunity.src,
     alt: media.strategiesMenu.opportunity.alt,
   },
@@ -100,7 +89,7 @@ const ourFundsCards = [
 
 const megaMenuCards: Record<
   string,
-  { label: string; to: string; cta: string; src: string; alt: string }[]
+  { label: string; to: string; src: string; alt: string }[]
 > = {
   About: aboutCards,
   "Available Structures": strategiesCards,
@@ -232,7 +221,6 @@ export function Navbar() {
               const cards = item.cards
                 ? item.cards.map((c) => ({
                     label: c.label,
-                    cta: c.cta ?? "Explore →",
                     to: c.to,
                     src: c.image,
                     alt: c.alt ?? c.label,
@@ -370,9 +358,6 @@ export function Navbar() {
                                       <p className="text-[10px] uppercase tracking-[0.2em] text-bronze/80 mb-2 transition-colors duration-300 group-hover:text-[#E85A64]">
                                         {card.label}
                                       </p>
-                                      <span className="text-[13px] font-medium text-white/90 tracking-wide">
-                                        {card.cta}
-                                      </span>
                                     </div>
                                   </Link>
                                 );

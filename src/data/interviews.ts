@@ -10,12 +10,12 @@ export type Interview = {
   duration: string;
   thumbnail: string;
   thumbnailAlt: string;
-  /** Video source — YouTube/Vimeo embed URL or self-hosted MP4. Placeholder until client supplies footage. */
+  /** Video source, YouTube/Vimeo embed URL or self-hosted MP4. Placeholder until client supplies footage. */
   videoUrl?: string;
 };
 
 /**
- * Leadership Insights — placeholder video interviews.
+ * Leadership Insights, placeholder video interviews.
  *
  * Copy is written to reflect Landmark Capital's real investment thesis
  * (Grade\u2011A warehousing, institutional AIFs, disciplined underwriting).
@@ -28,7 +28,7 @@ export const interviews: Interview[] = [
     eyebrow: "In conversation",
     title: "The institutionalization of Indian real estate.",
     description:
-      "Ashish Joshi on the structural shift from fragmented development to professionally managed, yield-focused assets — and how Landmark Capital positioned its platform for this transition well before the market caught up.",
+      "Ashish Joshi on the structural shift from fragmented development to professionally managed, yield-focused assets, and how Landmark Capital positioned its platform for this transition well before the market caught up.",
     speaker: {
       name: "Ashish Joshi",
       role: "Founder & Managing Partner",
@@ -43,7 +43,7 @@ export const interviews: Interview[] = [
     eyebrow: "Sector perspective",
     title: "Why warehousing is the decade's core allocation.",
     description:
-      "Manish Maloo unpacks the demand story behind Grade\u2011A warehousing — from 3PL consolidation and e-commerce absorption to the multimodal corridors reshaping India's logistics map.",
+      "Manish Maloo unpacks the demand story behind Grade\u2011A warehousing, from 3PL consolidation and e-commerce absorption to the multimodal corridors reshaping India's logistics map.",
     speaker: {
       name: "Manish Maloo",
       role: "Investment Committee",
@@ -58,7 +58,7 @@ export const interviews: Interview[] = [
     eyebrow: "Investor letter",
     title: "Risk before velocity: how we underwrite.",
     description:
-      "Ravindra Gupta on Landmark's underwriting philosophy — why capital preservation guides every decision, and how deal-level SPVs give investors visibility no pooled fund can match.",
+      "Ravindra Gupta on Landmark's underwriting philosophy, why capital preservation guides every decision, and how deal-level SPVs give investors visibility no pooled fund can match.",
     speaker: {
       name: "Ravindra Gupta",
       role: "Partner",

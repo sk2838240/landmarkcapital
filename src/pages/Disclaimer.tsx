@@ -9,7 +9,7 @@ const sections = [
   },
   {
     title: "Regulatory Status",
-    body: "Landmark Capital manages two SEBI-registered Category II Alternative Investment Funds — the Landmark Multiplier Fund (IN/AIF2/21-22/0928) and the Landmark Opportunity Fund (IN/AIF2/13-14/0068). Any investment in these schemes is subject to the terms of the Private Placement Memorandum and Contribution Agreement.",
+    body: "Landmark Capital manages two SEBI-registered Category II Alternative Investment Funds, the Landmark Multiplier Fund (IN/AIF2/21-22/0928) and the Landmark Opportunity Fund (IN/AIF2/13-14/0068). Any investment in these schemes is subject to the terms of the Private Placement Memorandum and Contribution Agreement.",
   },
   {
     title: "Investment Risk",
@@ -25,7 +25,7 @@ const sections = [
   },
   {
     title: "Investor Grievance",
-    body: "For grievances or disputes related to Landmark Capital funds, investors may approach the SmartODR Portal — the SEBI-mandated online dispute resolution platform — accessible from the footer of this website.",
+    body: "For grievances or disputes related to Landmark Capital funds, investors may approach the SmartODR Portal, the SEBI-mandated online dispute resolution platform, accessible from the footer of this website.",
   },
 ];
 

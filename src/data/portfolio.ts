@@ -28,11 +28,11 @@ export const portfolioProjects: PortfolioProject[] = [
     invested: "₹100 Cr",
     status: "Under construction",
     highlights: [
-      "Strategically positioned 5 km from Hitec City — strong rental demand from Hyderabad's technology corridor",
-      "Close to the University of Hyderabad, ISB and IIIT — a knowledge ecosystem attracting professionals and families",
+      "Strategically positioned 5 km from Hitec City, strong rental demand from Hyderabad's technology corridor",
+      "Close to the University of Hyderabad, ISB and IIIT, a knowledge ecosystem attracting professionals and families",
       "Near Outer Ring Road with seamless city connectivity and direct airport access",
       "Tower A fully completed (21 of 21 floors); Tower B at 16 of 21; clubhouse complete with commercial tower progressing",
-      "62% sales achievement — 5,66,895 sq ft sold across 243 units",
+      "62% sales achievement, 5,66,895 sq ft sold across 243 units",
     ],
     metrics: [
       { label: "Total revenue", value: "₹900 Cr" },
@@ -54,10 +54,10 @@ export const portfolioProjects: PortfolioProject[] = [
     invested: "₹125 Cr",
     status: "Completed",
     highlights: [
-      "Near Lanco Hills Tech Park — direct access to major employment centres and strong rental demand",
-      "Proximity to Chaitanya School and Pavithra International School — attractive for families",
+      "Near Lanco Hills Tech Park, direct access to major employment centres and strong rental demand",
+      "Proximity to Chaitanya School and Pavithra International School, attractive for families",
       "Well-served by quality healthcare including Preetam and Prerana Hospitals",
-      "95% sales achievement — 821 of 864 units sold",
+      "95% sales achievement, 821 of 864 units sold",
       "9 completed towers, all ready for possession",
     ],
     metrics: [
@@ -80,10 +80,10 @@ export const portfolioProjects: PortfolioProject[] = [
     invested: "₹120 Cr",
     status: "Under development",
     highlights: [
-      "Prime location near Kempegowda International Airport — strong connectivity and appreciation potential",
-      "Close to Prestige Tech Cloud and major IT employers — demand from tech professionals",
+      "Prime location near Kempegowda International Airport, strong connectivity and appreciation potential",
+      "Close to Prestige Tech Cloud and major IT employers, demand from tech professionals",
       "Benefits from Satellite Town Ring Road and the upcoming Namma Metro Blue Line extension",
-      "Land acquisition complete — all 36 acres secured with clear titles",
+      "Land acquisition complete, all 36 acres secured with clear titles",
       "Backed by world-class retail, healthcare and education infrastructure nearby",
     ],
     metrics: [
@@ -106,7 +106,7 @@ export const portfolioProjects: PortfolioProject[] = [
     invested: "₹35 Cr",
     status: "Planning stage",
     highlights: [
-      "Only 24 km from Kempegowda International Airport — attractive for investors and end-users",
+      "Only 24 km from Kempegowda International Airport, attractive for investors and end-users",
       "Satellite Town Ring Road and Bengaluru Business Corridor passing through Doddaballapur",
       "Foxconn's iPhone assembly plant creating significant employment and residential demand",
       "Market launch targeted within 3–6 months, sales completion 6–12 months post-launch",
@@ -130,7 +130,7 @@ export const portfolioProjects: PortfolioProject[] = [
     invested: "₹50 Cr",
     status: "Under development",
     highlights: [
-      "Well-connected Mankoli location with direct access to the Mumbai–Agra highway",
+      "Well-connected Mankoli location with direct access to the Mumbai-Agra highway",
       "Bhiwandi–Dombivli Road connectivity for industrial logistics",
       "Virar–Alibaug corridor, Samruddhi Highway and Thane–Bhiwandi–Kalyan metro line planned nearby",
     ],

@@ -19,7 +19,7 @@ export default function OpportunityFund() {
         jsonLd={financialProductJsonLd({
           name: "Landmark Opportunity Fund",
           description:
-            "SEBI Category II Alternative Investment Fund. Closed for subscription — defined portfolio and exit pathway.",
+            "SEBI Category II Alternative Investment Fund. Closed for subscription, defined portfolio and exit pathway.",
           sebiRegistration: "IN/AIF2/13-14/0068",
           category: "Category II Alternative Investment Fund",
           path: "/funds/opportunity",

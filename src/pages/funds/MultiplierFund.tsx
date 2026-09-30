@@ -30,7 +30,7 @@ const whyWarehousing = [
 const strategy = [
   {
     title: "Execution and Development",
-    body: "Partner at the execution and development stage — mitigating risks of land conversion, aggregation and approvals.",
+    body: "Partner at the execution and development stage, mitigating risks of land conversion, aggregation and approvals.",
   },
   {
     title: "Capital Value Creation",

@@ -1,12 +1,12 @@
 import { Reveal } from "@/components/common/Reveal";
 
 /**
- * Editorial About hero — light editorial layout on #EFECE7 surface.
+ * Editorial About hero, light editorial layout on #EFECE7 surface.
  *
  * Composition:
  *  · Light #EFECE7 background
  *  · Eyebrow + accent bar + serif display headline + narrative
- *  · Bottom rule — SEBI / Deal-by-Deal / Pan-India trust marks
+ *  · Bottom rule, SEBI / Deal-by-Deal / Pan-India trust marks
  */
 
 const trustMarks = ["SEBI-Registered AIF", "Deal-by-Deal", "Pan-India", "30+ Years"];
@@ -49,9 +49,9 @@ export function AboutHero() {
           </div>
           <div className="lg:col-span-4 lg:pb-2">
             <Reveal delay={0.12}>
-              <p className="text-slate leading-relaxed max-w-md text-[15px] lg:text-base">
+              <p className="text-slate leading-relaxed max-w-md text-[15px] lg:text-base text-justify">
                 A SEBI-registered Alternative Investment Fund manager operating two real
-                estate funds and a deal-by-deal transaction platform across India — built on
+                estate funds and a deal-by-deal transaction platform across India, built on
                 three decades of disciplined execution.
               </p>
             </Reveal>

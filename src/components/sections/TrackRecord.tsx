@@ -41,7 +41,7 @@ function StatFigure({
   );
 }
 
-/** Icon per metric — thin-line, per Brand Design System §6. */
+/** Icon per metric, thin-line, per Brand Design System §6. */
 const statIcons: Record<string, LucideIcon> = {
   Transactions: Handshake,
   Investments: TrendingUp,
@@ -69,7 +69,7 @@ export function TrackRecord() {
           className="mb-8 lg:mb-10 [&_.accent-bar-bronze]:mb-3.5 [&_.eyebrow-accent]:mb-4"
         />
 
-        {/* Unified fact sheet — hairline rules via the border showing through the grid gap. */}
+        {/* Unified fact sheet, hairline rules via the border showing through the grid gap. */}
         <div className="overflow-hidden rounded-[12px] border border-border bg-border shadow-[0_1px_2px_rgba(36,41,47,0.04)]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px">
             {mergedStats.map((s, i) => {

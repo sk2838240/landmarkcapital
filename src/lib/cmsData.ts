@@ -62,7 +62,6 @@ type CmsNav = {
   cards?:
     | {
         label: string;
-        cta?: string | null;
         to: string;
         image: string;
         alt?: string | null;

@@ -20,7 +20,7 @@ const strategies = [
     status: "Closed",
     reg: "IN/AIF2/13-14/0068",
     summary:
-      "The firm’s first SEBI-registered vehicle — closed for subscription, with a defined portfolio and exit pathway.",
+      "The firm’s first SEBI-registered vehicle, closed for subscription, with a defined portfolio and exit pathway.",
     to: "/funds/opportunity",
   },
   {
@@ -36,7 +36,7 @@ const strategies = [
     status: "Deal-by-deal",
     reg: "Ring-fenced",
     summary:
-      "Deal-by-deal participation without blind pools — investors select opportunities aligned to their mandate.",
+      "Deal-by-deal participation without blind pools, investors select opportunities aligned to their mandate.",
     to: "/structures/managed-accounts",
   },
   {
@@ -52,7 +52,7 @@ const strategies = [
 const structuresJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Landmark Capital — Available Structures",
+  name: "Landmark Capital, Available Structures",
   itemListElement: strategies.map((s, i) => ({
     "@type": "ListItem",
     position: i + 1,
@@ -66,13 +66,13 @@ export default function Strategies() {
     <>
       <Seo
         title="Available Structures"
-        description="SEBI-registered funds and deal-by-deal structures — each with defined mandate, reporting and exit discipline."
+        description="SEBI-registered funds and deal-by-deal structures, each with defined mandate, reporting and exit discipline."
         jsonLd={structuresJsonLd}
       />
       <PageHero
         eyebrow="Available Structures"
         title="Vehicles designed for clarity and control."
-        subtitle="SEBI-registered funds and deal-by-deal structures — each with defined mandate, reporting, and exit discipline."
+        subtitle="SEBI-registered funds and deal-by-deal structures, each with defined mandate, reporting, and exit discipline."
         tone="stone"
       />
 

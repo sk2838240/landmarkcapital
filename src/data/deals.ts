@@ -8,7 +8,7 @@ export type Deal = {
   status: "completed" | "current";
   landArea?: string;
   developmentArea?: string;
-  /** Full institutional-format case study — Thesis, Structure, Execution, Exit, Outcome. */
+  /** Full institutional-format case study, Thesis, Structure, Execution, Exit, Outcome. */
   caseStudy?: DealCaseStudy;
 };
 
@@ -129,7 +129,7 @@ export const currentDeals: Deal[] = [
   {
     id: "doddaballapur",
     name: "Plotted Development",
-    city: "Bengaluru — Doddaballapur",
+    city: "Bengaluru, Doddaballapur",
     category: "Plotted",
     landArea: "22 acres",
     developmentArea: "5 Lakh sq. ft.",
@@ -138,7 +138,7 @@ export const currentDeals: Deal[] = [
   {
     id: "sadahalli",
     name: "Villa Development",
-    city: "Bengaluru — Sadahalli",
+    city: "Bengaluru, Sadahalli",
     category: "Residential",
     landArea: "36 acres",
     developmentArea: "14 Lakh sq. ft.",
@@ -147,7 +147,7 @@ export const currentDeals: Deal[] = [
   {
     id: "mankoli",
     name: "Industrial Park",
-    city: "Mumbai — Mankoli",
+    city: "Mumbai, Mankoli",
     category: "Industrial",
     landArea: "16.5 acres",
     developmentArea: "17 Lakh sq. ft.",
@@ -156,7 +156,7 @@ export const currentDeals: Deal[] = [
   {
     id: "dhamanagaon",
     name: "Warehousing",
-    city: "Mumbai — Dhamanagaon",
+    city: "Mumbai, Dhamanagaon",
     category: "Warehousing",
     landArea: "55 acres",
     developmentArea: "15 Lakh sq. ft.",
@@ -165,7 +165,7 @@ export const currentDeals: Deal[] = [
   {
     id: "gachibowli",
     name: "Mixed Use",
-    city: "Hyderabad — Gachibowli",
+    city: "Hyderabad, Gachibowli",
     category: "Mixed Use",
     landArea: "4.4 acres",
     developmentArea: "11 Lakh sq. ft.",
@@ -174,7 +174,7 @@ export const currentDeals: Deal[] = [
   {
     id: "manikonda",
     name: "Mixed Use",
-    city: "Hyderabad — Manikonda",
+    city: "Hyderabad, Manikonda",
     category: "Mixed Use",
     landArea: "8 acres",
     developmentArea: "13 Lakh sq. ft.",

@@ -4,9 +4,9 @@ export type Service = {
   slug: string;
   name: string;
   tagline: string;
-  /** Hero subtitle — opening paragraph */
+  /** Hero subtitle, opening paragraph */
   intro: string;
-  /** Positioning paragraph — second intro paragraph */
+  /** Positioning paragraph, second intro paragraph */
   positioning: string;
   approach: ServiceStep[];
   offerings: ServiceStep[];
@@ -24,9 +24,9 @@ export const services: Service[] = [
     name: "Investment Management",
     tagline: "We bring the deal. You choose how it's structured.",
     intro:
-      "We identify and underwrite real estate opportunities independently, off-market, through relationships built over years and not through broadly marketed deal rooms. Each opportunity is presented to investors on its own merits, fully underwritten, with a defined hold period and a mapped exit — never bundled into a blind pool of future, unnamed transactions.",
+      "We identify and underwrite real estate opportunities independently, off-market, through relationships built over years and not through broadly marketed deal rooms. Each opportunity is presented to investors on its own merits, fully underwritten, with a defined hold period and a mapped exit, never bundled into a blind pool of future, unnamed transactions.",
     positioning:
-      "Once an investor commits to a specific deal, we structure the capital around that deal, not the other way round. This is a deliberate inversion of the traditional fund model: the asset comes first, and the vehicle — whether an AIF, LVF, Managed Account, or dedicated SPV — is chosen to fit the opportunity and the investor, never the reverse.",
+      "Once an investor commits to a specific deal, we structure the capital around that deal, not the other way round. This is a deliberate inversion of the traditional fund model: the asset comes first, and the vehicle, whether an AIF, LVF, Managed Account, or dedicated SPV, is chosen to fit the opportunity and the investor, never the reverse.",
     approach: [
       {
         title: "Origination",
@@ -52,7 +52,7 @@ export const services: Service[] = [
       },
       {
         title: "Flexible structuring",
-        body: "Structure capital deal by deal — through an AIF, LVF, Managed Account, or a dedicated SPV — decided after the opportunity, not before.",
+        body: "Structure capital deal by deal, through an AIF, LVF, Managed Account, or a dedicated SPV, decided after the opportunity, not before.",
       },
       {
         title: "Full-cycle ownership",
@@ -68,16 +68,16 @@ export const services: Service[] = [
       },
     ],
     audience:
-      "Family offices, HNIs, institutions, and strategic partners who want direct, transparent participation in a specific real estate opportunity — not a blind-pool commitment to a fund's future deals.",
+      "Family offices, HNIs, institutions, and strategic partners who want direct, transparent participation in a specific real estate opportunity, not a blind-pool commitment to a fund's future deals.",
   },
   {
     slug: "special-situation-assets",
     name: "Special Situation Assets",
     tagline: "For the asset that already exists and isn't working.",
     intro:
-      "Not every mandate starts with a new deal. Real estate positions stall for many reasons — a partner dispute, a developer situation linked to overleveraging, lack of proper execution capability, a stalled approval, default on obligation, a market that shifted after acquisition, or simply a lack of active management. We work with investors and developers who already hold an asset in exactly this position, and find the fastest, most value-accretive way forward.",
+      "Not every mandate starts with a new deal. Real estate positions stall for many reasons, a partner dispute, a developer situation linked to overleveraging, lack of proper execution capability, a stalled approval, default on obligation, a market that shifted after acquisition, or simply a lack of active management. We work with investors and developers who already hold an asset in exactly this position, and find the fastest, most value-accretive way forward.",
     positioning:
-      "Our role here is different from a typical advisory mandate: we don't just recommend a course of action, we execute it — leasing the space ourselves, running the sale process ourselves, or structuring the monetisation directly, with the same hands-on discipline we bring to a new investment.",
+      "Our role here is different from a typical advisory mandate: we don't just recommend a course of action, we execute it, leasing the space ourselves, running the sale process ourselves, or structuring the monetisation directly, with the same hands-on discipline we bring to a new investment.",
     approach: [
       {
         title: "Diagnosis",
@@ -85,7 +85,7 @@ export const services: Service[] = [
       },
       {
         title: "Options assessment",
-        body: "We map the realistic paths forward — reactivation, monetisation, structured exit, or sale — and their relative value to the investor.",
+        body: "We map the realistic paths forward, reactivation, monetisation, structured exit, or sale, and their relative value to the investor.",
       },
       {
         title: "Execution",
@@ -119,21 +119,21 @@ export const services: Service[] = [
       },
     ],
     situations: [
-      "An investment that has stalled — a partner dispute, a developer situation linked to overleveraging, lack of proper execution capability, a stalled approval, default on obligation, a market that shifted after acquisition, or a lack of active management.",
+      "An investment that has stalled, a partner dispute, a developer situation linked to overleveraging, lack of proper execution capability, a stalled approval, default on obligation, a market that shifted after acquisition, or a lack of active management.",
       "A completed asset with no active leasing or management, or land held for years with no monetisation plan.",
       "An investor looking to exit a position that no longer fits their portfolio or holding period.",
     ],
     audience:
-      "Investors, family offices, developers and institutions holding a stalled, defunct, or underperforming real estate asset who need an experienced operator to unlock value — or exit cleanly.",
+      "Investors, family offices, developers and institutions holding a stalled, defunct, or underperforming real estate asset who need an experienced operator to unlock value, or exit cleanly.",
   },
   {
     slug: "management-services",
     name: "Management Services",
     tagline: "An in-house extension of a client's real estate portfolio.",
     intro:
-      "Our involvement doesn't end at execution. For clients with an existing real estate portfolio — whether built independently or through us — we act as an in-house manager and adviser, not an outsourced, arm's-length vendor. That means embedding in how a portfolio is actually run, not simply reporting on it from a distance.",
+      "Our involvement doesn't end at execution. For clients with an existing real estate portfolio, whether built independently or through us, we act as an in-house manager and adviser, not an outsourced, arm's-length vendor. That means embedding in how a portfolio is actually run, not simply reporting on it from a distance.",
     positioning:
-      "This mandate is shaped around what each client's portfolio needs — from day-to-day asset management to portfolio-level strategy and land monetisation — and it scales, from a single asset to a full, multi-city portfolio.",
+      "This mandate is shaped around what each client's portfolio needs, from day-to-day asset management to portfolio-level strategy and land monetisation, and it scales, from a single asset to a full, multi-city portfolio.",
     approach: [
       {
         title: "Assessment",
@@ -175,7 +175,7 @@ export const services: Service[] = [
       },
     ],
     offeringsNote:
-      "This is not an exhaustive list — our management mandate is shaped around what each client's portfolio actually needs.",
+      "This is not an exhaustive list, our management mandate is shaped around what each client's portfolio actually needs.",
     audience:
       "Family offices, corporates, and landowners who want a dedicated, hands-on manager and adviser for an existing real estate portfolio, not a transactional broker.",
   },
@@ -220,7 +220,7 @@ export const services: Service[] = [
       },
       {
         title: "Cross-asset-class delivery",
-        body: "Deliver across asset classes — warehousing, residential, commercial, and plotted development.",
+        body: "Deliver across asset classes, warehousing, residential, commercial, and plotted development.",
       },
     ],
     audience:

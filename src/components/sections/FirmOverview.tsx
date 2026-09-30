@@ -56,7 +56,7 @@ const leaderDots: [number, number][] = [
 ];
 
 /**
- * Firm Overview — pan-India footprint map with geographies and asset classes.
+ * Firm Overview, pan-India footprint map with geographies and asset classes.
  * Replaces the former "Our Journey" timeline on the About page.
  */
 export function FirmOverview() {

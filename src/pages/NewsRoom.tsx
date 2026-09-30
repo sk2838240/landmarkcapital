@@ -15,7 +15,7 @@ function formatDate(iso: string) {
 }
 
 /**
- * News Room — everything we publish and appear in: blogs, videos and
+ * News Room, everything we publish and appear in: blogs, videos and
  * interviews. Distinct from Research & Insights, which holds reports
  * and industry data.
  */
@@ -27,12 +27,12 @@ export default function NewsRoom() {
     <>
       <Seo
         title="News Room"
-        description="Blogs, video interviews and media conversations from Landmark Capital — market commentary and leadership perspectives on Indian real estate."
+        description="Blogs, video interviews and media conversations from Landmark Capital, market commentary and leadership perspectives on Indian real estate."
       />
       <PageHero
         eyebrow="News Room"
         title="Articles, media and conversations."
-        subtitle="Everything we publish and appear in — market commentary, video interviews and leadership perspectives, straight from the news room."
+        subtitle="Everything we publish and appear in, market commentary, video interviews and leadership perspectives, straight from the news room."
         tone="stone"
       />
 
@@ -127,7 +127,7 @@ export default function NewsRoom() {
                       {item.description}
                     </p>
                     <p className="mt-4 text-xs text-slate-blue">
-                      {item.speaker.name} — {item.speaker.role}
+                      {item.speaker.name}, {item.speaker.role}
                     </p>
                   </div>
                 </article>

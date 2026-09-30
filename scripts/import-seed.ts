@@ -151,12 +151,18 @@ const settingsDoc: Doc = {
   brandDescription:
     "A SEBI-registered Alternative Investment Fund manager, investing across warehousing, residential, industrial and plotted development across India.",
   nav: keyed(
-    nav.map((n) => ({
-      _type: "navItem",
-      label: n.label,
-      to: n.to,
-      ...(n.activePaths ? { activePaths: keyed(n.activePaths) } : {}),
-    }))
+    nav.map((n) => {
+      const children: Record<string, string>[] | null = n.children
+        ? keyed(n.children)
+        : null;
+      return {
+        _type: "navItem",
+        label: n.label,
+        to: n.to,
+        ...(n.activePaths ? { activePaths: keyed(n.activePaths) } : {}),
+        ...(children ? { children } : {}),
+      };
+    })
   ),
   footerNav: keyed([
     {

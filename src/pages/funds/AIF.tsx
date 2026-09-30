@@ -15,7 +15,7 @@ const keyFeatures = [
   },
   {
     title: "Tax treatment",
-    body: "Pass-through taxation — income is taxed in investors' hands, not at the fund level.",
+    body: "Pass-through taxation, income is taxed in investors' hands, not at the fund level.",
   },
   {
     title: "Defined tenure",
@@ -27,7 +27,7 @@ const comparison = [
   {
     aspect: "Minimum ticket",
     normal: "₹1 crore per investor",
-    accredited: "No fixed SEBI minimum — set by the scheme",
+    accredited: "No fixed SEBI minimum, set by the scheme",
   },
   {
     aspect: "Who can invest",
@@ -37,7 +37,7 @@ const comparison = [
   {
     aspect: "Regulatory treatment",
     normal: "Full standard AIF investor-protection framework",
-    accredited: "Lighter-touch — relaxed diversification and compliance norms",
+    accredited: "Lighter-touch, relaxed diversification and compliance norms",
   },
 ];
 
@@ -48,20 +48,20 @@ const accreditationCriteria = [
 ];
 
 const constraints = [
-  "Offered by private placement only — cannot be advertised publicly.",
+  "Offered by private placement only, cannot be advertised publicly.",
   "Capped at 1,000 investors per scheme.",
   "Borrowing is limited to short-term operational needs, not used to leverage investment returns.",
-  "Illiquid and close-ended — capital is committed for the fund's full tenure.",
+  "Illiquid and close-ended, capital is committed for the fund's full tenure.",
 ];
 
 export default function AIF() {
   return (
     <>
       <Seo
-        title="AIF — Category II"
-        description="A SEBI-regulated pooled fund for investors backing a defined real estate strategy — Category II Alternative Investment Fund with pass-through taxation."
+        title="AIF, Category II"
+        description="A SEBI-regulated pooled fund for investors backing a defined real estate strategy, Category II Alternative Investment Fund with pass-through taxation."
         jsonLd={financialProductJsonLd({
-          name: "Landmark AIF — Category II",
+          name: "Landmark AIF, Category II",
           description:
             "A SEBI-regulated pooled fund for investors backing a defined real estate strategy.",
           category: "Category II Alternative Investment Fund",
@@ -69,9 +69,9 @@ export default function AIF() {
         })}
       />
       <PageHero
-        eyebrow="AIF — Category II"
+        eyebrow="AIF, Category II"
         title="A SEBI-regulated pooled fund, for investors backing a defined real estate strategy."
-        subtitle="An Alternative Investment Fund (AIF) is a SEBI-regulated, privately pooled investment vehicle. Landmark's AIFs are registered as Category II — the category that covers real estate, private equity, and debt strategies, with no special government incentives and no complex leverage or trading strategies."
+        subtitle="An Alternative Investment Fund (AIF) is a SEBI-regulated, privately pooled investment vehicle. Landmark's AIFs are registered as Category II, the category that covers real estate, private equity, and debt strategies, with no special government incentives and no complex leverage or trading strategies."
       />
 
       <section className="section-pad bg-ivory">
@@ -177,7 +177,7 @@ export default function AIF() {
                 {constraints.map((c) => (
                   <Reveal key={c}>
                     <div className="flex items-start gap-4 py-4 border-t border-white/15">
-                      <span className="text-crimson-300 mt-1">—</span>
+                      
                       <p className="text-base text-white/85">{c}</p>
                     </div>
                   </Reveal>

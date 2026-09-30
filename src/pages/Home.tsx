@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="Landmark Capital — Institutional real estate investing"
+        title="Landmark Capital"
         description="Landmark Capital delivers institutional-grade real estate investment and advisory solutions built on expertise, transparency and disciplined execution across India."
         path="/"
         jsonLd={orgJsonLd}

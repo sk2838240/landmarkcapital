@@ -7,7 +7,7 @@ import { Seo, financialProductJsonLd } from "@/components/common/Seo";
 const keyFeatures = [
   {
     title: "Named deal",
-    body: "Deal-specific — capital is allocated to one named asset that the investor has already seen and evaluated.",
+    body: "Deal-specific, capital is allocated to one named asset that the investor has already seen and evaluated.",
   },
   {
     title: "Ring-fenced",
@@ -15,11 +15,11 @@ const keyFeatures = [
   },
   {
     title: "Bespoke terms",
-    body: "Fully bespoke terms — ticket size, tenure, security package, and return structure are negotiated for each deal and each investor.",
+    body: "Fully bespoke terms, ticket size, tenure, security package, and return structure are negotiated for each deal and each investor.",
   },
   {
     title: "Direct reporting",
-    body: "Direct, asset-level reporting on that specific deal — not consolidated fund-level reporting across a portfolio.",
+    body: "Direct, asset-level reporting on that specific deal, not consolidated fund-level reporting across a portfolio.",
   },
 ];
 
@@ -31,8 +31,8 @@ const howItWorks = [
 ];
 
 const constraints = [
-  "No automatic pooling benefit — diversification comes from the investor choosing multiple deals over time, not from a single vehicle.",
-  "Terms vary deal to deal — there is no single standard ticket size, tenure, or return profile across all Managed Account opportunities.",
+  "No automatic pooling benefit, diversification comes from the investor choosing multiple deals over time, not from a single vehicle.",
+  "Terms vary deal to deal, there is no single standard ticket size, tenure, or return profile across all Managed Account opportunities.",
   "Best suited to investors who want to evaluate and select individual opportunities themselves, rather than delegate that selection to a fund manager.",
 ];
 
@@ -41,7 +41,7 @@ export default function DealByDeal() {
     <>
       <Seo
         title="Managed Accounts"
-        description="Direct, deal-by-deal participation — through a dedicated SPV for each opportunity. One named deal, never a blind pool."
+        description="Direct, deal-by-deal participation, through a dedicated SPV for each opportunity. One named deal, never a blind pool."
         jsonLd={financialProductJsonLd({
           name: "Landmark Managed Accounts",
           description:
@@ -52,8 +52,8 @@ export default function DealByDeal() {
       />
       <PageHero
         eyebrow="Managed Accounts"
-        title="Direct, deal-by-deal participation — through a dedicated SPV for each opportunity."
-        subtitle="A Managed Account is Landmark's direct route, outside the pooled-fund structure entirely. Each opportunity is held in its own dedicated Special Purpose Vehicle (SPV), and the investor commits to that one, specific, pre-identified deal — never a blind pool of future, unnamed opportunities."
+        title="Direct, deal-by-deal participation, through a dedicated SPV for each opportunity."
+        subtitle="A Managed Account is Landmark's direct route, outside the pooled-fund structure entirely. Each opportunity is held in its own dedicated Special Purpose Vehicle (SPV), and the investor commits to that one, specific, pre-identified deal, never a blind pool of future, unnamed opportunities."
       />
 
       <section className="section-pad bg-ivory">
@@ -115,7 +115,7 @@ export default function DealByDeal() {
                 {constraints.map((c) => (
                   <Reveal key={c}>
                     <div className="flex items-start gap-4 py-4 border-t border-white/15">
-                      <span className="text-crimson-300 mt-1">—</span>
+                      
                       <p className="text-base text-white/85">{c}</p>
                     </div>
                   </Reveal>

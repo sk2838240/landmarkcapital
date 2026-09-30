@@ -72,7 +72,7 @@ export function ContactCTA() {
 
       <div className="container-tb relative">
         <div className="grid grid-cols-1 gap-12 rounded-[12px] border border-border bg-paper p-8 shadow-[0_1px_0_rgba(36,41,47,0.04)] transition-[box-shadow,border-color] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-bronze/40 hover:shadow-[0_24px_60px_-38px_rgba(36,41,47,0.28)] lg:grid-cols-12 lg:p-14">
-          {/* Left — invitation */}
+          {/* Left, invitation */}
           <div className="lg:col-span-7">
             <motion.div
               className="accent-bar-bronze mb-5 origin-left"
@@ -107,7 +107,7 @@ export function ContactCTA() {
             </Reveal>
           </div>
 
-          {/* Right — coordinates */}
+          {/* Right, coordinates */}
           <motion.ul
             className="lg:col-span-4 lg:col-start-9 lg:border-l lg:border-border lg:pl-12 space-y-7"
             initial="hidden"

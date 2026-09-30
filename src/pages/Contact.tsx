@@ -33,7 +33,7 @@ export default function Contact() {
     <>
       <Seo
         title="Contact"
-        description="Talk to Landmark Capital — investor relations, compliance and grievance contacts for our SEBI-registered AIF platform."
+        description="Talk to Landmark Capital, investor relations, compliance and grievance contacts for our SEBI-registered AIF platform."
         jsonLd={orgJsonLd}
       />
       <PageHero

@@ -12,7 +12,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const makesSense = [
   "You want direct ownership in a specific asset, not exposure to a diversified pool.",
   "You have a clear view on a deal and want to participate without the constraints of a fund mandate.",
-  "You prefer a bespoke structure — ticket size, instrument type, tenure, and return profile — tailored to your specific requirements.",
+  "You prefer a bespoke structure, ticket size, instrument type, tenure, and return profile, tailored to your specific requirements.",
   "You are a family office, corporate treasury, or institutional investor seeking a clean, auditable holding in a single real estate asset.",
   "You want co-investment alongside Landmark Capital, with full visibility into how the deal is managed.",
 ];
@@ -30,12 +30,12 @@ export default function SPV() {
   return (
     <>
       <Seo
-        title="SPV — Direct Special Purpose Vehicle"
-        description="The most direct form of real estate investment we offer — no fund layer, no pooled capital, no shared mandate. Direct SPV participation, ring-fenced to a single transaction."
+        title="SPV, Direct Special Purpose Vehicle"
+        description="The most direct form of real estate investment we offer, no fund layer, no pooled capital, no shared mandate. Direct SPV participation, ring-fenced to a single transaction."
         jsonLd={financialProductJsonLd({
-          name: "Landmark SPV — Direct Special Purpose Vehicle",
+          name: "Landmark SPV, Direct Special Purpose Vehicle",
           description:
-            "Direct SPV participation, ring-fenced to a single transaction — no fund layer, no pooled capital, no shared mandate.",
+            "Direct SPV participation, ring-fenced to a single transaction, no fund layer, no pooled capital, no shared mandate.",
           category: "Deal-level SPV",
           path: "/structures/spv",
         })}
@@ -44,10 +44,10 @@ export default function SPV() {
       <PageHero
         eyebrow="SPV"
         title="Your name. On the asset. From day one."
-        subtitle="The most direct form of real estate investment we offer — no fund layer, no pooled capital, no shared mandate."
+        subtitle="The most direct form of real estate investment we offer, no fund layer, no pooled capital, no shared mandate."
       />
 
-      {/* What it is — light surface */}
+      {/* What it is, light surface */}
       <section className="section-pad bg-ivory">
         <div className="container-tb">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
@@ -62,9 +62,9 @@ export default function SPV() {
             <Reveal delay={0.05} className="lg:col-span-8">
               <p className="font-display text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.3] text-charcoal text-pretty max-w-[55ch]">
                 A Direct SPV is a purpose-built legal entity created for a single
-                transaction. You participate directly in that entity — as an{" "}
+                transaction. You participate directly in that entity, as an{" "}
                 <span className="text-crimson-500">equity shareholder</span> or as an{" "}
-                <span className="text-crimson-500">NCD holder</span> — and your capital is
+                <span className="text-crimson-500">NCD holder</span>, and your capital is
                 ring-fenced entirely within that one deal. There is no fund between you
                 and the asset.
               </p>
@@ -73,7 +73,7 @@ export default function SPV() {
         </div>
       </section>
 
-      {/* When this route makes sense — dark surface */}
+      {/* When this route makes sense, dark surface */}
       <section className="section-pad relative overflow-hidden bg-[#1b2531] text-white">
         <div
           aria-hidden
@@ -141,7 +141,7 @@ export default function SPV() {
         </div>
       </section>
 
-      {/* What you see — light surface */}
+      {/* What you see, light surface */}
       <section className="section-pad bg-stone">
         <div className="container-tb">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
@@ -198,7 +198,7 @@ export default function SPV() {
         </div>
       </section>
 
-      {/* The right question to ask — dark, full-bleed editorial */}
+      {/* The right question to ask, dark, full-bleed editorial */}
       <section className="section-pad relative overflow-hidden bg-[#0d1821] text-white">
         <div
           aria-hidden

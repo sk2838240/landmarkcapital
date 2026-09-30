@@ -39,7 +39,7 @@ export function WhatWeDo() {
           description={
             <>
               We do not chase size. We earn{" "}
-              <span className="italic text-slate-blue">outcomes</span> — one carefully structured
+              <span className="italic text-slate-blue">outcomes</span>, one carefully structured
               deal at a time.
             </>
           }
