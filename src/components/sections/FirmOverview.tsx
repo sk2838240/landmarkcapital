@@ -1,145 +1,345 @@
-import { Reveal } from "@/components/common/Reveal";
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "@/hooks/useInView";
 import "./FirmOverview.css";
 
-const cities = [
-  { key: "jaipur", label: <>Jaipur</> },
-  { key: "delhi", label: <>Delhi<br />NCR</> },
-  { key: "lucknow", label: <>Lucknow</> },
-  { key: "ahmedabad", label: <>Ahmedabad</> },
-  { key: "mumbai", label: <>Mumbai</> },
-  { key: "pune", label: <>Pune/<br />Karjat</> },
-  { key: "nagpur", label: <>Nagpur</> },
-  { key: "hyderabad", label: <>Hyderabad</> },
-  { key: "bengaluru", label: <>Bengaluru</> },
-  { key: "chennai", label: <>Chennai</> },
-  { key: "kolkata", label: <>Kolkata</> },
-  { key: "pondicherry", label: <>Pondicherry</> },
-];
-
-const assetClasses = [
-  "Warehousing / Industrial",
-  "Residential",
-  "Plotted Development",
-  "Student Housing",
-  "Mall / Retail",
-  "Commercial",
-];
-
-const leaderLines = [
-  [130, 115, 168, 209],
-  [202, 97, 183, 190],
-  [268, 147, 221, 210],
-  [100, 233, 135, 252],
-  [30, 305, 138, 295],
-  [48, 415, 149, 301],
-  [226, 277, 203, 273],
-  [166, 347, 197, 314],
-  [140, 415, 187, 362],
-  [246, 379, 216, 362],
-  [306, 235, 301, 257],
-  [280, 429, 211, 375],
-];
-
-const leaderDots: [number, number][] = [
-  [168, 209],
-  [183, 190],
-  [221, 210],
-  [135, 252],
-  [138, 295],
-  [149, 301],
-  [203, 273],
-  [197, 314],
-  [187, 362],
-  [216, 362],
-  [301, 257],
-  [211, 375],
-];
-
 /**
- * Firm Overview, pan-India footprint map with geographies and asset classes.
- * Replaces the former "Our Journey" timeline on the About page.
+ * Firm Overview: a Pan-India footprint across every asset class.
+ * Interactive India map with lat/lon-placed market markers, geography and
+ * asset-class filters, and a live location card.
  */
+
+const MAP_BOUNDS = { minLon: 68.0, maxLon: 97.5, minLat: 6.7, maxLat: 37.1 };
+const NUDGE = { x: 0, y: 0 };
+
+type City = { city: string; lat: number; lon: number; assets: string; description: string };
+
+const cities: City[] = [
+  {
+    city: "Delhi NCR",
+    lat: 28.61,
+    lon: 77.21,
+    assets: "residential commercial retail student",
+    description: "A major national market with experience across residential, commercial, retail and student housing.",
+  },
+  {
+    city: "Jaipur",
+    lat: 26.91,
+    lon: 75.79,
+    assets: "residential plotted",
+    description: "A growing northern market contributing to residential and plotted development.",
+  },
+  {
+    city: "Lucknow",
+    lat: 26.85,
+    lon: 80.95,
+    assets: "residential commercial",
+    description: "An expanding northern market with residential and commercial exposure.",
+  },
+  {
+    city: "Ahmedabad",
+    lat: 23.02,
+    lon: 72.57,
+    assets: "residential commercial industrial",
+    description: "A western market spanning residential, commercial and industrial assets.",
+  },
+  {
+    city: "Mumbai",
+    lat: 19.08,
+    lon: 72.88,
+    assets: "residential commercial retail industrial",
+    description: "A key western India market spanning residential, commercial, retail and industrial opportunities.",
+  },
+  {
+    city: "Pune / Karjat",
+    lat: 18.52,
+    lon: 73.86,
+    assets: "residential plotted",
+    description: "A growing western market with residential and plotted development exposure.",
+  },
+  {
+    city: "Nagpur",
+    lat: 21.15,
+    lon: 79.09,
+    assets: "industrial commercial plotted",
+    description: "A central India location with industrial, commercial and plotted development exposure.",
+  },
+  {
+    city: "Kolkata",
+    lat: 22.57,
+    lon: 88.36,
+    assets: "residential commercial retail",
+    description: "An eastern India market contributing to the firm's diversified geographic footprint.",
+  },
+  {
+    city: "Hyderabad",
+    lat: 17.39,
+    lon: 78.49,
+    assets: "residential commercial student",
+    description: "A major southern growth market spanning residential, commercial and student housing.",
+  },
+  {
+    city: "Bengaluru",
+    lat: 12.97,
+    lon: 77.59,
+    assets: "residential commercial student",
+    description: "A technology-led market supporting residential, commercial and student housing.",
+  },
+  {
+    city: "Chennai",
+    lat: 13.08,
+    lon: 80.27,
+    assets: "industrial residential commercial",
+    description: "A strategic southern market with residential, commercial and industrial exposure.",
+  },
+  {
+    city: "Pondicherry",
+    lat: 11.93,
+    lon: 79.83,
+    assets: "residential plotted",
+    description: "A regional southern market contributing to residential and plotted development.",
+  },
+];
+
+const geographyFilters = [
+  "Delhi NCR",
+  "Mumbai",
+  "Ahmedabad",
+  "Pune / Karjat",
+  "Hyderabad",
+  "Bengaluru",
+  "Chennai",
+  "Kolkata",
+];
+
+const assetFilters = [
+  { key: "industrial", label: "Warehousing / Industrial" },
+  { key: "residential", label: "Residential" },
+  { key: "plotted", label: "Plotted Development" },
+  { key: "student", label: "Student Housing" },
+  { key: "retail", label: "Mall / Retail" },
+  { key: "commercial", label: "Commercial" },
+];
+
+const defaultCard = {
+  label: "PAN-INDIA PRESENCE",
+  title: "Explore Our Footprint",
+  text: "Select a location on the map to explore the firm's presence across India's key real estate markets.",
+};
+
+type CardContent = { label: string; title: string; text: string };
+
 export function FirmOverview() {
+  const { ref: sectionRef, inView } = useInView<HTMLElement>({ once: true, threshold: 0.15 });
+  const holderRef = useRef<HTMLDivElement>(null);
+  const timerRef = useRef<number | null>(null);
+
+  const [activeCity, setActiveCity] = useState<string | null>(null);
+  const [activeAsset, setActiveAsset] = useState<string | null>(null);
+  const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [card, setCard] = useState<CardContent>(defaultCard);
+  const [cardChanging, setCardChanging] = useState(false);
+
+  const updateCard = (next: CardContent) => {
+    setCardChanging(true);
+    if (timerRef.current) window.clearTimeout(timerRef.current);
+    timerRef.current = window.setTimeout(() => {
+      setCard(next);
+      setCardChanging(false);
+    }, 180);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+    };
+  }, []);
+
+  const selectCity = (city: string) => {
+    setActiveCity(city);
+    setActiveAsset(null);
+    setActiveFilter(city);
+    updateCard({
+      label: "ACTIVE MARKET",
+      title: city,
+      text:
+        cities.find((c) => c.city === city)?.description ??
+        "Explore the firm's presence across this market.",
+    });
+  };
+
+  const selectAsset = (key: string, label: string) => {
+    setActiveCity(null);
+    setActiveAsset(key);
+    setActiveFilter(label);
+    const count = cities.filter((c) => c.assets.split(" ").includes(key)).length;
+    updateCard({
+      label: "ASSET CLASS",
+      title: label,
+      text: `${count} markets highlighted across the firm's Pan-India footprint.`,
+    });
+  };
+
+  const reset = () => {
+    setActiveCity(null);
+    setActiveAsset(null);
+    setActiveFilter("all");
+    updateCard(defaultCard);
+  };
+
+  const markerState = (c: City) => {
+    if (activeCity) {
+      const active = c.city === activeCity;
+      return { active, dim: !active };
+    }
+    if (activeAsset) {
+      const active = c.assets.split(" ").includes(activeAsset);
+      return { active, dim: !active };
+    }
+    return { active: false, dim: false };
+  };
+
+  const position = (c: City) => ({
+    left: `${((c.lon - MAP_BOUNDS.minLon) / (MAP_BOUNDS.maxLon - MAP_BOUNDS.minLon)) * 100 + NUDGE.x}%`,
+    top: `${((MAP_BOUNDS.maxLat - c.lat) / (MAP_BOUNDS.maxLat - MAP_BOUNDS.minLat)) * 100 + NUDGE.y}%`,
+  });
+
+  /* Calibration helper: Shift+click the map to log the lon/lat under the cursor. */
+  const handleMapClick = (e: React.MouseEvent) => {
+    if (!e.shiftKey || !holderRef.current) return;
+    const r = holderRef.current.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;
+    const py = (e.clientY - r.top) / r.height;
+    console.log(
+      "lon:",
+      (MAP_BOUNDS.minLon + px * (MAP_BOUNDS.maxLon - MAP_BOUNDS.minLon)).toFixed(2),
+      "lat:",
+      (MAP_BOUNDS.maxLat - py * (MAP_BOUNDS.maxLat - MAP_BOUNDS.minLat)).toFixed(2)
+    );
+  };
+
   return (
-    <section className="firm-overview">
-      <div className="firm-container">
-        <div className="top-bar">
-          <Reveal>
-            <div className="section-label">Firm Overview</div>
-          </Reveal>
-          <div className="top-arrow">
-            <svg width="26" height="30" viewBox="0 0 26 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13 0V25" stroke="#0C1F2E" strokeWidth="2" />
-              <path d="M2 18L13 29L24 18" stroke="#0C1F2E" strokeWidth="2" fill="none" />
-            </svg>
-          </div>
-          <div />
+    <section
+      ref={sectionRef}
+      className={`pan-india-section${inView ? " in-view" : ""}`}
+    >
+      <div className="pan-container">
+        <div className="pan-eyebrow">FIRM OVERVIEW</div>
+
+        <div className="pan-header-row">
+          <h1>
+            A Pan-India Footprint,
+            <br />
+            Across Every <span>Asset Class</span>
+          </h1>
         </div>
 
-        <Reveal delay={0.05}>
-          <h1 className="section-title">A Pan-India Footprint, Across Every Asset Class</h1>
-        </Reveal>
+        <div className="pan-grid">
+          {/* MAP */}
+          <div className="pan-map-area">
+            <div className="pan-radar pan-radar-1" />
+            <div className="pan-radar pan-radar-2" />
+            <div className="pan-radar pan-radar-3" />
 
-        <div className="firm-grid">
-          <Reveal>
-            <div className="map-wrapper">
-              <div className="india-map-area">
-                <img
-                  className="india-map-image"
-                  src="/media/india-map.png"
-                  alt="Map of India marking Landmark Capital's presence across twelve cities"
-                  loading="lazy"
-                  decoding="async"
-                />
+            <div className="pan-map-holder" ref={holderRef} onClick={handleMapClick}>
+              <img
+                className="pan-india-map"
+                src="/media/india-map.svg"
+                alt="India map showing states and territories"
+                loading="lazy"
+                decoding="async"
+              />
 
-                <svg className="map-lines" viewBox="0 0 480 520">
-                  {leaderLines.map(([x1, y1, x2, y2]) => (
-                    <line key={`${x1}-${y1}`} x1={x1} y1={y1} x2={x2} y2={y2} />
-                  ))}
-                  {leaderDots.map(([cx, cy]) => (
-                    <circle key={`dot-${cx}-${cy}`} cx={cx} cy={cy} r="3" />
-                  ))}
-                </svg>
+              {cities.map((c, i) => {
+                const state = markerState(c);
+                return (
+                  <button
+                    key={c.city}
+                    type="button"
+                    className={`pan-city-marker${state.active ? " active" : ""}${state.dim ? " dim" : ""}`}
+                    style={{ ...position(c), animationDelay: `${0.65 + i * 0.15}s` }}
+                    onClick={() => selectCity(c.city)}
+                    aria-label={c.city}
+                  >
+                    <span className="pan-city-tooltip">{c.city}</span>
+                  </button>
+                );
+              })}
 
-                {cities.map((c, i) => (
-                  <Reveal key={c.key} delay={Math.min(0.1 + i * 0.03, 0.45)}>
-                    <div className={`map-location ${c.key}`}>
-                      <span>{c.label}</span>
-                    </div>
-                  </Reveal>
+              <div className="pan-map-counter">
+                <strong>12</strong>
+                <span>
+                  MARKETS
+                  <br />
+                  ACROSS INDIA
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* CONTENT */}
+          <div className="pan-content">
+            <div className="pan-experience">
+              <div className="pan-experience-number">
+                30<sup>+</sup>
+              </div>
+              <div className="pan-experience-copy">
+                <strong>Years of Leadership</strong>
+                <p>Experience spanning multiple geographies and real estate asset classes.</p>
+              </div>
+            </div>
+
+            <div className={`pan-location-card${cardChanging ? " changing" : ""}`}>
+              <div className="pan-location-label">{card.label}</div>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+
+            <div className="pan-filter-group">
+              <div className="pan-filter-title">EXPLORE BY GEOGRAPHY</div>
+              <div className="pan-filters">
+                <button
+                  type="button"
+                  className={`pan-filter${activeFilter === "all" ? " active" : ""}`}
+                  onClick={reset}
+                >
+                  All Markets
+                </button>
+                {geographyFilters.map((city) => (
+                  <button
+                    key={city}
+                    type="button"
+                    className={`pan-filter${activeFilter === city ? " active" : ""}`}
+                    onClick={() => selectCity(city)}
+                  >
+                    {city}
+                  </button>
                 ))}
               </div>
             </div>
-          </Reveal>
 
-          <Reveal delay={0.08}>
-            <div className="overview-content">
-              <p className="intro">
-                More than three decades of leadership experience across geographies, and across
-                asset classes.
-              </p>
-
-              <h3 className="content-heading">Geographies</h3>
-              <p className="geographies">
-                Delhi NCR&nbsp;&nbsp;·&nbsp;&nbsp;Lucknow&nbsp;&nbsp;·&nbsp;&nbsp;Ahmedabad&nbsp;&nbsp;·&nbsp;&nbsp;Mumbai&nbsp;&nbsp;·&nbsp;&nbsp;Pune&nbsp;&nbsp;·&nbsp;&nbsp;Hyderabad&nbsp;&nbsp;·&nbsp;&nbsp;
-                Bengaluru&nbsp;&nbsp;·&nbsp;&nbsp;Kolkata&nbsp;&nbsp;·&nbsp;&nbsp;Jaipur&nbsp;&nbsp;·&nbsp;&nbsp;Chennai&nbsp;&nbsp;·&nbsp;&nbsp;Nagpur&nbsp;&nbsp;·&nbsp;&nbsp;Pondicherry
-              </p>
-
-              <h3 className="content-heading asset-heading">Asset Classes</h3>
-              <div className="asset-list">
-                {assetClasses.map((a) => (
-                  <div key={a} className="asset-pill">{a}</div>
+            <div className="pan-filter-group">
+              <div className="pan-filter-title">EXPLORE BY ASSET CLASS</div>
+              <div className="pan-filters">
+                {assetFilters.map((f) => (
+                  <button
+                    key={f.key}
+                    type="button"
+                    className={`pan-filter${activeFilter === f.label ? " active" : ""}`}
+                    onClick={() => selectAsset(f.key, f.label)}
+                  >
+                    {f.label}
+                  </button>
                 ))}
               </div>
-
-              <div className="statement">
-                <p>
-                  Experience not limited to one city or one asset class, but its depth proven
-                  across every one of them
-                </p>
-              </div>
             </div>
-          </Reveal>
+
+            <div className="pan-statement">
+              <p>
+                Experience not limited to one city or one asset class, but its depth proven across
+                every one of them.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
