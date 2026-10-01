@@ -43,14 +43,21 @@ export default function ServiceDetail() {
               {service.positioning}
             </p>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 border-t border-border pt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {service.approach.map((step, i) => (
-              <Reveal key={step.title} delay={i * 0.04}>
-                <span className="text-xs font-mono text-crimson-500">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="font-display text-2xl text-charcoal mt-3 mb-3">{step.title}</h3>
-                <p className="text-slate leading-relaxed max-w-md">{step.body}</p>
+              <Reveal key={step.title} delay={i * 0.04} className="h-full">
+                <article className="card-shine group relative h-full rounded-[12px] border border-border bg-gradient-to-br from-paper to-stone p-7 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-bronze/60 hover:shadow-[0_18px_40px_-24px_rgba(36,41,47,0.35)]">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs text-bronze transition-colors duration-300 group-hover:text-crimson-500">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="h-px flex-1 bg-border transition-colors duration-300 group-hover:bg-bronze/40" />
+                  </div>
+                  <h3 className="mt-4 mb-3 font-display text-2xl text-charcoal transition-colors duration-300 group-hover:text-crimson-500">
+                    {step.title}
+                  </h3>
+                  <p className="text-slate leading-relaxed max-w-md">{step.body}</p>
+                </article>
               </Reveal>
             ))}
           </div>
@@ -64,14 +71,21 @@ export default function ServiceDetail() {
             <p className="eyebrow mb-6">What we do</p>
             <h2 className="display-2 mb-14 text-balance">Scope of the mandate.</h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 border-t border-border pt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {service.offerings.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.03}>
-                <p className="text-xs font-mono text-crimson-500 mb-3">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="font-display text-xl text-charcoal mb-3">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-slate">{item.body}</p>
+              <Reveal key={item.title} delay={i * 0.04} className="h-full">
+                <article className="card-shine group relative h-full rounded-[12px] border border-border bg-gradient-to-br from-paper to-ivory p-7 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-bronze/60 hover:shadow-[0_18px_40px_-24px_rgba(36,41,47,0.35)]">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs text-bronze transition-colors duration-300 group-hover:text-crimson-500">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="h-px flex-1 bg-border transition-colors duration-300 group-hover:bg-bronze/40" />
+                  </div>
+                  <h3 className="mt-4 mb-3 font-display text-xl text-charcoal transition-colors duration-300 group-hover:text-crimson-500">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-slate">{item.body}</p>
+                </article>
               </Reveal>
             ))}
           </div>
@@ -96,7 +110,7 @@ export default function ServiceDetail() {
                       key={s}
                       className="flex items-start gap-4 text-base text-slate leading-relaxed"
                     >
-                      <span className="text-crimson-500 mt-1 shrink-0">—</span>
+                      <span className="text-crimson-500 mt-1 shrink-0">·</span>
                       <span>{s}</span>
                     </li>
                   ))}
