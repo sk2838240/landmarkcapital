@@ -6,7 +6,7 @@ import { Icon } from "@/components/common/Icon";
 import { Seo } from "@/components/common/Seo";
 import { getPortfolioProjects } from "@/lib/cmsData";
 import type { PortfolioProject, ProjectSection } from "@/data/portfolio";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 function Section({ section }: { section: ProjectSection }) {
   if (section.kind === "table") {
@@ -161,8 +161,17 @@ export default function ProjectDetail() {
       <PageHero
         eyebrow="Current Portfolio"
         title={project.name}
-        subtitle={project.locationTagline}
-      />
+        subtitle={project.intro ?? project.locationTagline}
+      >
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="rounded-full bg-charcoal px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-white">
+            {project.status}
+          </span>
+          <span className="rounded-full border border-border bg-paper px-4 py-2 text-[11px] uppercase tracking-[0.14em] text-slate">
+            {project.locationTagline}
+          </span>
+        </div>
+      </PageHero>
 
       <section className="section-pad surface-ivory">
         <div className="container-tb">
@@ -230,7 +239,6 @@ export default function ProjectDetail() {
                 className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.12em] text-charcoal link-underline"
               >
                 Contact the team
-                <Icon as={ArrowUpRight} size={16} />
               </Link>
             </div>
           </Reveal>

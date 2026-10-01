@@ -17,6 +17,8 @@ export type PortfolioProject = {
   status: string;
   /** Hero sub-line on the detail page, e.g. "Gachibowli, Hyderabad | Mixed Use Development" */
   locationTagline: string;
+  /** Hero introduction on the detail page */
+  intro?: string;
   highlights: string[];
   metrics: { label: string; value: string }[];
   sections: ProjectSection[];
@@ -37,6 +39,7 @@ export const portfolioProjects: PortfolioProject[] = [
     invested: "₹100 Cr",
     status: "Under construction",
     locationTagline: "Gachibowli, Hyderabad | Mixed Use Development",
+    intro: "A mixed-use development of 9.84 lakhs square feet on 4.4 acres in Gachibowli, Hyderabad, positioned just 5 kilometres from Hitec City in the city's thriving technology corridor, with an invested capital of ₹100 crores.",
     highlights: [
       "Strategically positioned 5 km from Hitec City, strong rental demand from Hyderabad's technology corridor",
       "Close to the University of Hyderabad, ISB and IIIT, a knowledge ecosystem attracting professionals and families",
@@ -115,6 +118,7 @@ export const portfolioProjects: PortfolioProject[] = [
     invested: "₹125 Cr",
     status: "Completed",
     locationTagline: "Manikonda, Hyderabad | Residential Apartments",
+    intro: "A completed residential development of 13 lakhs square feet on 8 acres in Manikonda, Hyderabad, near Lanco Hills Tech Park, with 95% of its 864 units sold and an invested capital of ₹125 crores.",
     highlights: [
       "Near Lanco Hills Tech Park, direct access to major employment centres and strong rental demand",
       "Proximity to Chaitanya School and Pavithra International School, attractive for families",
@@ -181,6 +185,7 @@ export const portfolioProjects: PortfolioProject[] = [
     invested: "₹120 Cr",
     status: "Under development",
     locationTagline: "Sadahalli, Bangalore | Residential / Row Houses",
+    intro: "A residential and row-house development of 10.5 lakh square feet on 36 acres near Kempegowda International Airport, Bangalore, with land acquisition complete and approvals in progress, backed by an invested capital of ₹120 crores.",
     highlights: [
       "Prime location near Kempegowda International Airport, strong connectivity and appreciation potential",
       "Close to Prestige Tech Cloud and major IT employers, demand from tech professionals",
@@ -287,6 +292,7 @@ export const portfolioProjects: PortfolioProject[] = [
     invested: "₹35 Cr",
     status: "Planning stage",
     locationTagline: "Doddaballapur, Bangalore | Plotted Development",
+    intro: "A plotted development of 5.2 lakh square feet on 22 acres in Doddaballapur, Bangalore, 24 kilometres from the international airport, currently in the planning stage with a market launch targeted within 3 to 6 months and an invested capital of ₹35 crores.",
     highlights: [
       "Only 24 km from Kempegowda International Airport, attractive for investors and end-users",
       "Satellite Town Ring Road and Bengaluru Business Corridor passing through Doddaballapur",
@@ -402,6 +408,7 @@ export const portfolioProjects: PortfolioProject[] = [
     invested: "₹50 Cr",
     status: "Under development",
     locationTagline: "Mankoli, Bhiwandi | Industrial Park",
+    intro: "An industrial park of 11 lakhs square feet on 16.5 acres in Mankoli, Bhiwandi, with direct access to the Mumbai-Agra highway and planned infrastructure including the Samruddhi Highway, with an invested capital of ₹50 crores.",
     highlights: [
       "Well-connected Mankoli location with direct access to the Mumbai-Agra highway",
       "Bhiwandi-Dombivli Road connectivity for industrial logistics",
@@ -437,6 +444,7 @@ export const portfolioProjects: PortfolioProject[] = [
     invested: "₹60 Cr",
     status: "Leased and operating",
     locationTagline: "Dhamangaon, Bhiwandi | Warehousing",
+    intro: "A warehousing development of 13 lakhs square feet on 54 acres in Dhamangaon, Bhiwandi, the fastest growing warehousing hub in MMR, leased to Zepto, NMK Textiles, TCI and Drona Logitech, with an invested capital of ₹60 crores.",
     highlights: [
       "Dhamangaon stands as the fastest growing warehousing hub in MMR",
       "Proximity to the Samruddhi Expressway enhances connectivity",

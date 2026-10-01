@@ -144,7 +144,17 @@ export function getService(slug: string) {
 }
 
 export function getPortfolioProjects(): PortfolioProject[] {
-  return list(data.portfolio) ?? staticPortfolio;
+  const cms = list(data.portfolio);
+  if (!cms) return staticPortfolio;
+  return cms.map((p) => {
+    const fallback = staticPortfolio.find((s) => s.id === p.id);
+    return {
+      ...p,
+      intro: p.intro ?? fallback?.intro,
+      image: p.image || fallback?.image || "",
+      imageAlt: p.imageAlt || fallback?.imageAlt || "",
+    };
+  });
 }
 
 export function getFaqs() {

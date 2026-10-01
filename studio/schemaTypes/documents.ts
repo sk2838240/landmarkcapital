@@ -262,6 +262,14 @@ export const portfolioProject = defineType({
       description: 'e.g. "Gachibowli, Hyderabad | Mixed Use Development"',
     }),
     defineField({
+      name: "intro",
+      title: "Hero introduction (detail page)",
+      type: "text",
+      rows: 3,
+      group: "content",
+      description: "Opening paragraph shown in the project page hero, justified.",
+    }),
+    defineField({
       name: "highlights",
       title: "Highlights",
       type: "array",

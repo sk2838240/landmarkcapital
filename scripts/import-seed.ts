@@ -147,6 +147,7 @@ function projectDoc(p: (typeof portfolioProjects)[number]): Doc {
     invested: p.invested,
     status: p.status,
     locationTagline: p.locationTagline,
+    ...(p.intro ? { intro: p.intro } : {}),
     highlights: p.highlights,
     metrics: keyed(p.metrics.map((m) => ({ _type: "metricItem", ...m }))),
     sections: keyed(
@@ -385,6 +386,59 @@ async function main() {
 
   const json = await res.json();
   console.log(`[seed] Imported ${json.results?.length ?? docs.length} documents into Sanity.`);
+
+  // Upload local project images into Sanity and attach them to their projects
+  const existsSync = (await import("node:fs")).existsSync;
+  let uploaded = 0;
+  for (const p of portfolioProjects) {
+    const localPath = new URL(`../public/media/portfolio/${p.id}.jpg`, import.meta.url);
+    if (!existsSync(localPath)) continue;
+    try {
+      const buf = readFileSync(localPath);
+      // The assets API accepts the raw file body with a Content-Type header
+      const assetRes = await fetch(
+        `https://${projectId}.api.sanity.io/${API_VERSION}/assets/images/${dataset}?filename=${p.id}.jpg`,
+        {
+          method: "POST",
+          headers: { Authorization: `Bearer ${token}`, "Content-Type": "image/jpeg" },
+          body: new Uint8Array(buf),
+        }
+      );
+      if (!assetRes.ok) {
+        console.warn(`[seed] Image upload failed for ${p.id} (${assetRes.status})`);
+        continue;
+      }
+      const assetJson = await assetRes.json();
+      const assetId = assetJson?.document?._id;
+      if (!assetId) continue;
+      const patchRes = await fetch(
+        `https://${projectId}.api.sanity.io/${API_VERSION}/data/mutate/${dataset}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+          body: JSON.stringify({
+            mutations: [
+              {
+                patch: {
+                  id: docId.project(p.id),
+                  set: { image: { _type: "image", asset: { _type: "reference", _ref: assetId } } },
+                },
+              },
+            ],
+          }),
+        }
+      );
+      if (!patchRes.ok) {
+        console.warn(`[seed] Image patch failed for ${p.id} (${patchRes.status})`);
+        continue;
+      }
+      uploaded++;
+    } catch (err) {
+      console.warn(`[seed] Image step failed for ${p.id}: ${err.message}`);
+    }
+  }
+  if (uploaded > 0) console.log(`[seed] Uploaded ${uploaded} project images into Sanity.`);
+
   console.log("[seed] Next: redeploy the site (or run npm run build) to fetch CMS content.");
 }
 
