@@ -29,6 +29,7 @@ const DealByDeal = lazy(() => import("@/pages/funds/DealByDeal"));
 const SPV = lazy(() => import("@/pages/funds/SPV"));
 const AIF = lazy(() => import("@/pages/funds/AIF"));
 const Portfolio = lazy(() => import("@/pages/Portfolio"));
+const ProjectDetail = lazy(() => import("@/pages/portfolio/ProjectDetail"));
 const ServiceDetail = lazy(() => import("@/pages/services/ServiceDetail"));
 
 const Blogs = lazy(() => import("@/pages/knowledge/Blogs"));
@@ -99,6 +100,7 @@ export default function App() {
               <Route path="/structures/managed-accounts" element={<DealByDeal />} />
               <Route path="/structures/spv" element={<SPV />} />
               <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/portfolio/:slug" element={<ProjectDetail />} />
               <Route path="/service/:slug" element={<ServiceDetail />} />
               <Route path="/opportunities" element={<Opportunities />} />
               <Route path="/transactions" element={<Transactions />} />
