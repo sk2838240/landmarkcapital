@@ -72,7 +72,7 @@ const QUERIES = {
   reports: `*[_type == "report" && ${published}] | order(coalesce(date, _createdAt) desc){title, "slug": slug.current, description, "fileUrl": file.asset->url, seo}`,
   interviews: `*[_type == "interview" && ${published}] | order(_createdAt asc){_id, eyebrow, title, description, speakerName, speakerRole, duration, "thumbnail": thumbnail.asset->url, thumbnailAlt, videoUrl}`,
   services: `*[_type == "service" && ${published}] | order(_createdAt asc){name, "slug": slug.current, tagline, intro, positioning, approach[]{title, body}, offerings[]{title, body}, situations, offeringsNote, audience, seo}`,
-  portfolio: `*[_type == "portfolioProject" && ${published}] | order(_createdAt asc){name, company, type, location, developerGroup, landArea, saleableArea, invested, status, highlights, metrics[]{label, value}, "image": image.asset->url, imageAlt, seo}`,
+  portfolio: `*[_type == "portfolioProject" && ${published}] | order(_createdAt asc){name, "slug": slug.current, company, type, location, developerGroup, landArea, saleableArea, invested, status, locationTagline, highlights, metrics[]{label, value}, "image": image.asset->url, imageAlt, sections, seo}`,
   faqs: `*[_type == "faq" && ${published}] | order(order asc){question, answer}`,
   team: `*[_type == "teamMember" && ${published}] | order(order asc){name, role, group, "photo": photo.asset->url, photoAlt, bio, credentials, linkedin}`,
   industryData: `*[_type == "industryDataPoint" && ${published}] | order(order asc){value, label, source, category}`,
@@ -149,7 +149,7 @@ async function main() {
     })),
     services: results.services ?? [],
     portfolio: (results.portfolio ?? []).map((p) => ({
-      id: p.name?.toLowerCase().replace(/\s+/g, "-") ?? "",
+      id: p.slug ?? p.name?.toLowerCase().replace(/\s+/g, "-") ?? "",
       name: p.name,
       company: p.company ?? "",
       type: p.type ?? "",
@@ -159,8 +159,21 @@ async function main() {
       saleableArea: p.saleableArea ?? "",
       invested: p.invested ?? "",
       status: p.status ?? "",
+      locationTagline: p.locationTagline ?? "",
       highlights: p.highlights ?? [],
       metrics: p.metrics ?? [],
+      sections: (p.sections ?? []).map((s) => {
+        if (s._type === "tableSection") {
+          return { kind: "table", title: s.title, columns: s.columns ?? [], rows: (s.rows ?? []).map((r) => r.cells ?? []) };
+        }
+        if (s._type === "columnsSection") {
+          return { kind: "columns", title: s.title, columns: (s.columns ?? []).map((c) => ({ title: c.title, items: c.items ?? [] })) };
+        }
+        if (s._type === "proseSection") {
+          return { kind: "prose", title: s.title, body: s.body ?? "" };
+        }
+        return { kind: "bullets", title: s.title, items: (s.items ?? []).map((it) => ({ title: it.title ?? undefined, body: it.body ?? "" })) };
+      }),
       image: p.image ?? "",
       imageAlt: p.imageAlt ?? p.name,
       seo: p.seo ?? null,

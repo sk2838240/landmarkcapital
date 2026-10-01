@@ -27,12 +27,28 @@ function loadEnv() {
 
 loadEnv();
 
-/** Sanity OBJECT array items require a unique _key — stamp one on every item.
+/** Sanity array items require a unique _key — stamp one on every item.
  *  Primitive (string/number) array items are stored as plain values and must
  *  NOT be keyed. */
 function keyed<T extends object>(items: T[]): (T & { _key: string })[] {
   return items.map((item) => ({ ...item, _key: randomUUID() }));
 }
+
+const slugify = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+
+/** Stable document ids — makes createOrReplace idempotent across imports. */
+const docId = {
+  blog: (slug: string) => `blog-${slug}`,
+  report: (slug: string) => `report-${slug}`,
+  interview: (id: string) => `interview-${id}`,
+  service: (slug: string) => `service-${slug}`,
+  project: (id: string) => `project-${id}`,
+  faq: (question: string) => `faq-${slugify(question)}`,
+  team: (name: string) => `team-${slugify(name)}`,
+  industry: (value: string) => `industry-${slugify(value)}`,
+  pageSeo: (path: string) => `pageSeo-${slugify(path)}`,
+};
 
 /**
  * One-time seed import: pushes the bundled static content into Sanity so the
@@ -57,6 +73,7 @@ const slug = (current: string) => ({ _type: "slug", current });
 function blogDoc(b: (typeof blogs)[number]): Doc {
   return {
     _type: "blogPost",
+    _id: docId.blog(b.slug),
     title: b.title,
     slug: slug(b.slug),
     excerpt: b.excerpt,
@@ -69,12 +86,19 @@ function blogDoc(b: (typeof blogs)[number]): Doc {
 }
 
 function reportDoc(r: (typeof reports)[number]): Doc {
-  return { _type: "report", title: r.title, slug: slug(r.slug), description: r.description };
+  return {
+    _type: "report",
+    _id: docId.report(r.slug),
+    title: r.title,
+    slug: slug(r.slug),
+    description: r.description,
+  };
 }
 
 function interviewDoc(i: (typeof interviews)[number]): Doc {
   return {
     _type: "interview",
+    _id: docId.interview(i.id),
     title: i.title,
     eyebrow: i.eyebrow,
     description: i.description,
@@ -87,6 +111,7 @@ function interviewDoc(i: (typeof interviews)[number]): Doc {
 function serviceDoc(s: (typeof services)[number]): Doc {
   return {
     _type: "service",
+    _id: docId.service(s.slug),
     name: s.name,
     slug: slug(s.slug),
     tagline: s.tagline,
@@ -100,10 +125,19 @@ function serviceDoc(s: (typeof services)[number]): Doc {
   };
 }
 
+const sectionType: Record<string, string> = {
+  bullets: "bulletsSection",
+  table: "tableSection",
+  columns: "columnsSection",
+  prose: "proseSection",
+};
+
 function projectDoc(p: (typeof portfolioProjects)[number]): Doc {
   return {
     _type: "portfolioProject",
+    _id: docId.project(p.id),
     name: p.name,
+    slug: slug(p.id),
     company: p.company,
     type: p.type,
     location: p.location,
@@ -112,18 +146,53 @@ function projectDoc(p: (typeof portfolioProjects)[number]): Doc {
     saleableArea: p.saleableArea,
     invested: p.invested,
     status: p.status,
-    highlights: keyed(p.highlights),
+    locationTagline: p.locationTagline,
+    highlights: p.highlights,
     metrics: keyed(p.metrics.map((m) => ({ _type: "metricItem", ...m }))),
+    sections: keyed(
+      p.sections.map((s) => {
+        const base = { _type: sectionType[s.kind] ?? "bulletsSection", title: s.title };
+        if (s.kind === "table") {
+          return {
+            ...base,
+            columns: s.columns,
+            rows: keyed(s.rows.map((cells) => ({ _type: "tableRow", cells }))),
+          };
+        }
+        if (s.kind === "columns") {
+          return {
+            ...base,
+            columns: keyed(
+              s.columns.map((c) => ({ _type: "listColumn", title: c.title, items: c.items }))
+            ),
+          };
+        }
+        if (s.kind === "prose") {
+          return { ...base, body: s.body };
+        }
+        return {
+          ...base,
+          items: keyed(s.items.map((it) => ({ _type: "bulletItem", ...(it.title ? { title: it.title } : {}), body: it.body }))),
+        };
+      })
+    ),
   };
 }
 
 function faqDoc(f: { question: string; answer: string }, i: number): Doc {
-  return { _type: "faq", question: f.question, answer: f.answer, order: i + 1 };
+  return {
+    _type: "faq",
+    _id: docId.faq(f.question),
+    question: f.question,
+    answer: f.answer,
+    order: i + 1,
+  };
 }
 
 function teamDoc(m: (typeof team)[number], i: number): Doc {
   return {
     _type: "teamMember",
+    _id: docId.team(m.name),
     name: m.name,
     role: m.role,
     group: m.category,
@@ -137,6 +206,7 @@ function teamDoc(m: (typeof team)[number], i: number): Doc {
 function industryDoc(d: (typeof industryData)[number], i: number): Doc {
   return {
     _type: "industryDataPoint",
+    _id: docId.industry(d.value),
     value: d.value,
     label: d.label,
     source: d.source,
@@ -159,7 +229,7 @@ const settingsDoc: Doc = {
         _type: "navItem",
         label: n.label,
         to: n.to,
-        ...(n.activePaths ? { activePaths: keyed(n.activePaths) } : {}),
+        ...(n.activePaths ? { activePaths: n.activePaths } : {}),
         ...(children ? { children } : {}),
       };
     })
@@ -233,13 +303,15 @@ const settingsDoc: Doc = {
 const pageSeoDocs: Doc[] = [
   {
     _type: "pageSeo",
+    _id: docId.pageSeo("/"),
     path: "/",
-    title: "Landmark Capital — Institutional real estate investing",
+    title: "Landmark Capital",
     description:
       "Landmark Capital delivers institutional-grade real estate investment and advisory solutions built on expertise, transparency and disciplined execution across India.",
   },
   {
     _type: "pageSeo",
+    _id: docId.pageSeo("/insights/faq"),
     path: "/insights/faq",
     title: "FAQ",
     description:
@@ -247,11 +319,40 @@ const pageSeoDocs: Doc[] = [
   },
 ];
 
+const MANAGED_TYPES = [
+  "blogPost",
+  "report",
+  "interview",
+  "service",
+  "portfolioProject",
+  "industryDataPoint",
+  "faq",
+  "teamMember",
+  "pageSeo",
+];
+
 async function main() {
   if (!projectId || !token) {
     console.error(
       "[seed] Missing config. Set VITE_SANITY_PROJECT_ID, VITE_SANITY_DATASET and SANITY_API_TOKEN (Editor rights) in .env, then re-run."
     );
+    process.exit(1);
+  }
+
+  // Remove previously imported copies (imports are idempotent: delete, then recreate)
+  const typeList = MANAGED_TYPES.map((t) => `"${t}"`).join(", ");
+  const deleteRes = await fetch(
+    `https://${projectId}.api.sanity.io/${API_VERSION}/data/mutate/${dataset}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({
+        mutations: [{ delete: { query: `*[_type in [${typeList}]]` } }],
+      }),
+    }
+  );
+  if (!deleteRes.ok) {
+    console.error(`[seed] Cleanup failed (${deleteRes.status}): ${(await deleteRes.text()).slice(0, 300)}`);
     process.exit(1);
   }
 

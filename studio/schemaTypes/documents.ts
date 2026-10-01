@@ -218,10 +218,20 @@ export const portfolioProject = defineType({
   type: "document",
   groups: [
     { name: "content", title: "Content", default: true },
+    { name: "detail", title: "Detail Page" },
     { name: "seo", title: "SEO" },
   ],
   fields: [
     defineField({ name: "name", title: "Project name", type: "string", group: "content", validation: (r) => r.required() }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      group: "content",
+      options: { source: "name", maxLength: 96 },
+      description: "Permalink: /portfolio/{slug}",
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "company", title: "Project SPV / company", type: "string", group: "content" }),
     defineField({ name: "type", title: "Project type", type: "string", group: "content" }),
     defineField({ name: "location", title: "Location", type: "string", group: "content" }),
@@ -243,6 +253,13 @@ export const portfolioProject = defineType({
           "Leased and operating",
         ],
       },
+    }),
+    defineField({
+      name: "locationTagline",
+      title: "Hero sub-line (detail page)",
+      type: "string",
+      group: "content",
+      description: 'e.g. "Gachibowli, Hyderabad | Mixed Use Development"',
     }),
     defineField({
       name: "highlights",
@@ -278,6 +295,90 @@ export const portfolioProject = defineType({
         },
       ],
       group: "content",
+    }),
+    defineField({
+      name: "sections",
+      title: "Detail page sections",
+      type: "array",
+      group: "detail",
+      of: [
+        {
+          type: "object",
+          name: "bulletsSection",
+          title: "Titled bullets",
+          fields: [
+            defineField({ name: "title", title: "Section title", type: "string", validation: (r) => r.required() }),
+            defineField({
+              name: "items",
+              title: "Items",
+              type: "array",
+              of: [
+                {
+                  type: "object",
+                  fields: [
+                    defineField({ name: "title", title: "Item title", type: "string" }),
+                    defineField({ name: "body", title: "Item body", type: "text", rows: 3 }),
+                  ],
+                },
+              ],
+            }),
+          ],
+        },
+        {
+          type: "object",
+          name: "tableSection",
+          title: "Table",
+          fields: [
+            defineField({ name: "title", title: "Section title", type: "string", validation: (r) => r.required() }),
+            defineField({ name: "columns", title: "Column headers", type: "array", of: [{ type: "string" }] }),
+            defineField({
+              name: "rows",
+              title: "Rows",
+              type: "array",
+              of: [
+                {
+                  type: "object",
+                  fields: [
+                    defineField({ name: "cells", title: "Cells", type: "array", of: [{ type: "string" }] }),
+                  ],
+                },
+              ],
+            }),
+          ],
+        },
+        {
+          type: "object",
+          name: "columnsSection",
+          title: "List columns",
+          fields: [
+            defineField({ name: "title", title: "Section title", type: "string", validation: (r) => r.required() }),
+            defineField({
+              name: "columns",
+              title: "Columns",
+              type: "array",
+              of: [
+                {
+                  type: "object",
+                  fields: [
+                    defineField({ name: "title", title: "Column title", type: "string", validation: (r) => r.required() }),
+                    defineField({ name: "items", title: "Items", type: "array", of: [{ type: "string" }] }),
+                  ],
+                },
+              ],
+            }),
+          ],
+        },
+        {
+          type: "object",
+          name: "proseSection",
+          title: "Text section",
+          fields: [
+            defineField({ name: "title", title: "Section title", type: "string", validation: (r) => r.required() }),
+            defineField({ name: "body", title: "Body", type: "text", rows: 4 }),
+          ],
+        },
+      ],
+      description: "Sections rendered on the project's own page, in order.",
     }),
     defineField({ name: "seo", title: "SEO & Meta", type: "seo", group: "seo" }),
   ],
