@@ -80,21 +80,6 @@ export const media = {
     src: "/aj-video.mp4",
     alt: "Ashish Joshi, Managing Partner & Fund Manager at Landmark Capital",
   },
-  /** Current-Portfolio nav mega menu imagery, project cards from the deck */
-  portfolioMenu: [
-    {
-      src: "/media/portfolio/ambience-parkview.jpg",
-      alt: "Ambience Parkview mixed-use development, Gachibowli, Hyderabad",
-    },
-    {
-      src: "/media/portfolio/ambience-courtyard.jpg",
-      alt: "Ambience Courtyard residential towers, Manikonda, Hyderabad",
-    },
-    {
-      src: "/media/portfolio/sadahalli-villas.jpg",
-      alt: "Villa development, Sadahalli, Bangalore",
-    },
-  ],
   /** One visual per Landmark Difference principle, order matches `differences` in Difference.tsx */
   principles: [
     {
