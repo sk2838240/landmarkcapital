@@ -8,8 +8,41 @@ import "./FirmOverview.css";
  * asset-class filters, and a live location card.
  */
 
-const MAP_BOUNDS = { minLon: 68.0, maxLon: 97.5, minLat: 6.7, maxLat: 37.1 };
-const NUDGE = { x: 0, y: 0 };
+/**
+ * Marker placement.
+ *
+ * `india-map.svg` is a Web-Mercator map on a 1000x1000 viewBox. Two things
+ * have to be accounted for before a lat/lon can become a CSS percentage:
+ *
+ * 1. The drawn artwork is inset inside its own viewBox. Measured from the 36
+ *    state paths, India spans x 99.9..900.1 and y 45.5..954.5 — roughly 10%
+ *    padding on the left/right and 4.6% top/bottom.
+ * 2. Mercator is non-linear in latitude, so latitude cannot be interpolated
+ *    linearly the way longitude can.
+ *
+ * The artwork bounds correspond to India's geographic extremes: Kori Creek in
+ * Kutch (west), Angalong in Arunachal Pradesh (east), the Siachen tip (north)
+ * and Indira Point in the Nicobars (south).
+ *
+ * The map image is additionally letterboxed by the CSS: `.pan-map-holder` is
+ * 1:1.08 while the SVG is square with `object-fit: contain`, so the image
+ * renders at full width but only 92.59% of the holder's height, centred
+ * vertically (top at 3.70%).
+ */
+const ARTWORK = { minX: 99.9, maxX: 900.1, minY: 45.5, maxY: 954.5 };
+const GEO_BOUNDS = { minLon: 68.16, maxLon: 97.42, maxLat: 37.06, minLat: 6.72 };
+const HOLDER_ASPECT = 1.08;
+
+const mercatorY = (lat: number) => Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360));
+const inverseMercatorY = (m: number) =>
+  ((2 * Math.atan(Math.exp(m)) - Math.PI / 2) * 180) / Math.PI;
+
+const MERC_NORTH = mercatorY(GEO_BOUNDS.maxLat);
+const MERC_SOUTH = mercatorY(GEO_BOUNDS.minLat);
+
+/** Fraction of the holder occupied by the letterboxed map image. */
+const IMAGE_HEIGHT_PCT = (1 / HOLDER_ASPECT) * 100;
+const IMAGE_TOP_PCT = ((HOLDER_ASPECT - 1) / 2 / HOLDER_ASPECT) * 100;
 
 type City = { city: string; lat: number; lon: number; assets: string; description: string };
 
@@ -198,10 +231,22 @@ export function FirmOverview() {
     return { active: false, dim: false };
   };
 
-  const position = (c: City) => ({
-    left: `${((c.lon - MAP_BOUNDS.minLon) / (MAP_BOUNDS.maxLon - MAP_BOUNDS.minLon)) * 100 + NUDGE.x}%`,
-    top: `${((MAP_BOUNDS.maxLat - c.lat) / (MAP_BOUNDS.maxLat - MAP_BOUNDS.minLat)) * 100 + NUDGE.y}%`,
-  });
+  /** Projects a city onto the letterboxed map image, in holder percentages. */
+  const position = (c: City) => {
+    const viewX =
+      ARTWORK.minX +
+      ((c.lon - GEO_BOUNDS.minLon) / (GEO_BOUNDS.maxLon - GEO_BOUNDS.minLon)) *
+        (ARTWORK.maxX - ARTWORK.minX);
+    const viewY =
+      ARTWORK.minY +
+      ((MERC_NORTH - mercatorY(c.lat)) / (MERC_NORTH - MERC_SOUTH)) *
+        (ARTWORK.maxY - ARTWORK.minY);
+
+    return {
+      left: `${(viewX / 1000) * 100}%`,
+      top: `${IMAGE_TOP_PCT + (viewY / 1000) * IMAGE_HEIGHT_PCT}%`,
+    };
+  };
 
   /* Calibration helper: Shift+click the map to log the lon/lat under the cursor. */
   const handleMapClick = (e: React.MouseEvent) => {
@@ -209,12 +254,19 @@ export function FirmOverview() {
     const r = holderRef.current.getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width;
     const py = (e.clientY - r.top) / r.height;
-    console.log(
-      "lon:",
-      (MAP_BOUNDS.minLon + px * (MAP_BOUNDS.maxLon - MAP_BOUNDS.minLon)).toFixed(2),
-      "lat:",
-      (MAP_BOUNDS.maxLat - py * (MAP_BOUNDS.maxLat - MAP_BOUNDS.minLat)).toFixed(2)
+    // holder % -> viewBox units, undoing the CSS letterbox
+    const viewX = px * 1000;
+    const viewY = ((py - IMAGE_TOP_PCT / 100) / (IMAGE_HEIGHT_PCT / 100)) * 1000;
+    // viewBox -> lon/lat, undoing the artwork inset and the Mercator scale
+    const lon =
+      GEO_BOUNDS.minLon +
+      ((viewX - ARTWORK.minX) / (ARTWORK.maxX - ARTWORK.minX)) *
+        (GEO_BOUNDS.maxLon - GEO_BOUNDS.minLon);
+    const lat = inverseMercatorY(
+      MERC_NORTH -
+        ((viewY - ARTWORK.minY) / (ARTWORK.maxY - ARTWORK.minY)) * (MERC_NORTH - MERC_SOUTH)
     );
+    console.log("lon:", lon.toFixed(2), "lat:", lat.toFixed(2));
   };
 
   return (
