@@ -51,27 +51,6 @@ const strategiesCards = [
   },
 ];
 
-const portfolioCards = [
-  {
-    label: "Ambience Parkview",
-    to: "/portfolio",
-    src: media.portfolioMenu[0].src,
-    alt: media.portfolioMenu[0].alt,
-  },
-  {
-    label: "Ambience Courtyard",
-    to: "/portfolio",
-    src: media.portfolioMenu[1].src,
-    alt: media.portfolioMenu[1].alt,
-  },
-  {
-    label: "Villa Development",
-    to: "/portfolio",
-    src: media.portfolioMenu[2].src,
-    alt: media.portfolioMenu[2].alt,
-  },
-];
-
 const ourFundsCards = [
   {
     label: "Multiplier Fund",
@@ -93,7 +72,6 @@ const megaMenuCards: Record<
 > = {
   About: aboutCards,
   "Available Structures": strategiesCards,
-  "Current Portfolio": portfolioCards,
   "Our Funds": ourFundsCards,
 };
 
@@ -101,7 +79,6 @@ const megaMenuCards: Record<
 const megaLayouts: Record<string, { panel: string; cols: string }> = {
   "/about": { panel: "w-[680px]", cols: "grid-cols-3" },
   "/structures/aif": { panel: "w-[680px]", cols: "grid-cols-3" },
-  "/portfolio": { panel: "w-[680px]", cols: "grid-cols-3" },
   "/funds/multiplier": { panel: "w-[480px]", cols: "grid-cols-2" },
 };
 const megaLayoutDefault = { panel: "w-[680px]", cols: "grid-cols-3" };
