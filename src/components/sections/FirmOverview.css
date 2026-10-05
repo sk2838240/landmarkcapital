@@ -3,6 +3,9 @@
 .pan-india-section {
   --pan-navy: #071c2c;
   --pan-red: #a65353;
+  /* Map markers sit on the blue map fill, so they use the brand crimson
+     rather than --pan-red, which is too close to the blue in luminance. */
+  --pan-marker: #b7353a;
   --pan-grey: #748089;
   --pan-light-grey: #f4f4f2;
   --pan-border: #dfe3e4;
@@ -150,8 +153,8 @@
   padding: 0;
   border: 4px solid #fff;
   border-radius: 50%;
-  background: var(--pan-red);
-  box-shadow: 0 0 0 4px rgba(166, 83, 83, 0.20);
+  background: var(--pan-marker);
+  box-shadow: 0 0 0 4px rgba(183, 53, 58, 0.20);
   cursor: pointer;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
@@ -168,7 +171,7 @@
   content: "";
   position: absolute;
   inset: -10px;
-  border: 1px solid rgba(166, 83, 83, 0.42);
+  border: 1px solid rgba(183, 53, 58, 0.42);
   border-radius: 50%;
   animation: panMarkerPulse 2.2s ease-out infinite;
 }
