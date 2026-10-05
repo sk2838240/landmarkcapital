@@ -5,7 +5,7 @@ import { Reveal } from "@/components/common/Reveal";
 import { ButtonLink } from "@/components/common/Button";
 import { Seo, serviceJsonLd } from "@/components/common/Seo";
 import { getService } from "@/lib/cmsData";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -71,21 +71,38 @@ export default function ServiceDetail() {
             <p className="eyebrow mb-6">What we do</p>
             <h2 className="display-2 mb-14 text-balance">Scope of the mandate.</h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="border-t border-border">
             {service.offerings.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.04} className="h-full">
-                <article className="card-shine group relative h-full rounded-[12px] border border-border bg-gradient-to-br from-paper to-ivory p-7 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-bronze/60 hover:shadow-[0_18px_40px_-24px_rgba(36,41,47,0.35)]">
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs text-bronze transition-colors duration-300 group-hover:text-crimson-500">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="h-px flex-1 bg-border transition-colors duration-300 group-hover:bg-bronze/40" />
+              <Reveal key={item.title} delay={Math.min(i * 0.03, 0.2)}>
+                <div className="group relative flex items-start justify-between gap-6 py-7 lg:py-9 border-b border-border">
+                  <span
+                    aria-hidden
+                    className="absolute left-0 right-0 top-0 h-px origin-left scale-x-0 bg-crimson-500 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 -bottom-px h-px origin-right scale-x-0 bg-crimson-500 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 -z-10 origin-left scale-x-0 bg-crimson-500/[0.04] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+                  />
+
+                  <span className="font-mono text-[11px] tracking-[0.2em] text-bronze pt-2 transition-colors duration-300 group-hover:text-crimson-500">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="flex-1">
+                    <h3 className="font-display text-xl lg:text-2xl text-charcoal transition-colors duration-300 group-hover:text-crimson-500">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm lg:text-base text-slate leading-relaxed max-w-2xl">
+                      {item.body}
+                    </p>
                   </div>
-                  <h3 className="mt-4 mb-3 font-display text-xl text-charcoal transition-colors duration-300 group-hover:text-crimson-500">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-slate">{item.body}</p>
-                </article>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-paper text-charcoal transition-all duration-300 group-hover:border-crimson-500 group-hover:bg-crimson-500 group-hover:text-white group-hover:translate-x-1">
+                    <ArrowUpRight size={16} />
+                  </span>
+                </div>
               </Reveal>
             ))}
           </div>
